@@ -1,8 +1,8 @@
-package com.example.proyecto_01_danp.firebase.livedata
+package com.example.project01_danp.firebase.livedata
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.example.proyecto_01_danp.firebase.models.FirebaseEntity
+import com.example.project01_danp.firebase.models.FirebaseEntity
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.ListenerRegistration

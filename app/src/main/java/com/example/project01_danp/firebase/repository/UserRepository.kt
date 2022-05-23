@@ -1,7 +1,7 @@
-package com.example.proyecto_01_danp.firebase.repository
+package com.example.project01_danp.firebase.repository
 
-import com.example.proyecto_01_danp.firebase.models.User
-import com.example.proyecto_01_danp.firebase.service.AuthService
+import com.example.project01_danp.firebase.models.User
+import com.example.project01_danp.firebase.service.AuthService
 import com.google.firebase.auth.FirebaseUser
 
 class UserRepository : FirebaseRepository<User> (User::class.java){

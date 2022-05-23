@@ -1,4 +1,4 @@
-package com.example.proyecto_01_danp.firebase.models
+package com.example.project01_danp.firebase.models
 
 class User(
 

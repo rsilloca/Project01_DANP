@@ -1,8 +1,8 @@
-package com.example.proyecto_01_danp.firebase.repository
+package com.example.project01_danp.firebase.repository
 
-import com.example.proyecto_01_danp.firebase.livedata.DocumentReferenceFirebaseLiveData
-import com.example.proyecto_01_danp.firebase.livedata.MultipleDocumentReferenceLiveData
-import com.example.proyecto_01_danp.firebase.models.FirebaseEntity
+import com.example.project01_danp.firebase.livedata.DocumentReferenceFirebaseLiveData
+import com.example.project01_danp.firebase.livedata.MultipleDocumentReferenceLiveData
+import com.example.project01_danp.firebase.models.FirebaseEntity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.Query
 

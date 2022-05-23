@@ -1,9 +1,10 @@
-package com.example.proyecto_01_danp.firebase.livedata
+package com.example.project01_danp.firebase.livedata
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.proyecto_01_danp.firebase.models.FirebaseEntity
+import com.example.project01_danp.firebase.models.FirebaseEntity
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.DocumentReference
 
 class DocumentReferenceFirebaseLiveData<T : FirebaseEntity>(
     private var documentReference: DocumentReference,

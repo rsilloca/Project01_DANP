@@ -1,4 +1,4 @@
-package com.example.proyecto_01_danp.firebase.service
+package com.example.project01_danp.firebase.service
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
