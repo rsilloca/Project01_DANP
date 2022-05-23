@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050102478909",
+    "project_id": "colaboremos-pe",
+    "storage_bucket": "colaboremos-pe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050102478909:android:1548e1a558b2b6c7591254",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_01_danp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050102478909-42a0ie4v6tcpqv0qirjsp40vgcrfpq0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuGYo0ygl-lMFL6TzJPCJiYNFq3BhwiDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050102478909-42a0ie4v6tcpqv0qirjsp40vgcrfpq0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
