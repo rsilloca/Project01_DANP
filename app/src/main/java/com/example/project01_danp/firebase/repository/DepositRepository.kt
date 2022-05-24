@@ -1,4 +1,6 @@
 package com.example.project01_danp.firebase.repository
 
-class DepositRepository {
+import com.example.project01_danp.firebase.models.Deposit
+
+object DepositRepository: FirebaseRepository<Deposit>(Deposit::class.java){
 }
