@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,7 +19,7 @@ import com.example.project01_danp.R
 import com.example.project01_danp.ui.theme.CustomGreen
 
 @Composable
-fun JoinScreen(navController: NavHostController) {
+fun DepositScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,7 +27,7 @@ fun JoinScreen(navController: NavHostController) {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Join Screen",
+            text = "Deposit Screen",
             fontWeight = FontWeight.Bold,
             color = CustomGreen,
             modifier = Modifier.align(Alignment.CenterHorizontally),

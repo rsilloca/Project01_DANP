@@ -1,6 +1,8 @@
 package com.example.project01_danp
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,9 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.project01_danp.navigation.BottomNavItem
-import com.example.project01_danp.navigation.HomeScreen
-import com.example.project01_danp.navigation.JoinScreen
+import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 
@@ -46,13 +47,16 @@ class MainActivity : ComponentActivity() {
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(BottomNavItem.Join.screen_route) {
-            JoinScreen()
+            JoinScreen(navController)
         }
-        composable(BottomNavItem.Logout.screen_route) {
-            // Logout()
+        composable("add_purse") {
+            AddPurseScreen(navController)
+        }
+        composable("deposit") {
+            DepositScreen(navController)
         }
     }
 }
@@ -64,6 +68,7 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Join,
         BottomNavItem.Logout,
     )
+    val mContext = LocalContext.current
     BottomNavigation(
         backgroundColor = CustomGreen,
         contentColor = Color.White
@@ -82,14 +87,18 @@ fun BottomNavigation(navController: NavController) {
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screen_route,
                 onClick = {
-                    navController.navigate(item.screen_route) {
-                        navController.graph.startDestinationRoute?.let { screen_route ->
-                            popUpTo(screen_route) {
-                                saveState = true
+                    if (item.screen_route == "logout") {
+                        mContext.startActivity(Intent(mContext, LoginActivity::class.java))
+                    } else {
+                        navController.navigate(item.screen_route) {
+                            navController.graph.startDestinationRoute?.let { screen_route ->
+                                popUpTo(screen_route) {
+                                    saveState = true
+                                }
                             }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
                     }
                 }
             )

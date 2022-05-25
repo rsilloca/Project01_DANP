@@ -18,7 +18,7 @@ import com.example.project01_danp.R
 import com.example.project01_danp.ui.theme.CustomGreen
 
 @Composable
-fun JoinScreen(navController: NavHostController) {
+fun AddPurseScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -26,7 +26,7 @@ fun JoinScreen(navController: NavHostController) {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Join Screen",
+            text = "Add Purse Screen",
             fontWeight = FontWeight.Bold,
             color = CustomGreen,
             modifier = Modifier.align(Alignment.CenterHorizontally),

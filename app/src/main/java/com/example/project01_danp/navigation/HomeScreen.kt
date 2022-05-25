@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,11 +14,12 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.project01_danp.R
 import com.example.project01_danp.ui.theme.CustomGreen
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,5 +34,31 @@ fun HomeScreen() {
             textAlign = TextAlign.Center,
             fontSize = 20.sp
         )
+        Button(onClick = {
+            navController.navigate("add_purse") {
+                navController.graph.startDestinationRoute?.let { screen_route ->
+                    popUpTo(screen_route) {
+                        saveState = true
+                    }
+                }
+                launchSingleTop = true
+                restoreState = true
+            }
+        }) {
+            Text(text = "Add Purse")
+        }
+        Button(onClick = {
+            navController.navigate("deposit") {
+                navController.graph.startDestinationRoute?.let { screen_route ->
+                    popUpTo(screen_route) {
+                        saveState = true
+                    }
+                }
+                launchSingleTop = true
+                restoreState = true
+            }
+        }) {
+            Text(text = "Deposit on Purse")
+        }
     }
 }
