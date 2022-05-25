@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
@@ -107,9 +108,9 @@ fun BuildContentLogin() {
                 OutlinedTextField(
                     value = inputPhoneState.value,
                     onValueChange = { inputPhoneState.value = it },
-                    label = { Text(text = "Teléfono celular") },
+                    label = { Text(text = "Email") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Phone, contentDescription = null) },
+                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
@@ -147,7 +148,7 @@ fun BuildContentLogin() {
                     )
                     Text(
                         text = "¿No tienes una cuenta?",
-                        fontSize = 10.sp,
+                        fontSize = 12.sp,
                         color = CustomGreen
                     )
                     Divider(

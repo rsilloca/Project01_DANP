@@ -5,16 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -24,6 +31,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
+import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +57,7 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Home.screen_route) {
             HomeScreen(navController)
         }
-        composable(BottomNavItem.Join.screen_route) {
+        composable("join") {
             JoinScreen(navController)
         }
         composable("add_purse") {
@@ -65,7 +73,6 @@ fun NavigationGraph(navController: NavHostController) {
 fun BottomNavigation(navController: NavController) {
     val items = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Join,
         BottomNavItem.Logout,
     )
     val mContext = LocalContext.current
@@ -82,8 +89,8 @@ fun BottomNavigation(navController: NavController) {
                     text = item.title,
                     fontSize = 9.sp
                 ) },
-                selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Black.copy(0.4f),
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(0.5f),
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screen_route,
                 onClick = {
@@ -110,7 +117,29 @@ fun BottomNavigation(navController: NavController) {
 fun BuildContentMain() {
     val navController = rememberNavController()
     Scaffold(
-        bottomBar = { BottomNavigation(navController = navController) }
+        bottomBar = { BottomNavigation(navController = navController) },
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            FloatingActionButton(
+                shape = RoundedCornerShape(8.dp),
+                onClick = {
+                    navController.navigate("join") {
+                        navController.graph.startDestinationRoute?.let { screen_route ->
+                            popUpTo(screen_route) {
+                                saveState = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                contentColor = Color.White,
+                backgroundColor = CustomViolet
+            ) {
+                Icon(painter = painterResource(id = R.drawable.ic_bubble), contentDescription = "")
+            }
+        }
     ) {
         NavigationGraph(navController = navController)
     }
