@@ -104,12 +104,12 @@ fun BuildContentLogin() {
                         .width(120.dp)
                         .padding(bottom = 24.dp)
                 )
-                val inputPhoneState = remember { mutableStateOf(TextFieldValue())}
+                val inputEmailState = remember { mutableStateOf(TextFieldValue())}
                 OutlinedTextField(
-                    value = inputPhoneState.value,
-                    onValueChange = { inputPhoneState.value = it },
+                    value = inputEmailState.value,
+                    onValueChange = { inputEmailState.value = it },
                     label = { Text(text = "Email") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
                     modifier = Modifier
                         .fillMaxWidth()
