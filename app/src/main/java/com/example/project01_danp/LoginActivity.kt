@@ -1,5 +1,6 @@
 package com.example.project01_danp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -53,6 +55,7 @@ class LoginActivity : ComponentActivity() {
 
 @Composable
 fun BuildContentLogin() {
+    val mContext = LocalContext.current
     Scaffold {
         Column {
             Box {
@@ -121,7 +124,9 @@ fun BuildContentLogin() {
                     modifier = Modifier.fillMaxWidth()
                 )
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                              mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                    },
                     modifier = Modifier
                         .width(220.dp)
                         .padding(top = 24.dp)
