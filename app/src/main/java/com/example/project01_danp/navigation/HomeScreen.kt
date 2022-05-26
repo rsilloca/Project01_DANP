@@ -106,8 +106,16 @@ fun HomeScreen(navController: NavHostController) {
 
                 OutlinedButton(
                     onClick = {
-
-                        mContext.startActivity(Intent(mContext, RegisterActivity::class.java))},
+                        navController.navigate("add_purse") {
+                            navController.graph.startDestinationRoute?.let { screen_route ->
+                                popUpTo(screen_route) {
+                                    saveState = true
+                                }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     // contentPadding = PaddingValues(horizontal = 48.dp),
                     modifier = Modifier.fillMaxWidth()
                         .padding(bottom = 50.dp)
@@ -120,7 +128,7 @@ fun HomeScreen(navController: NavHostController) {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     items(1) { purse ->
-                        AlcanciaCard()
+                        AlcanciaCard(navController)
                     }
                 }
 
@@ -178,7 +186,7 @@ fun HomeScreen(navController: NavHostController) {
 
 
 @Composable
-fun AlcanciaCard (){
+fun AlcanciaCard (navController: NavHostController){
 
     val localContext = LocalContext.current
     Card (
@@ -222,6 +230,20 @@ fun AlcanciaCard (){
                         .clip(CircleShape)
                         .border(1.5.dp, MaterialTheme.colors.primary, CircleShape)
                 )
+
+                Button(onClick = {
+                    navController.navigate("deposit") {
+                        navController.graph.startDestinationRoute?.let { screen_route ->
+                            popUpTo(screen_route) {
+                                saveState = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }) {
+                    Text(text = "Deposit on Purse")
+                }
 
 
             }
