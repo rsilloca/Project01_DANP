@@ -42,7 +42,7 @@ fun JoinScreen(navController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(CustomOrange.copy(0.25f))
+                .background(CustomOrange.copy(alpha = 0.25f))
                 .padding(top = 120.dp, start = 24.dp, end = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
 
