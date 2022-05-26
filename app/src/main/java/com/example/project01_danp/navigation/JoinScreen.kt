@@ -31,6 +31,7 @@ import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
+import com.example.project01_danp.ui.theme.CustomOrange
 import com.example.project01_danp.ui.theme.CustomViolet
 
 @Composable
@@ -41,7 +42,7 @@ fun JoinScreen(navController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colors.secondary)
+                .background(CustomOrange.copy(0.25f))
                 .padding(top = 120.dp, start = 24.dp, end = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -59,20 +60,24 @@ fun JoinScreen(navController: NavHostController) {
             OutlinedTextField(
                 value = inputCodeState.value,
                 onValueChange = { inputCodeState.value = it },
-                label = {
+                placeholder = {
                     Text(text = "Código de Alcancía",
-                        color = if (isSystemInDarkTheme()) Color.White else Color.Black,
+                        // color = if (isSystemInDarkTheme()) Color.White else Color.Black,
                         textAlign = TextAlign.Center,
-
-                        modifier = Modifier.width(260.dp) )
-
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 },
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color.White
+                ),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding( bottom = 8.dp),
-
+                textStyle = LocalTextStyle.current.copy(
+                    textAlign = TextAlign.Center
                 )
+            )
 
             Button(
                 onClick = {

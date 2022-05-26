@@ -71,19 +71,29 @@ fun DepositScreen(navController: NavHostController) {
         )
         val inputNameState = remember { mutableStateOf(TextFieldValue()) }
         TextField(
-
             value = inputNameState.value,
             onValueChange = { inputNameState.value = it },
-            label = { Text(text = "S/",
-                      fontSize = 24.sp,
+            /* label = { Text(text = "S/",
+                      // fontSize = 24.sp,
                       textAlign = TextAlign.Left,
-                ) },
+                )}, */
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp).padding(bottom = 50.dp),
-
-
+                .width(200.dp)
+                .height(100.dp)
+                .padding(bottom = 24.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.Transparent
+            ),
+            singleLine = true,
+            leadingIcon = {
+                Icon(painterResource(id = R.drawable.ic_soles), contentDescription = "")
+            },
+            textStyle = LocalTextStyle.current.copy(
+                color = MaterialTheme.colors.onSurface,
+                fontSize = 40.sp,
+                textAlign = TextAlign.Center
+            ),
         )
 
 
