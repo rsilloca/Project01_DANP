@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 abstract class FirebaseRepository<E : FirebaseEntity>(entityClass: Class<E>) :
     CrudFirebaseRepository<E, String> {
     val collectionReference: CollectionReference
-    private val entityClass: Class<E>
+    val entityClass: Class<E>
     override fun findAll(): MultipleDocumentReferenceLiveData<E, CollectionReference> {
         Log.e(TAG, "findAll()")
         return MultipleDocumentReferenceLiveData(collectionReference, entityClass)

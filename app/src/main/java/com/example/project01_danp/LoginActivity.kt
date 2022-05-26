@@ -1,7 +1,10 @@
 package com.example.project01_danp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -32,10 +35,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project01_danp.firebase.models.Purse
+import com.example.project01_danp.firebase.models.User
+import com.example.project01_danp.firebase.repository.UserRepository
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.Purple500
 import com.example.project01_danp.ui.theme.fontPacifico
+import com.example.project01_danp.viewmodel.PurseViewModel
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import java.util.*
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,7 +137,8 @@ fun BuildContentLogin() {
                 )
                 Button(
                     onClick = {
-                              mContext.startActivity(Intent(mContext, MainActivity::class.java))
+//                              mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                              login(inputEmailState.value.text, inputPwdState.value.text, mContext)
                     },
                     modifier = Modifier
                         .width(220.dp)
@@ -169,10 +181,24 @@ fun BuildContentLogin() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview2() {
-    Project01_DANPTheme {
-        BuildContentLogin()
+
+fun login(email: String, password: String, mContext:Context) {
+    val auth: Task<AuthResult> = AuthService.firebaseSingInWithEmail(email, password)
+    auth.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            Toast.makeText(mContext, "Authentication successful",
+                Toast.LENGTH_SHORT).show()
+            mContext.startActivity(Intent(mContext, MainActivity::class.java))
+        } else {
+            Toast.makeText(mContext, "Wrong email or pass", Toast.LENGTH_SHORT).show()
+//            mContext.startActivity(Intent(mContext, LoginActivity::class.java))
+        }
     }
 }
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview2() {
+//    Project01_DANPTheme {
+//        BuildContentLogin()
+//    }
+//}

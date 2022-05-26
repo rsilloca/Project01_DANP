@@ -28,9 +28,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.Purse
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.PurseViewModel
 
 @Composable
 fun AddPurseScreen(navController: NavHostController) {
@@ -57,6 +60,7 @@ fun AddPurseScreen(navController: NavHostController) {
                 .width(100.dp)
                 .padding(bottom = 24.dp, top = 24.dp)
         )
+        var inputIcon = "star"
         val inputNameState = remember { mutableStateOf(TextFieldValue()) }
         OutlinedTextField(
             value = inputNameState.value,
@@ -100,7 +104,8 @@ fun AddPurseScreen(navController: NavHostController) {
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomGray)
             ) {
-               Icon(
+                inputIcon = R.drawable.ic_celebration.toString()
+                Icon(
                    painter = painterResource(id = R.drawable.ic_celebration),
                    contentDescription = "",
                    tint = Color.Black
@@ -114,6 +119,7 @@ fun AddPurseScreen(navController: NavHostController) {
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomGray)
             ) {
+                inputIcon = R.drawable.ic_sell.toString()
                 Icon(
                     painter = painterResource(id = R.drawable.ic_sell),
                     contentDescription = "",
@@ -139,6 +145,19 @@ fun AddPurseScreen(navController: NavHostController) {
         }
         Button(
             onClick = {
+                val auth = AuthService
+
+                val purse: Purse? = auth.firebaseGetCurrentUser()?.uid?.let {uid->
+                        Purse(
+                            uid,
+                            0,
+                            inputNameState.value.text,
+                            inputDescState.value.text,
+                            inputIcon,
+                            0
+                        )
+                    }
+                createPurse(purse!!)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier
@@ -149,4 +168,9 @@ fun AddPurseScreen(navController: NavHostController) {
             Text(text = "CREAR ALCANCÍA")
         }
     }
+}
+
+fun createPurse(purse: Purse) {
+    val viewModel = PurseViewModel()
+    viewModel.savePurse(purse)
 }
