@@ -63,137 +63,150 @@ class LoginActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun BuildContentLogin() {
-    val mContext = LocalContext.current
-    Scaffold {
-        Column {
-            Box {
-                Image(
-                    painter = painterResource(id = R.drawable.bg_header_app),
-                    contentDescription = null
-                )
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                        .padding(top = 34.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Colaboremos",
-                        fontFamily = fontPacifico,
-                        color = Color.White,
-                        fontSize = 28.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.rotate(-5f)
+    @Composable
+    fun BuildContentLogin() {
+        val mContext = LocalContext.current
+        Scaffold {
+            Column {
+                Box {
+                    Image(
+                        painter = painterResource(id = R.drawable.bg_header_app),
+                        contentDescription = null
                     )
-                    Row {
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(top = 34.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text(
-                            text = "PE",
+                            text = "Colaboremos",
+                            fontFamily = fontPacifico,
                             color = Color.White,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold
+                            fontSize = 28.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.rotate(-5f)
                         )
-                        Image(
-                            painter = painterResource(id = R.drawable.peru_flag),
-                            contentDescription = null,
-                            modifier = Modifier.height(28.dp)
-                                .padding(top = 8.dp, start = 8.dp)
-                        )
+                        Row {
+                            Text(
+                                text = "PE",
+                                color = Color.White,
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Image(
+                                painter = painterResource(id = R.drawable.peru_flag),
+                                contentDescription = null,
+                                modifier = Modifier.height(28.dp)
+                                    .padding(top = 8.dp, start = 8.dp)
+                            )
+                        }
                     }
                 }
-            }
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(horizontal = 32.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.alcancia_app),
-                    contentDescription = null,
-                    Modifier
-                        .width(120.dp)
-                        .padding(bottom = 24.dp)
-                )
-                val inputEmailState = remember { mutableStateOf(TextFieldValue())}
-                OutlinedTextField(
-                    value = inputEmailState.value,
-                    onValueChange = { inputEmailState.value = it },
-                    label = { Text(text = "Email") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp)
-                )
-                val inputPwdState = remember { mutableStateOf(TextFieldValue())}
-                OutlinedTextField(
-                    value = inputPwdState.value,
-                    onValueChange = { inputPwdState.value = it },
-                    label = { Text(text = "Clave") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
-                    modifier = Modifier.fillMaxWidth()
-                )
-                Button(
-                    onClick = {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(horizontal = 32.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.alcancia_app),
+                        contentDescription = null,
+                        Modifier
+                            .width(120.dp)
+                            .padding(bottom = 24.dp)
+                    )
+                    val inputEmailState = remember { mutableStateOf(TextFieldValue()) }
+                    OutlinedTextField(
+                        value = inputEmailState.value,
+                        onValueChange = { inputEmailState.value = it },
+                        label = { Text(text = "Email") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Email,
+                                contentDescription = null
+                            )
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 8.dp)
+                    )
+                    val inputPwdState = remember { mutableStateOf(TextFieldValue()) }
+                    OutlinedTextField(
+                        value = inputPwdState.value,
+                        onValueChange = { inputPwdState.value = it },
+                        label = { Text(text = "Clave") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = null
+                            )
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Button(
+                        onClick = {
 //                              mContext.startActivity(Intent(mContext, MainActivity::class.java))
-                              login(inputEmailState.value.text, inputPwdState.value.text, mContext)
-                    },
-                    modifier = Modifier
-                        .width(220.dp)
-                        .padding(top = 24.dp)
-                ) {
-                    Text(text = "INICIAR SESIÓN")
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier
-                        .width(220.dp)
-                        .padding(vertical = 8.dp)
-                ) {
-                    Divider(
-                        color = CustomGreen,
-                        thickness = 1.dp,
-                        modifier = Modifier.width(40.dp)
-                    )
-                    Text(
-                        text = "¿No tienes una cuenta?",
-                        fontSize = 12.sp,
-                        color = CustomGreen
-                    )
-                    Divider(
-                        color = CustomGreen,
-                        thickness = 1.dp,
-                        modifier = Modifier.width(40.dp)
-                    )
-                }
-                OutlinedButton(
-                    onClick = {
+                            login(inputEmailState.value.text, inputPwdState.value.text, mContext)
+                        },
+                        modifier = Modifier
+                            .width(220.dp)
+                            .padding(top = 24.dp)
+                    ) {
+                        Text(text = "INICIAR SESIÓN")
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier
+                            .width(220.dp)
+                            .padding(vertical = 8.dp)
+                    ) {
+                        Divider(
+                            color = CustomGreen,
+                            thickness = 1.dp,
+                            modifier = Modifier.width(40.dp)
+                        )
+                        Text(
+                            text = "¿No tienes una cuenta?",
+                            fontSize = 12.sp,
+                            color = CustomGreen
+                        )
+                        Divider(
+                            color = CustomGreen,
+                            thickness = 1.dp,
+                            modifier = Modifier.width(40.dp)
+                        )
+                    }
+                    OutlinedButton(
+                        onClick = {
 
-                        mContext.startActivity(Intent(mContext, RegisterActivity::class.java))},
-                    // contentPadding = PaddingValues(horizontal = 48.dp),
-                    modifier = Modifier.width(220.dp)
-                ) {
-                    Text(text = "REGÍSTRATE")
+                            mContext.startActivity(Intent(mContext, RegisterActivity::class.java))
+                        },
+                        // contentPadding = PaddingValues(horizontal = 48.dp),
+                        modifier = Modifier.width(220.dp)
+                    ) {
+                        Text(text = "REGÍSTRATE")
+                    }
                 }
             }
         }
     }
-}
 
 
-fun login(email: String, password: String, mContext:Context) {
-    val auth: Task<AuthResult> = AuthService.firebaseSingInWithEmail(email, password)
-    auth.addOnCompleteListener { task ->
-        if (task.isSuccessful) {
-            Toast.makeText(mContext, "Authentication successful",
-                Toast.LENGTH_SHORT).show()
-            mContext.startActivity(Intent(mContext, MainActivity::class.java))
-        } else {
-            Toast.makeText(mContext, "Wrong email or pass", Toast.LENGTH_SHORT).show()
+    fun login(email: String, password: String, mContext: Context) {
+        val auth: Task<AuthResult> = AuthService.firebaseSingInWithEmail(email, password)
+        auth.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(
+                    mContext, "Authentication successful",
+                    Toast.LENGTH_SHORT
+                ).show()
+                mContext.startActivity(Intent(mContext, MainActivity::class.java))
+            } else {
+                Toast.makeText(mContext, "Wrong email or pass", Toast.LENGTH_SHORT).show()
 //            mContext.startActivity(Intent(mContext, LoginActivity::class.java))
+            }
         }
     }
 }

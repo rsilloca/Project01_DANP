@@ -1,6 +1,8 @@
 package com.example.project01_danp.navigation
 
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -23,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,25 +37,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import com.example.project01_danp.BuildContentLogin
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.RegisterActivity
 import com.example.project01_danp.firebase.models.Purse
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.*
+import com.example.project01_danp.viewmodel.PurseViewModel
 
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
-    var purses = listOf(
-        Purse("1",0,"Cumpleaños","Es para Juan'", "sin nombre",20),
-        Purse("1",0,"Chanchita","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Chanchita 02","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Cumpleaños 02","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Chanchita 03","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Cumpleaños 03","Para un juguete'", "sin nombre",20),
-    )
+fun HomeScreen(
+    navController: NavHostController,
+    purses: MutableList<Purse>
+) {
+
+//    val purses = mutableListOf(
+//        Purse("1",0,"Cumpleaños","Es para Juan'", "sin nombre",20),
+//    )
+
     val mContext = LocalContext.current
     Column {
         Box {
@@ -129,6 +134,7 @@ fun HomeScreen(navController: NavHostController) {
             }
         }
     }
+
 }
 
 
@@ -232,7 +238,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     ) {
                         Button(
                             onClick = {
-                                navController.navigate("deposit") {
+                                navController.navigate("deposit".plus("/${purse.documentId}")){
                                     navController.graph.startDestinationRoute?.let { screen_route ->
                                         popUpTo(screen_route) {
                                             saveState = true

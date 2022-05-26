@@ -1,6 +1,7 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -29,12 +30,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.Deposit
+import com.example.project01_danp.firebase.models.Purse
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.DepositViewModel
+import com.example.project01_danp.viewmodel.PurseViewModel
 
 @Composable
-fun DepositScreen(navController: NavHostController) {
+fun DepositScreen(navController: NavHostController, id_purse: String?, activity: MainActivity?) {
     val mContext = LocalContext.current
 
 
@@ -102,6 +108,15 @@ fun DepositScreen(navController: NavHostController) {
 
         Button(
             onClick = {
+                var deposit = Deposit()
+                deposit = Deposit(
+                    "id",
+                    id_purse!!,
+                    inputNameState.value.text.toInt(),
+                    inputMensaState.value.text
+                )
+                createDeposit(deposit)
+//                activity?.updatePurse(id_purse, deposit.quantity)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier
@@ -113,4 +128,13 @@ fun DepositScreen(navController: NavHostController) {
             Text(text = "DEPOSITAR")
         }
     }
+}
+fun createDeposit(deposit: Deposit) {
+    val viewModel = DepositViewModel()
+    viewModel.saveDeposit(deposit)
+}
+
+fun updatePurse(purse: Purse){
+    val viewModel = PurseViewModel()
+    viewModel.updatePurse(purse)
 }
