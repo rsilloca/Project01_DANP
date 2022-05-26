@@ -170,7 +170,9 @@ fun BuildContentLogin() {
                     )
                 }
                 OutlinedButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+
+                        mContext.startActivity(Intent(mContext, RegisterActivity::class.java))},
                     // contentPadding = PaddingValues(horizontal = 48.dp),
                     modifier = Modifier.width(220.dp)
                 ) {
