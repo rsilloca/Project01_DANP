@@ -46,12 +46,12 @@ import com.example.project01_danp.ui.theme.*
 @Composable
 fun HomeScreen(navController: NavHostController) {
     var purses = listOf(
-        Purse("1",0,"Cumpleaños","Es para Juan'", "sin nombre",20),
-        Purse("1",0,"Chanchita","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Chanchita 02","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Cumpleaños 02","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Chanchita 03","Para un juguete'", "sin nombre",20),
-        Purse("1",0,"Cumpleaños 03","Para un juguete'", "sin nombre",20),
+        Purse("1",0,"Cumpleaños","Es para Juan", "sin nombre",20),
+        Purse("1",0,"Chanchita","Para un juguete", "sin nombre",20),
+        Purse("1",0,"Cuota TV","Lorem ipsum Lorem ipsum Lorem ipsum", "sin nombre",20),
+        Purse("1",0,"Campaña navideña","Lorem ipsum Lorem ipsum", "sin nombre",20),
+        Purse("1",0,"Ahorro Laptop","Lorem ipsum Lorem ipsum", "sin nombre",20),
+        Purse("1",0,"Ahorro cumpleaños Mamá","Lorem ipsum Lorem ipsum", "sin nombre",20),
     )
     val mContext = LocalContext.current
     Column {
