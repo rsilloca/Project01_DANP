@@ -210,10 +210,3 @@ class LoginActivity : ComponentActivity() {
         }
     }
 }
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview2() {
-//    Project01_DANPTheme {
-//        BuildContentLogin()
-//    }
-//}

@@ -210,11 +210,3 @@ fun register(fullname:String, email:String, password:String, context: Context){
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview3() {
-//    Project01_DANPTheme {
-//        BuildContentRegister()
-//    }
-//}
