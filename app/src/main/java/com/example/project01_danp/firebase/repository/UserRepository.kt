@@ -4,7 +4,7 @@ import com.example.project01_danp.firebase.models.User
 import com.example.project01_danp.firebase.service.AuthService
 import com.google.firebase.auth.FirebaseUser
 
-class UserRepository : FirebaseRepository<User> (User::class.java){
+object UserRepository : FirebaseRepository<User> (User::class.java){
 
     private lateinit var authUser: FirebaseUser
 
@@ -12,8 +12,7 @@ class UserRepository : FirebaseRepository<User> (User::class.java){
         authUser = AuthService.firebaseGetCurrentUser()!!
         this.saveWithExistentDocumentId(documentId = authUser.uid, User(
             user.fullname,
-            user.phoneNumber,
-            user.pin,
+            user.email
         ))
     }
 

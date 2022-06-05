@@ -1,6 +1,7 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -25,16 +26,26 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
+import com.example.project01_danp.PurseViewModel
+import com.example.project01_danp.PurseViewModelFactory
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.service.AuthService
+import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.roomdata.model.Purse
 
 @Composable
 fun AddPurseScreen(navController: NavHostController) {
     val mContext = LocalContext.current
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -86,6 +97,7 @@ fun AddPurseScreen(navController: NavHostController) {
                 .padding(top = 16.dp),
             color = if (isSystemInDarkTheme()) Color.White else Color.Black
         )
+        var icon = "star"
         Row(
             horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier
@@ -93,7 +105,8 @@ fun AddPurseScreen(navController: NavHostController) {
                 .padding(top = 16.dp)
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    icon = "celebration" },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
@@ -107,7 +120,8 @@ fun AddPurseScreen(navController: NavHostController) {
                )
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    icon = "cell" },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
@@ -122,7 +136,8 @@ fun AddPurseScreen(navController: NavHostController) {
                 )
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    icon = "star" },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
@@ -139,6 +154,17 @@ fun AddPurseScreen(navController: NavHostController) {
         }
         Button(
             onClick = {
+                val auth = AuthService
+                val newPurse = Purse(
+                    0,
+                    auth.firebaseGetCurrentUser()!!.uid,
+                    "",
+                    inputNameState.value.text,
+                    inputDescState.value.text,
+                    icon,
+                    0
+                )
+                purseViewModel.insert(newPurse)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier

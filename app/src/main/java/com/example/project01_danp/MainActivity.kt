@@ -3,6 +3,7 @@ package com.example.project01_danp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -29,6 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
@@ -95,6 +97,8 @@ fun BottomNavigation(navController: NavController) {
                 selected = currentRoute == item.screen_route,
                 onClick = {
                     if (item.screen_route == "logout") {
+                        AuthService.firebaseSingOut()
+                        Toast.makeText(mContext, "Sing out successfully", Toast.LENGTH_SHORT).show()
                         mContext.startActivity(Intent(mContext, LoginActivity::class.java))
                     } else {
                         navController.navigate(item.screen_route) {

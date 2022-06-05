@@ -1,15 +1,13 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,9 +24,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Observer
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.MainActivity
+import com.example.project01_danp.*
 import com.example.project01_danp.R
+import com.example.project01_danp.roomdata.ApplicationDANP
+import com.example.project01_danp.roomdata.model.Deposit
+import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
@@ -37,7 +40,15 @@ import com.example.project01_danp.ui.theme.CustomViolet
 fun DepositScreen(navController: NavHostController) {
     val mContext = LocalContext.current
 
+    val depositViewModel: DepositViewModel = viewModel(
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
 
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
+
+    val actualPurse: Purse // catch json object
 
     Column(
         modifier = Modifier
@@ -55,7 +66,7 @@ fun DepositScreen(navController: NavHostController) {
             modifier = Modifier.width(260.dp)
         )
         Text(
-            text = "Cuota cumpleaños ",
+            text = "Cuota cumpleaños ", //purse.name
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else MaterialTheme.colors.primaryVariant,
             textAlign = TextAlign.Center,
@@ -112,6 +123,17 @@ fun DepositScreen(navController: NavHostController) {
 
         Button(
             onClick = {
+
+                val newDeposit = Deposit(
+                    0,
+                    2, // actualPurse.id
+                    0,
+                    inputNameState.value.text.toInt(),
+                    inputMensaState.value.text
+                )
+                depositViewModel.insert(newDeposit)
+//                actualPurse.sub_total += inputMensaState.value.text.toInt()
+//                purseViewModel.update(actualPurse)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier

@@ -1,21 +1,18 @@
 package com.example.project01_danp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,13 +26,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.project01_danp.firebase.models.User
+import com.example.project01_danp.firebase.repository.UserRepository
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
-import com.example.project01_danp.ui.theme.Purple500
 import com.example.project01_danp.ui.theme.fontPacifico
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 
 class RegisterActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,7 +139,8 @@ fun BuildContentRegister() {
                 )
                 Button(
                     onClick = {
-                        mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                        register(inputNameState.value.text, inputPhoneState.value.text,
+                            inputPwdState.value.text, mContext)
                     },
                     modifier = Modifier
                         .width(220.dp)
@@ -172,8 +173,8 @@ fun BuildContentRegister() {
                 }
                 OutlinedButton(
                     onClick = {
-
-                        mContext.startActivity(Intent(mContext, LoginActivity::class.java))},
+                        mContext.startActivity(Intent(mContext, LoginActivity::class.java))
+                    },
                     // contentPadding = PaddingValues(horizontal = 48.dp),
                     modifier = Modifier.width(220.dp)
                 ) {
@@ -183,15 +184,22 @@ fun BuildContentRegister() {
         }
     }
 
-
-
-
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview3() {
-    Project01_DANPTheme {
-        BuildContentRegister()
+fun register(fullname:String, email:String, password:String, context: Context){
+    val user = User(
+        fullname = fullname,
+        email = email
+    )
+    val auth2: Task<AuthResult> =
+        AuthService.firebaseRegister(email, password)
+    auth2.addOnCompleteListener { task ->
+        if (task.isSuccessful){
+            UserRepository.saveUser(user)
+            context.startActivity(Intent(context, MainActivity::class.java))
+            Toast.makeText(context, "Successful register", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+        }
     }
 }

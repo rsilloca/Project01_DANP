@@ -1,6 +1,7 @@
 package com.example.project01_danp.navigation
 
-import android.content.Intent
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -11,49 +12,46 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.BuildContentLogin
-import com.example.project01_danp.MainActivity
+import com.example.project01_danp.*
 import com.example.project01_danp.R
-import com.example.project01_danp.RegisterActivity
-import com.example.project01_danp.firebase.models.Purse
+import com.example.project01_danp.roomdata.model.Purse
+import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.ui.theme.*
 
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    var purses = listOf(
-        Purse("1",0,"Cumpleaños","Es para Juan", "sin nombre",20),
-        Purse("1",0,"Chanchita","Para un juguete", "sin nombre",20),
-        Purse("1",0,"Cuota TV","Lorem ipsum Lorem ipsum Lorem ipsum", "sin nombre",20),
-        Purse("1",0,"Campaña navideña","Lorem ipsum Lorem ipsum", "sin nombre",20),
-        Purse("1",0,"Ahorro Laptop","Lorem ipsum Lorem ipsum", "sin nombre",20),
-        Purse("1",0,"Ahorro cumpleaños Mamá","Lorem ipsum Lorem ipsum", "sin nombre",20),
-    )
+    val purses:List<Purse>
+
     val mContext = LocalContext.current
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
+
+//    Log.e("Purses", ""+purseViewModel.getAllPurses.observeAsState(listOf()).value.toString())
+
+    purses = purseViewModel.getAllPurses.observeAsState(listOf()).value
+
     Column {
         Box {
             Image(
@@ -132,10 +130,13 @@ fun HomeScreen(navController: NavHostController) {
 }
 
 
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
+    val mContext = LocalContext.current
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
         targetValue = if (expandedState) 90f else 0f
@@ -210,12 +211,30 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                             )
                             .padding(all = 4.dp)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "",
-                            modifier = Modifier.width(28.dp),
-                            tint = Color.Black
-                        )
+                        val icon = Icons.Default.Star
+
+                        var painter: Painter? = null
+                        if (purse.icon_name == "cell")
+                            painter = painterResource(id = R.drawable.ic_sell)
+                        else if (purse.icon_name == "celebration")
+                            painter = painterResource(id = R.drawable.ic_celebration)
+
+                        if (purse.icon_name == "star") {
+                            Icon(
+                                imageVector = icon,
+                                contentDescription = "",
+                                modifier = Modifier.width(28.dp),
+                                tint = Color.Black
+                            )
+                        } else {
+                            Icon(
+                                painter = painter!!,
+                                contentDescription = "",
+                                modifier = Modifier.width(20.dp),
+                                tint = Color.Black
+                            )
+                        }
+
                     }
                 }
                 if (expandedState) {
@@ -232,6 +251,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     ) {
                         Button(
                             onClick = {
+
                                 navController.navigate("deposit") {
                                     navController.graph.startDestinationRoute?.let { screen_route ->
                                         popUpTo(screen_route) {
@@ -250,7 +270,10 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                             )
                         }
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                purse.code = purse.user_id+"-"+purse.id
+                                purseViewModel.update(purse)
+                            },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
                             Text(
@@ -262,38 +285,6 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                 }
             }
         }
-        /* Row(modifier = Modifier.padding(all = 8.dp)) {
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .width(52.dp)
-                    .height(52.dp),
-                shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(backgroundColor = CustomGray)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_celebration),
-                    contentDescription = "",
-                    tint = Color.Black
-                )
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            Column {
-                Text(
-                    text = "Cuota cumpleaños Juan ",
-                    color = MaterialTheme.colors.primary,
-                    style = MaterialTheme.typography.subtitle1
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.ic_celebration),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .border(1.5.dp, MaterialTheme.colors.primary, CircleShape)
-                )
-            }
-        } */
     }
 }
 

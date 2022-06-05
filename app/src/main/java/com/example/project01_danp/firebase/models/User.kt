@@ -2,14 +2,13 @@ package com.example.project01_danp.firebase.models
 
 class User(
 
-        var fullname: String,
-        var phoneNumber: Int,
-        var pin: Int
+    var fullname: String,
+    var email: String,
 
     ) : FirebaseEntity(documentId = null) {
-        constructor() : this(fullname = "", phoneNumber = 0, pin = 0)
+    constructor() : this(fullname = "", email = "")
 
     override fun toString() :String {
-        return "User ('$fullname', '$phoneNumber', '$pin')"
+        return "User ('$fullname', '$email')"
     }
 }
