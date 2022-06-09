@@ -1,6 +1,7 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -29,15 +30,22 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.Purse
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.google.gson.Gson
 
 @Composable
-fun DepositScreen(navController: NavHostController) {
+fun DepositScreen(navController: NavHostController, purseJson: String?) {
+
+    if (purseJson != null) {
+        val gson = Gson()
+        val purse = gson.fromJson(purseJson, Purse::class.java)
+        Log.e("purse description", purse.description)
+    }
+
     val mContext = LocalContext.current
-
-
 
     Column(
         modifier = Modifier

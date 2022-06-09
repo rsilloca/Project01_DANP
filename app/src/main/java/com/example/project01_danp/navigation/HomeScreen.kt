@@ -41,6 +41,7 @@ import com.example.project01_danp.R
 import com.example.project01_danp.RegisterActivity
 import com.example.project01_danp.firebase.models.Purse
 import com.example.project01_danp.ui.theme.*
+import com.google.gson.Gson
 
 
 @Composable
@@ -135,7 +136,8 @@ fun HomeScreen(navController: NavHostController) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
+fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
+    val gson = Gson()
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
         targetValue = if (expandedState) 90f else 0f
@@ -232,7 +234,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     ) {
                         Button(
                             onClick = {
-                                navController.navigate("deposit") {
+                                navController.navigate("deposit".plus("/${gson.toJson(purse)}")) {
                                     navController.graph.startDestinationRoute?.let { screen_route ->
                                         popUpTo(screen_route) {
                                             saveState = true
