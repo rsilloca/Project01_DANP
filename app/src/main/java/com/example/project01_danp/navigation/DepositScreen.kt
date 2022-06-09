@@ -15,29 +15,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.*
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
-import com.example.project01_danp.ui.theme.CustomGray
-import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.DepositViewModel
+import com.example.project01_danp.viewmodel.DepositViewModelFactory
+import com.example.project01_danp.viewmodel.PurseViewModel
+import com.example.project01_danp.viewmodel.PurseViewModelFactory
+import com.google.gson.Gson
 
 @Composable
-fun DepositScreen(navController: NavHostController) {
+fun DepositScreen(navController: NavHostController, purseJson: String?) {
     val mContext = LocalContext.current
 
     val depositViewModel: DepositViewModel = viewModel(
@@ -48,7 +49,11 @@ fun DepositScreen(navController: NavHostController) {
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
 
-    val actualPurse: Purse // catch json object
+    lateinit var purse: Purse
+    if (purseJson != null) {
+        val gson = Gson()
+        purse = gson.fromJson(purseJson, Purse::class.java)
+    }
 
     Column(
         modifier = Modifier
@@ -66,7 +71,7 @@ fun DepositScreen(navController: NavHostController) {
             modifier = Modifier.width(260.dp)
         )
         Text(
-            text = "Cuota cumpleaños ", //purse.name
+            text = purse.name, //purse.name
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else MaterialTheme.colors.primaryVariant,
             textAlign = TextAlign.Center,
@@ -123,17 +128,18 @@ fun DepositScreen(navController: NavHostController) {
 
         Button(
             onClick = {
-
+                val auth = AuthService
                 val newDeposit = Deposit(
                     0,
-                    2, // actualPurse.id
-                    0,
+                    purse.id,
+                    auth.firebaseGetCurrentUser()!!.uid,
                     inputNameState.value.text.toInt(),
                     inputMensaState.value.text
                 )
                 depositViewModel.insert(newDeposit)
-//                actualPurse.sub_total += inputMensaState.value.text.toInt()
-//                purseViewModel.update(actualPurse)
+                purse.sub_total += inputNameState.value.text.toInt()
+                Log.e("TAG UPDATE", newDeposit.toString())
+                purseViewModel.update(purse)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier

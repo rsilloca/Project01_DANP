@@ -1,7 +1,10 @@
 package com.example.project01_danp.navigation
 
-import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -30,13 +33,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.*
 import com.example.project01_danp.R
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.roomdata.ApplicationDANP
+import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.ui.theme.*
+import com.example.project01_danp.viewmodel.DepositViewModel
+import com.example.project01_danp.viewmodel.DepositViewModelFactory
+import com.example.project01_danp.viewmodel.PurseViewModel
+import com.example.project01_danp.viewmodel.PurseViewModelFactory
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -133,10 +143,19 @@ fun HomeScreen(navController: NavHostController) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
+    val gson = Gson()
     val mContext = LocalContext.current
     val purseViewModel: PurseViewModel = viewModel(
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
+    val depositViewModel: DepositViewModel = viewModel(
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
+
+
+//    lateinit var depositsByPurse: List<Deposit>
+    val coroutineScope = rememberCoroutineScope()
+
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
         targetValue = if (expandedState) 90f else 0f
@@ -155,6 +174,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
         shape = RoundedCornerShape(16.dp),
         onClick = {
             expandedState = !expandedState
+
         },
         backgroundColor = when (index % 3) {
             0 -> Color(255, 240, 222)
@@ -252,7 +272,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                         Button(
                             onClick = {
 
-                                navController.navigate("deposit") {
+                                navController.navigate("deposit".plus("/${gson.toJson(purse)}")) {
                                     navController.graph.startDestinationRoute?.let { screen_route ->
                                         popUpTo(screen_route) {
                                             saveState = true
@@ -271,8 +291,11 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                         }
                         Button(
                             onClick = {
-                                purse.code = purse.user_id+"-"+purse.id
-                                purseViewModel.update(purse)
+                                if (purse.code.isEmpty()) {
+                                    purse.code = purse.user_id + "-" + purse.id
+                                    purseViewModel.update(purse)
+                                }
+                                getClipboard(mContext, purse.code)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
@@ -286,6 +309,13 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
             }
         }
     }
+}
+
+fun getClipboard(context: Context, code: String) {
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    Toast.makeText(context, "Codigo copiado.", Toast.LENGTH_SHORT).show()
+    val clip: ClipData = ClipData.newPlainText("copy text", code)
+    clipboard.setPrimaryClip(clip)
 }
 
 fun getTextColor(index: Int): Color {

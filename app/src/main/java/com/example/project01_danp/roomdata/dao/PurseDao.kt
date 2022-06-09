@@ -20,4 +20,7 @@ abstract class PurseDao {
 
     @Update
     abstract fun updatePurse(purse: Purse)
+
+    @Query("SELECT * FROM purse WHERE code = :code")
+    abstract fun getPursesByCode(code:String): Purse?
 }

@@ -20,7 +20,17 @@ class DepositRepository (private val depositDao: DepositDao) {
     }
 
     fun deleteDeposit(entity: Deposit) {
+        Log.e("TAG", "DELETE")
         return depositDao.deleteDeposit(entity)
+    }
+
+    fun updateDeposit(entity: Deposit) {
+        Log.e("TAG", "UPDATE")
+        return depositDao.updateDeposit(entity)
+    }
+
+    fun getAllByPurse(purse_id: Int): LiveData<List<Deposit>> {
+        return depositDao.getAllByPurse(purse_id)
     }
 
 }

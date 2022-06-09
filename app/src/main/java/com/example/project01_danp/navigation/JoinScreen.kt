@@ -1,43 +1,47 @@
 package com.example.project01_danp.navigation
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
+import com.example.project01_danp.viewmodel.PurseViewModel
+import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.example.project01_danp.R
-import com.example.project01_danp.ui.theme.CustomGray
-import com.example.project01_danp.ui.theme.CustomGreen
+import com.example.project01_danp.roomdata.ApplicationDANP
+import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomOrange
 import com.example.project01_danp.ui.theme.CustomViolet
+import kotlinx.coroutines.launch
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun JoinScreen(navController: NavHostController) {
     val mContext = LocalContext.current
-
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
+    lateinit var actualPurse: Purse
+    val coroutineScope = rememberCoroutineScope()
 
         Column(
             modifier = Modifier
@@ -81,6 +85,10 @@ fun JoinScreen(navController: NavHostController) {
 
             Button(
                 onClick = {
+                    coroutineScope.launch {
+                        actualPurse = purseViewModel.getByCode(inputCodeState.value.text)
+                        Log.e("Cartera a unirse.", actualPurse.toString())
+                    }
                     mContext.startActivity(Intent(mContext, MainActivity::class.java))
                 },
                 modifier = Modifier

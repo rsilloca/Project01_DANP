@@ -1,15 +1,12 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
-import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -18,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -29,13 +25,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
-import com.example.project01_danp.PurseViewModel
-import com.example.project01_danp.PurseViewModelFactory
+import com.example.project01_danp.viewmodel.PurseViewModel
+import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.ui.theme.CustomGray
-import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.roomdata.model.Purse
 

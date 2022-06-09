@@ -19,11 +19,17 @@ class PurseRepository (private val purseDao: PurseDao){
     }
 
     fun deletePurse(purse: Purse) {
+        Log.e("TAG", "DELETE")
         return purseDao.deletePurse(purse)
     }
 
     fun updatePurse(purse: Purse) {
+        Log.e("TAG", "UPDATE")
         return purseDao.updatePurse(purse)
+    }
+
+    fun getPurseByCode(code: String): Purse?{
+        return purseDao.getPursesByCode(code)
     }
 
 }

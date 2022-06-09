@@ -3,7 +3,6 @@ package com.example.project01_danp.roomdata.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.project01_danp.roomdata.model.Deposit
-//import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class DepositDao {
@@ -18,4 +17,10 @@ abstract class DepositDao {
 
     @Delete
     abstract fun deleteDeposit(deposit: Deposit)
+
+    @Update
+    abstract fun updateDeposit(deposit: Deposit)
+
+    @Query("SELECT * FROM deposit WHERE purse_id = :purse_id")
+    abstract fun getAllByPurse(purse_id: Int): LiveData<List<Deposit>>
 }
