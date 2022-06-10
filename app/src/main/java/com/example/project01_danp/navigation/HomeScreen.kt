@@ -104,28 +104,35 @@ fun HomeScreen(navController: NavHostController) {
                 Modifier
                     .width(80.dp)
                     .padding(bottom = 32.dp, top = 32.dp),
-                alignment =Alignment.Center,
+                alignment = Alignment.Center,
             )
-            OutlinedButton(
-                onClick = {
-                    navController.navigate("add_purse") {
-                        navController.graph.startDestinationRoute?.let { screen_route ->
-                            popUpTo(screen_route) {
-                                saveState = true
+
+
+
+                OutlinedButton(
+                    onClick = {
+                        navController.navigate("add_purse") {
+                            navController.graph.startDestinationRoute?.let { screen_route ->
+                                popUpTo(screen_route) {
+                                    saveState = true
+                                }
                             }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp)
-            ) {
-                Icon(imageVector  = Icons.Default.Add , contentDescription = null)
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(text = "NUEVA ALCANCIA")
-            }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp)
+                ) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(text = "NUEVA ALCANCIA")
+                }
+
+
+
+
             var index = 0
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
@@ -304,6 +311,30 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                                 color = getTextColor(index)
                             )
                         }
+                    }
+
+                    OutlinedButton(
+                        onClick = {
+                            navController.navigate("list_deposits") {
+                                navController.graph.startDestinationRoute?.let { screen_route ->
+                                    popUpTo(screen_route) {
+                                        saveState = true
+                                    }
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp)
+                    ) {
+
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(text = "Depósitos")
+                        Icon(painter = painterResource(id = R.drawable.ic_chevron_right),
+                            contentDescription = ""
+                        )
                     }
                 }
             }

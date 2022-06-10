@@ -122,7 +122,7 @@ fun BuildContentRegister() {
                     value = inputPhoneState.value,
                     onValueChange = { inputPhoneState.value = it },
                     label = { Text(text = "Email") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
                     modifier = Modifier
                         .fillMaxWidth()
