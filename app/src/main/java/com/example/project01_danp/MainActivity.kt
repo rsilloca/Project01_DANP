@@ -65,8 +65,8 @@ fun NavigationGraph(navController: NavHostController) {
         composable("add_purse") {
             AddPurseScreen(navController)
         }
-        composable("list_deposits") {
-            Deposits(navController)
+        composable("list_deposits/{purseJson}") {
+            Deposits(navController, it.arguments?.getString("purseJson"))
         }
         composable("deposit/{purseJson}") {
             DepositScreen(navController, it.arguments?.getString("purseJson"))

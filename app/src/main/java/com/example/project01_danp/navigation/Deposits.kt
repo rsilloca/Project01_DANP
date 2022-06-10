@@ -1,5 +1,6 @@
 package com.example.project01_danp.navigation
 
+import android.content.Intent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
@@ -47,7 +49,13 @@ import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.google.gson.Gson
 
 @Composable
-fun Deposits (navController: NavHostController){
+fun Deposits (navController: NavHostController, purseJson: String?){
+
+    lateinit var purse: Purse
+    if (purseJson != null) {
+        val gson = Gson()
+        purse = gson.fromJson(purseJson, Purse::class.java)
+    }
 
     val deposits:List<Deposit>
 
@@ -55,7 +63,8 @@ fun Deposits (navController: NavHostController){
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
-    deposits =depositViewModel.getAllDeposit.observeAsState(listOf()).value
+    depositViewModel.findDeposit(purse.id)
+    deposits = depositViewModel.searchResults.observeAsState(listOf()).value
     //deposits =depositViewModel.getAllPurses.observeAsState(listOf()).value
 
     Column(
@@ -74,7 +83,7 @@ fun Deposits (navController: NavHostController){
             modifier = Modifier.width(260.dp)
         )
         Text(
-            text = "Nombre de monedero", //purse.name
+            text = purse.name, //purse.name
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else MaterialTheme.colors.primaryVariant,
             textAlign = TextAlign.Center,
@@ -95,13 +104,10 @@ fun Deposits (navController: NavHostController){
             modifier = Modifier.fillMaxWidth()
         ) {
             items(deposits) { deposit ->
-                DepositCard(deposit, index, navController)
+                DepositCard(deposit, index, navController, purse)
                 index += 1
             }
         }
-
-
-
 
     }
 
@@ -110,19 +116,14 @@ fun Deposits (navController: NavHostController){
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController){
-    val gson = Gson()
+fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse:Purse){
     val mContext = LocalContext.current
-    val purseViewModel: PurseViewModel = viewModel(
-        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
-    )
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
-
-
-//    lateinit var depositsByPurse: List<Deposit>
-    val coroutineScope = rememberCoroutineScope()
+    val purseViewModel: PurseViewModel = viewModel(
+        factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
 
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -214,8 +215,10 @@ fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController){
 
                         Button(
                             onClick = {
-
-
+                                purse.sub_total -= deposit.quantity
+                                purseViewModel.update(purse)
+                                depositViewModel.deleteDeposit(deposit)
+                                mContext.startActivity(Intent(mContext, MainActivity::class.java))
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {

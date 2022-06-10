@@ -29,6 +29,8 @@ class PurseViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(appli
         result.await()
         return purse
     }
+
+    fun delete(purse: Purse) = viewModelScope.launch (Dispatchers.IO) { purseRepository.deletePurse(purse) }
 }
 
 class PurseViewModelFactory(private val application: ApplicationDANP) : ViewModelProvider.Factory {

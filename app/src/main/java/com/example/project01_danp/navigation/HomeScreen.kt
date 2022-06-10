@@ -105,8 +105,6 @@ fun HomeScreen(navController: NavHostController) {
                 alignment = Alignment.Center,
             )
 
-
-
                 OutlinedButton(
                     onClick = {
                         navController.navigate("add_purse") {
@@ -127,9 +125,6 @@ fun HomeScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(text = "NUEVA ALCANCIA")
                 }
-
-
-
 
             var index = 0
             LazyColumn(
@@ -156,10 +151,6 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
-
-
-//    lateinit var depositsByPurse: List<Deposit>
-    val coroutineScope = rememberCoroutineScope()
 
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -263,13 +254,27 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     }
                 }
                 if (expandedState) {
-                    Text(
-                        text = "TOTAL: ${purse.sub_total}",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = getTextColor(index),
-                        modifier = Modifier.padding(top = 12.dp, bottom = 16.dp)
-                    )
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(
+                            text = "TOTAL: ${purse.sub_total}",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = getTextColor(index),
+                            modifier = Modifier.padding(top = 12.dp, bottom = 16.dp)
+                        )
+                        Button(
+                            onClick = {
+                                depositViewModel.deleteByPurse(purse.id)
+                                purseViewModel.delete(purse)
+                            },
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+                        ) {
+                            Text(
+                                text = "Borrar",
+                                color = getTextColor(index)
+                            )
+                        }
+                    }
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -312,7 +317,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
 
                     OutlinedButton(
                         onClick = {
-                            navController.navigate("list_deposits") {
+                            navController.navigate("list_deposits".plus("/${gson.toJson(purse)}")) {
                                 navController.graph.startDestinationRoute?.let { screen_route ->
                                     popUpTo(screen_route) {
                                         saveState = true

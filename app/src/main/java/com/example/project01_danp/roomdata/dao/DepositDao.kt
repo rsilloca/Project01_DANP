@@ -23,4 +23,7 @@ abstract class DepositDao {
 
     @Query("SELECT * FROM deposit WHERE purse_id = :purse_id")
     abstract fun getAllByPurse(purse_id: Int): List<Deposit>
+
+    @Query("DELETE FROM deposit WHERE purse_id = :purse_id")
+    abstract fun deleteAllByPurse(purse_id: Int)
 }

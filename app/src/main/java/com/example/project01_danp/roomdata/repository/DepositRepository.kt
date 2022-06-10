@@ -33,4 +33,7 @@ class DepositRepository (private val depositDao: DepositDao) {
         return depositDao.getAllByPurse(purse_id)
     }
 
+    fun deleteAllByPurse(purse_id: Int) {
+        return depositDao.deleteAllByPurse(purse_id)
+    }
 }

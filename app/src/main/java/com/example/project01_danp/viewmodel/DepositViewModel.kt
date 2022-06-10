@@ -26,10 +26,13 @@ class DepositViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(app
             searchResults.value = asyncFind(id).await()
         }
     }
-
     private fun asyncFind(id: Int): Deferred<List<Deposit>> = coroutineScope.async (Dispatchers.IO) {
         return@async depositRepository.getAllByPurse(id)
     }
+
+    fun deleteDeposit(deposit: Deposit) = viewModelScope.launch (Dispatchers.IO) { depositRepository.deleteDeposit(deposit) }
+
+    fun deleteByPurse(id_purse: Int) = viewModelScope.launch (Dispatchers.IO) { depositRepository.deleteAllByPurse(id_purse) }
 
 }
 
