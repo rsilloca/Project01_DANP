@@ -33,7 +33,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
@@ -46,7 +45,6 @@ import com.example.project01_danp.viewmodel.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.PurseViewModel
 import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.google.gson.Gson
-import kotlinx.coroutines.launch
 
 
 @Composable
@@ -271,7 +269,6 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     ) {
                         Button(
                             onClick = {
-
                                 navController.navigate("deposit".plus("/${gson.toJson(purse)}")) {
                                     navController.graph.startDestinationRoute?.let { screen_route ->
                                         popUpTo(screen_route) {

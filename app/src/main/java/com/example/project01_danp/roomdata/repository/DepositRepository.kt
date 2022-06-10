@@ -29,7 +29,7 @@ class DepositRepository (private val depositDao: DepositDao) {
         return depositDao.updateDeposit(entity)
     }
 
-    fun getAllByPurse(purse_id: Int): LiveData<List<Deposit>> {
+    fun getAllByPurse(purse_id: Int): List<Deposit> {
         return depositDao.getAllByPurse(purse_id)
     }
 

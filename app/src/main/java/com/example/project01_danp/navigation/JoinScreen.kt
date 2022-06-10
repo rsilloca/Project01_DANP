@@ -3,6 +3,7 @@ package com.example.project01_danp.navigation
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -87,7 +88,11 @@ fun JoinScreen(navController: NavHostController) {
                 onClick = {
                     coroutineScope.launch {
                         actualPurse = purseViewModel.getByCode(inputCodeState.value.text)
-                        Log.e("Cartera a unirse.", actualPurse.toString())
+                        Toast.makeText(
+                            mContext, "Uniendote a la alcancia " + actualPurse.name,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.e("Alcancia a unirse: ", actualPurse.toString())
                     }
                     mContext.startActivity(Intent(mContext, MainActivity::class.java))
                 },

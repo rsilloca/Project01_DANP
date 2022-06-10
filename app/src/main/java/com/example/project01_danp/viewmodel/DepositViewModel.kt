@@ -5,13 +5,13 @@ import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.DatabaseConfig
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.repository.DepositRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class DepositViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(applicationDANP) {
+    val searchResults = MutableLiveData<List<Deposit>>()
     val getAllDeposit: LiveData<List<Deposit>>
     private val depositRepository: DepositRepository
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     init {
         val depositDao = DatabaseConfig.getDatabase(applicationDANP).depositDao()
@@ -20,6 +20,16 @@ class DepositViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(app
     }
 
     fun insert(deposit: Deposit) = viewModelScope.launch (Dispatchers.IO) { depositRepository.createDeposit(deposit) }
+
+    fun findDeposit(id: Int){
+        coroutineScope.launch(Dispatchers.Main) {
+            searchResults.value = asyncFind(id).await()
+        }
+    }
+
+    private fun asyncFind(id: Int): Deferred<List<Deposit>> = coroutineScope.async (Dispatchers.IO) {
+        return@async depositRepository.getAllByPurse(id)
+    }
 
 }
 

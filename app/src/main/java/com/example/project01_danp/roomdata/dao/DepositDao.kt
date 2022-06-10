@@ -22,5 +22,5 @@ abstract class DepositDao {
     abstract fun updateDeposit(deposit: Deposit)
 
     @Query("SELECT * FROM deposit WHERE purse_id = :purse_id")
-    abstract fun getAllByPurse(purse_id: Int): LiveData<List<Deposit>>
+    abstract fun getAllByPurse(purse_id: Int): List<Deposit>
 }
