@@ -149,7 +149,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
     val depositViewModel: DepositViewModel = viewModel(
-        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
     )
 
     var expandedState by remember { mutableStateOf(false) }

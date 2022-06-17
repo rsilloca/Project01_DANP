@@ -35,10 +35,12 @@ import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
+import com.example.project01_danp.utils.getJsonDataFromAsset
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme
@@ -46,7 +48,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    BuildContentMain()
+                    if (jsonFileString != null) {
+                        BuildContentMain(jsonFileString)
+                    }
                 }
             }
         }
@@ -54,7 +58,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
             HomeScreen(navController)
@@ -66,7 +70,7 @@ fun NavigationGraph(navController: NavHostController) {
             AddPurseScreen(navController)
         }
         composable("list_deposits/{purseJson}") {
-            Deposits(navController, it.arguments?.getString("purseJson"))
+            Deposits(navController, jsonFileString, it.arguments?.getString("purseJson"))
         }
         composable("deposit/{purseJson}") {
             DepositScreen(navController, it.arguments?.getString("purseJson"))
@@ -121,7 +125,7 @@ fun BottomNavigation(navController: NavController) {
 }
 
 @Composable
-fun BuildContentMain() {
+fun BuildContentMain(jsonFileString: String) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) },
@@ -148,7 +152,7 @@ fun BuildContentMain() {
             }
         }
     ) {
-        NavigationGraph(navController = navController)
+        NavigationGraph(navController = navController, jsonFileString)
     }
 }
 
@@ -156,6 +160,6 @@ fun BuildContentMain() {
 @Composable
 fun DefaultPreview() {
     Project01_DANPTheme {
-        BuildContentMain()
+        BuildContentMain("")
     }
 }

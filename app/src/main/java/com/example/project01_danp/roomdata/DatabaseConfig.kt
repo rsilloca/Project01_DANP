@@ -11,7 +11,7 @@ import com.example.project01_danp.roomdata.model.Purse
 
 @Database(
     entities = [Deposit::class, Purse::class],
-    version = 5,
+    version = 7,
     exportSchema = false
 )
 

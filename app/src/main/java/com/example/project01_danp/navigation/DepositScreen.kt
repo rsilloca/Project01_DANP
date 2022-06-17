@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -37,13 +36,14 @@ import com.example.project01_danp.viewmodel.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.PurseViewModel
 import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.google.gson.Gson
+import java.util.*
 
 @Composable
 fun DepositScreen(navController: NavHostController, purseJson: String?) {
     val mContext = LocalContext.current
 
     val depositViewModel: DepositViewModel = viewModel(
-        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
     )
 
     val purseViewModel: PurseViewModel = viewModel(
@@ -135,7 +135,9 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                     purse.id,
                     auth.firebaseGetCurrentUser()!!.uid,
                     inputNameState.value.text.toInt(),
-                    inputMensaState.value.text
+                    inputMensaState.value.text,
+                    Date().toString(),
+                    auth.firebaseGetCurrentUser()!!.email ?: "user@gmail.com"
                 )
                 depositViewModel.insert(newDeposit)
                 purse.sub_total += inputNameState.value.text.toInt()
