@@ -15,6 +15,7 @@ data class Deposit (
     var deposit_date: String,
     var user_email: String
 ) {
+
     override fun toString(): String {
         return "Deposit(id=$id, purseId=$purse_id, user_id=$user_id, quantity=$quantity, message=$message)"
     }

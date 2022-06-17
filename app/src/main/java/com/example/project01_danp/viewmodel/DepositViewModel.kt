@@ -21,6 +21,8 @@ class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) :
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val loadingSpinner = MutableLiveData<Boolean>()
 
+    /* ... */
+
     private val backendService: DepositService = DepositService(depositsJSON)
 
     val deposits: Flow<PagingData<Deposit>> = Pager(

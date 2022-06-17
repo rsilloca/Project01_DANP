@@ -187,11 +187,18 @@ fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Column {
                         Text(
-                            text = "Depósito ${deposit.id} - Cantidad: ${deposit.quantity}" ,
+                            text = deposit.user_email,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
+                            color = Color(222, 188, 149) // getTextColor(index)
+                        )
+                        Text(
+                            text = deposit.deposit_date.toString(),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            fontSize = 14.sp,
                             color = Color(222, 188, 149) // getTextColor(index)
                         )
                         Text(
@@ -202,6 +209,14 @@ fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, 
                             color = Color(222, 188, 149) // getTextColor(index)
                         )
                     }
+                    Text(
+                        text = "S/ ${deposit.quantity}" ,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(222, 188, 149) // getTextColor(index)
+                    )
                 }
                 if (expandedState) {
                     Row(
