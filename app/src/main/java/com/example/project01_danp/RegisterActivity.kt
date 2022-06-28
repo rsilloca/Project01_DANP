@@ -2,10 +2,12 @@ package com.example.project01_danp
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -34,10 +36,12 @@ import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.fontPacifico
+import com.example.project01_danp.utils.connectionStatus
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 
 class RegisterActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -54,6 +58,7 @@ class RegisterActivity : ComponentActivity() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun BuildContentRegister() {
     val mContext = LocalContext.current
@@ -66,7 +71,8 @@ fun BuildContentRegister() {
                     contentDescription = null
                 )
                 Column(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .padding(top = 34.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -88,7 +94,8 @@ fun BuildContentRegister() {
                         Image(
                             painter = painterResource(id = R.drawable.peru_flag),
                             contentDescription = null,
-                            modifier = Modifier.height(28.dp)
+                            modifier = Modifier
+                                .height(28.dp)
                                 .padding(top = 8.dp, start = 8.dp)
                         )
                     }
@@ -106,41 +113,72 @@ fun BuildContentRegister() {
                         .padding(bottom = 24.dp)
                 )
 
-                val inputNameState = remember { mutableStateOf(TextFieldValue())}
+                val inputNameState = remember { mutableStateOf(TextFieldValue()) }
                 OutlinedTextField(
                     value = inputNameState.value,
                     onValueChange = { inputNameState.value = it },
                     label = { Text(text = "Nombre y Apellidos") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = null
+                        )
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                 )
-                val inputPhoneState = remember { mutableStateOf(TextFieldValue())}
+                val inputPhoneState = remember { mutableStateOf(TextFieldValue()) }
                 OutlinedTextField(
                     value = inputPhoneState.value,
                     onValueChange = { inputPhoneState.value = it },
                     label = { Text(text = "Email") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = null
+                        )
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                 )
-                val inputPwdState = remember { mutableStateOf(TextFieldValue())}
+                val inputPwdState = remember { mutableStateOf(TextFieldValue()) }
                 OutlinedTextField(
                     value = inputPwdState.value,
                     onValueChange = { inputPwdState.value = it },
                     label = { Text(text = "Clave") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-                    leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Lock,
+                            contentDescription = null
+                        )
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
                 Button(
                     onClick = {
-                        register(inputNameState.value.text, inputPhoneState.value.text,
-                            inputPwdState.value.text, mContext)
+                        if (!connectionStatus(mContext)) {
+                            Toast.makeText(
+                                mContext,
+                                "No connection to internet",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        } else if (inputNameState.value.text.isEmpty() || inputPhoneState.value.text.isEmpty() ||
+                            inputPwdState.value.text.isEmpty()
+                        ) {
+                            Toast.makeText(mContext, "No empty fields.", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            register(
+                                inputNameState.value.text, inputPhoneState.value.text,
+                                inputPwdState.value.text, mContext
+                            )
+                        }
                     },
                     modifier = Modifier
                         .width(220.dp)
@@ -186,7 +224,7 @@ fun BuildContentRegister() {
 
 }
 
-fun register(fullname:String, email:String, password:String, context: Context){
+fun register(fullname: String, email: String, password: String, context: Context) {
     val user = User(
         fullname = fullname,
         email = email
@@ -194,7 +232,7 @@ fun register(fullname:String, email:String, password:String, context: Context){
     val auth2: Task<AuthResult> =
         AuthService.firebaseRegister(email, password)
     auth2.addOnCompleteListener { task ->
-        if (task.isSuccessful){
+        if (task.isSuccessful) {
             UserRepository.saveUser(user)
             context.startActivity(Intent(context, MainActivity::class.java))
             Toast.makeText(context, "Successful register", Toast.LENGTH_SHORT).show()

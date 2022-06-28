@@ -2,10 +2,12 @@ package com.example.project01_danp
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -32,10 +34,12 @@ import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.fontPacifico
+import com.example.project01_danp.utils.connectionStatus
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 
 class LoginActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -51,6 +55,7 @@ class LoginActivity : ComponentActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @Composable
     fun BuildContentLogin() {
         val mContext = LocalContext.current
@@ -135,10 +140,15 @@ class LoginActivity : ComponentActivity() {
                     )
                     Button(
                         onClick = {
-                            if(inputEmailState.value.text.isEmpty() || inputPwdState.value.text.isEmpty()) {
-                                Toast.makeText(mContext, "Empty email or pass", Toast.LENGTH_SHORT).show()
+                            if (!connectionStatus(mContext)) {
+                                Toast.makeText(mContext, "No connection to internet", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                            else if (inputEmailState.value.text.isEmpty() || inputPwdState.value.text.isEmpty()) {
+                                Toast.makeText(mContext, "Empty email or pass", Toast.LENGTH_SHORT)
+                                    .show()
 //                                mContext.startActivity(Intent(mContext, LoginActivity::class.java))
-                            }else {
+                            } else {
                                 login(
                                     inputEmailState.value.text,
                                     inputPwdState.value.text,
@@ -162,6 +172,7 @@ class LoginActivity : ComponentActivity() {
                         Divider(
                             color = CustomGreen,
                             thickness = 1.dp,
+
                             modifier = Modifier.width(40.dp)
                         )
                         Text(
@@ -177,7 +188,6 @@ class LoginActivity : ComponentActivity() {
                     }
                     OutlinedButton(
                         onClick = {
-
                             mContext.startActivity(Intent(mContext, RegisterActivity::class.java))
                         },
                         // contentPadding = PaddingValues(horizontal = 48.dp),

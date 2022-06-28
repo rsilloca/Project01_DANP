@@ -3,13 +3,13 @@ package com.example.project01_danp.navigation
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,7 +17,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -36,10 +37,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
-import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.roomdata.ApplicationDANP
-import com.example.project01_danp.roomdata.model.Deposit
-import com.example.project01_danp.ui.theme.*
+import com.example.project01_danp.roomdata.model.Purse
+import com.example.project01_danp.ui.theme.CustomGreen
+import com.example.project01_danp.ui.theme.CustomRed
 import com.example.project01_danp.viewmodel.DepositViewModel
 import com.example.project01_danp.viewmodel.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.PurseViewModel
@@ -49,7 +50,7 @@ import com.google.gson.Gson
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    val purses:List<Purse>
+    val purses: List<Purse>
 
     val mContext = LocalContext.current
     val purseViewModel: PurseViewModel = viewModel(
@@ -79,7 +80,7 @@ fun HomeScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
 
-                )
+                    )
                 Row {
                     Text(
                         text = "¡Vamos por un día más de ahorro!",
@@ -105,26 +106,26 @@ fun HomeScreen(navController: NavHostController) {
                 alignment = Alignment.Center,
             )
 
-                OutlinedButton(
-                    onClick = {
-                        navController.navigate("add_purse") {
-                            navController.graph.startDestinationRoute?.let { screen_route ->
-                                popUpTo(screen_route) {
-                                    saveState = true
-                                }
+            OutlinedButton(
+                onClick = {
+                    navController.navigate("add_purse") {
+                        navController.graph.startDestinationRoute?.let { screen_route ->
+                            popUpTo(screen_route) {
+                                saveState = true
                             }
-                            launchSingleTop = true
-                            restoreState = true
                         }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp)
-                ) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = null)
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Text(text = "NUEVA ALCANCIA")
-                }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(text = "NUEVA ALCANCIA")
+            }
 
             var index = 0
             LazyColumn(
@@ -142,7 +143,7 @@ fun HomeScreen(navController: NavHostController) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
+fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
     val gson = Gson()
     val mContext = LocalContext.current
     val purseViewModel: PurseViewModel = viewModel(
@@ -156,7 +157,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
     val rotationState by animateFloatAsState(
         targetValue = if (expandedState) 90f else 0f
     )
-    Card (
+    Card(
         // elevation = 2.dp,
         modifier = Modifier
             .fillMaxWidth()
@@ -181,7 +182,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                // .padding(end = 8.dp)
+            // .padding(end = 8.dp)
         ) {
             IconButton(
                 onClick = { /*TODO*/ },
@@ -200,7 +201,10 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     .fillMaxWidth()
                     .padding(top = 12.dp, end = 12.dp, bottom = 12.dp)
             ) {
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Column {
                         Text(
                             text = purse.name,
@@ -254,7 +258,10 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
                     }
                 }
                 if (expandedState) {
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
                         Text(
                             text = "TOTAL: ${purse.sub_total}",
                             fontSize = 14.sp,
@@ -334,7 +341,8 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController){
 
                         Spacer(modifier = Modifier.width(16.dp))
                         Text(text = "Depósitos")
-                        Icon(painter = painterResource(id = R.drawable.ic_chevron_right),
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_chevron_right),
                             contentDescription = ""
                         )
                     }
