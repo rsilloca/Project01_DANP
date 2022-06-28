@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.project01_danp.roomdata.dao.DepositDao
 import com.example.project01_danp.roomdata.model.Deposit
-import kotlinx.coroutines.flow.Flow
 
 class DepositRepository (private val depositDao: DepositDao) {
 

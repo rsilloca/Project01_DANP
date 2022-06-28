@@ -1,18 +1,18 @@
-package com.example.project01_danp.viewmodel
+package com.example.project01_danp.viewmodel.room
 
 import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.example.project01_danp.paging.DepositsPagingSource
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.DatabaseConfig
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.repository.DepositRepository
+import com.example.project01_danp.services.DepositService
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import com.example.project01_danp.paging.DepositsPagingSource
-import com.example.project01_danp.services.DepositService
 
 class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) : AndroidViewModel(applicationDANP) {
     val searchResults = MutableLiveData<List<Deposit>>()

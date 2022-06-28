@@ -10,8 +10,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -30,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -39,12 +36,9 @@ import com.example.project01_danp.R
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
-import com.example.project01_danp.viewmodel.DepositViewModel
-import com.example.project01_danp.viewmodel.DepositViewModelFactory
-import com.example.project01_danp.viewmodel.PurseViewModel
-import com.example.project01_danp.viewmodel.PurseViewModelFactory
+import com.example.project01_danp.viewmodel.room.DepositViewModel
+import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.google.gson.Gson
-import kotlinx.coroutines.flow.distinctUntilChanged
 
 @Composable
 fun Deposits(navController: NavHostController, jsonFileString: String, purseJson: String?){

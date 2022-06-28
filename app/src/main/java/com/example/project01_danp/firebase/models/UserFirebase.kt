@@ -1,6 +1,6 @@
 package com.example.project01_danp.firebase.models
 
-class User(
+class UserFirebase(
 
     var fullname: String,
     var email: String,
@@ -8,7 +8,7 @@ class User(
     ) : FirebaseEntity(documentId = null) {
     constructor() : this(fullname = "", email = "")
 
-    override fun toString() :String {
+    override fun toString(): String {
         return "User ('$fullname', '$email')"
     }
 }

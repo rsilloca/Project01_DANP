@@ -2,7 +2,6 @@ package com.example.project01_danp.roomdata.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "deposit")
 data class Deposit (

@@ -1,4 +1,4 @@
-package com.example.project01_danp.viewmodel
+package com.example.project01_danp.viewmodel.room
 
 import androidx.lifecycle.*
 import com.example.project01_danp.roomdata.ApplicationDANP

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -25,13 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
-import com.example.project01_danp.viewmodel.PurseViewModel
-import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.example.project01_danp.R
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomOrange
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
+import com.example.project01_danp.viewmodel.room.PurseViewModel
+import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import kotlinx.coroutines.launch
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -42,6 +44,8 @@ fun JoinScreen(navController: NavHostController) {
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
     lateinit var actualPurse: Purse
+
+
     val coroutineScope = rememberCoroutineScope()
 
         Column(
@@ -78,7 +82,7 @@ fun JoinScreen(navController: NavHostController) {
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding( bottom = 8.dp),
+                    .padding(bottom = 8.dp),
                 textStyle = LocalTextStyle.current.copy(
                     textAlign = TextAlign.Center
                 )
@@ -86,6 +90,7 @@ fun JoinScreen(navController: NavHostController) {
 
             Button(
                 onClick = {
+                    // ROOM DATA
                     coroutineScope.launch {
                         actualPurse = purseViewModel.getByCode(inputCodeState.value.text)
                         Toast.makeText(
@@ -98,7 +103,8 @@ fun JoinScreen(navController: NavHostController) {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 15.dp).height(40.dp),
+                    .padding(top = 15.dp)
+                    .height(40.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
             ) {
                 Text(text = "UNIRME")

@@ -3,14 +3,9 @@ package com.example.project01_danp.firebase.livedata
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.project01_danp.firebase.models.FirebaseEntity
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
-import java.util.ArrayList
+import com.google.firebase.firestore.*
 
-class MultipleDocumentReferenceLiveData<T : FirebaseEntity?, L : Query?>(// Firebase Utils.
+class MultipleDocumentReferenceLiveData<T : FirebaseEntity?, L : Query?>(
     private val multipleDocuments: L, private val entityClass: Class<T>
 ) :
     LiveData<List<T>?>(),

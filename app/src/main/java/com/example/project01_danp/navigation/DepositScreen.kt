@@ -24,17 +24,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.*
+import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomViolet
-import com.example.project01_danp.viewmodel.DepositViewModel
-import com.example.project01_danp.viewmodel.DepositViewModelFactory
-import com.example.project01_danp.viewmodel.PurseViewModel
-import com.example.project01_danp.viewmodel.PurseViewModelFactory
+import com.example.project01_danp.viewmodel.room.DepositViewModel
+import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
+import com.example.project01_danp.viewmodel.room.PurseViewModel
+import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
 import java.util.*
 

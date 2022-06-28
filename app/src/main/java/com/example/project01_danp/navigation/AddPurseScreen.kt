@@ -1,7 +1,11 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
-import androidx.compose.foundation.*
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,15 +29,19 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
-import com.example.project01_danp.viewmodel.PurseViewModel
-import com.example.project01_danp.viewmodel.PurseViewModelFactory
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.roomdata.ApplicationDANP
+import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomViolet
-import com.example.project01_danp.roomdata.model.Purse
+import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
+import com.example.project01_danp.viewmodel.room.PurseViewModel
+import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun AddPurseScreen(navController: NavHostController) {
     val mContext = LocalContext.current
@@ -101,22 +109,24 @@ fun AddPurseScreen(navController: NavHostController) {
         ) {
             Button(
                 onClick = {
-                    icon = "celebration" },
+                    icon = "celebration"
+                },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomGray)
             ) {
-               Icon(
-                   painter = painterResource(id = R.drawable.ic_celebration),
-                   contentDescription = "",
-                   tint = Color.Black
-               )
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_celebration),
+                    contentDescription = "",
+                    tint = Color.Black
+                )
             }
             Button(
                 onClick = {
-                    icon = "cell" },
+                    icon = "cell"
+                },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
@@ -132,7 +142,8 @@ fun AddPurseScreen(navController: NavHostController) {
             }
             Button(
                 onClick = {
-                    icon = "star" },
+                    icon = "star"
+                },
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp),
@@ -159,15 +170,38 @@ fun AddPurseScreen(navController: NavHostController) {
                     icon,
                     0
                 )
-                purseViewModel.insert(newPurse)
+                if (!connectionStatus(mContext)) {
+                    createLocalPurse(purseViewModel, newPurse)
+                } else {
+                    createPurseFirebase(
+                        PurseFirebase(
+                            newPurse.user_id,
+                            newPurse.code,
+                            newPurse.name,
+                            newPurse.description,
+                            newPurse.icon_name,
+                            newPurse.sub_total
+                        )
+                    )
+                }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 28.dp).height(40.dp),
+                .padding(top = 28.dp)
+                .height(40.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
         ) {
             Text(text = "CREAR ALCANCÍA")
         }
     }
+}
+
+fun createPurseFirebase(purse: PurseFirebase) {
+    val viewModel = PurseViewModelFirebase()
+    viewModel.savePurse(purse)
+}
+
+fun createLocalPurse(purseViewModel: PurseViewModel, newPurse: Purse) {
+    purseViewModel.insert(newPurse)
 }

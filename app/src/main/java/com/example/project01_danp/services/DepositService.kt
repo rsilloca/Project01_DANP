@@ -1,7 +1,6 @@
 package com.example.project01_danp.services
 
 import com.example.project01_danp.roomdata.model.Deposit
-import com.example.project01_danp.utils.getJsonDataFromAsset
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

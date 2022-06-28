@@ -41,10 +41,10 @@ import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomRed
-import com.example.project01_danp.viewmodel.DepositViewModel
-import com.example.project01_danp.viewmodel.DepositViewModelFactory
-import com.example.project01_danp.viewmodel.PurseViewModel
-import com.example.project01_danp.viewmodel.PurseViewModelFactory
+import com.example.project01_danp.viewmodel.room.DepositViewModel
+import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
+import com.example.project01_danp.viewmodel.room.PurseViewModel
+import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
 
 

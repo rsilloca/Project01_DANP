@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.project01_danp.firebase.models.FirebaseEntity
 import com.google.firebase.firestore.*
-import com.google.firebase.firestore.DocumentReference
 
 class DocumentReferenceFirebaseLiveData<T : FirebaseEntity>(
     private var documentReference: DocumentReference,
