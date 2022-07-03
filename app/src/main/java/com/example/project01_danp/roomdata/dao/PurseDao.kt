@@ -10,7 +10,7 @@ abstract class PurseDao {
     abstract fun getAllPurses(): LiveData<List<Purse>>
 
     @Query("SELECT * FROM purse WHERE id = :id")
-    abstract fun getPurseById(id: Int): Purse?
+    abstract fun getPurseById(id: String): Purse?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertPurse(purse: Purse)

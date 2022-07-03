@@ -44,4 +44,9 @@ class PurseViewModelFirebase: ViewModel() {
         allLiveDataPurseFirebase = purseRepository.getLastPurseCreated()
         return allLiveDataPurseFirebase
     }
+
+    fun getPurseByCode(code: String): MultipleDocumentReferenceLiveData<PurseFirebase, out Query>? {
+        allLiveDataPurseFirebase = purseRepository.getPurseByCode(code)
+        return allLiveDataPurseFirebase
+    }
 }

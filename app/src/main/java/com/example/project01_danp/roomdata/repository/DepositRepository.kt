@@ -28,11 +28,11 @@ class DepositRepository (private val depositDao: DepositDao) {
         return depositDao.updateDeposit(entity)
     }
 
-    fun getAllByPurse(purse_id: Int): List<Deposit> {
+    fun getAllByPurse(purse_id: String): List<Deposit> {
         return depositDao.getAllByPurse(purse_id)
     }
 
-    fun deleteAllByPurse(purse_id: Int) {
+    fun deleteAllByPurse(purse_id: String) {
         return depositDao.deleteAllByPurse(purse_id)
     }
 }

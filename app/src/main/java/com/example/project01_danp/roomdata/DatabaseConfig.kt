@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.project01_danp.roomdata.dao.DepositDao
 import com.example.project01_danp.roomdata.dao.PurseDao
+import com.example.project01_danp.roomdata.dao.PurseUserDao
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
+import com.example.project01_danp.roomdata.model.PurseUser
 
 @Database(
-    entities = [Deposit::class, Purse::class],
-    version = 7,
+    entities = [Deposit::class, Purse::class, PurseUser::class],
+    version = 8,
     exportSchema = false
 )
 
@@ -19,6 +21,7 @@ abstract class DatabaseConfig : RoomDatabase() {
     // Declaration DAOs
     abstract fun depositDao(): DepositDao
     abstract fun purseDao(): PurseDao
+    abstract fun purseUserDao(): PurseUserDao
 
     // Database Invocation
     companion object {

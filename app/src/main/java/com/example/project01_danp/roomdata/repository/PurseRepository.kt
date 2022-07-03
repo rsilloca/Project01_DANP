@@ -9,7 +9,7 @@ class PurseRepository (private val purseDao: PurseDao){
 
     val getAllPurses: LiveData<List<Purse>> = purseDao.getAllPurses()
 
-    fun getPurseById(id: Int): Purse? {
+    fun getPurseById(id: String): Purse? {
         return purseDao.getPurseById(id)
     }
 

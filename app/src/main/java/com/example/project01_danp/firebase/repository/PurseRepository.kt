@@ -15,4 +15,10 @@ object PurseRepository:FirebaseRepository<PurseFirebase>(PurseFirebase::class.ja
     fun getLastPurseCreated(): MultipleDocumentReferenceLiveData<PurseFirebase, out Query> {
         return MultipleDocumentReferenceLiveData(collectionReference.limitToLast(1), entityClass)
     }
+
+    fun getPurseByCode(code: String): MultipleDocumentReferenceLiveData<PurseFirebase, out Query> {
+        return MultipleDocumentReferenceLiveData(collectionReference.whereEqualTo(
+            "code", code
+        ), entityClass)
+    }
 }

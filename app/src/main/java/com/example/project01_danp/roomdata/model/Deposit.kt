@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Deposit (
     @PrimaryKey (autoGenerate = true)
     val id: Int,
-    var purse_id: Int,
+    var purse_id: String,
     var user_id: String,
     var quantity: Int,
     var message: String,

@@ -162,7 +162,7 @@ fun AddPurseScreen(navController: NavHostController) {
             onClick = {
                 val auth = AuthService
                 val newPurse = Purse(
-                    0,
+                    auth.firebaseGetCurrentUser()!!.uid,
                     auth.firebaseGetCurrentUser()!!.uid,
                     "",
                     inputNameState.value.text,
