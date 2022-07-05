@@ -37,10 +37,14 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.DepositFirebase
+import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomRed
+import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -152,6 +156,15 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
     )
+
+    val purseViewModelFirebase = PurseViewModelFirebase()
+    val depositViewModelFirebase = DepositViewModelFirebase()
+    lateinit var list: List<DepositFirebase>
+    depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.id)?.observeForever {
+        if (it != null) {
+            list = it
+        }
+    }
 
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -273,6 +286,10 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
                             onClick = {
                                 depositViewModel.deleteByPurse(purse.id)
                                 purseViewModel.delete(purse)
+
+                                purseViewModelFirebase.deletePurse(convertPurse(purse))
+
+                                depositViewModelFirebase.deleteAllByPurse(list)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
@@ -310,6 +327,8 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
                                 if (purse.code.isEmpty()) {
                                     purse.code = purse.user_id + "-" + purse.id
                                     purseViewModel.update(purse)
+
+                                    purseViewModelFirebase.updatePurse(convertPurse(purse))
                                 }
                                 getClipboard(mContext, purse.code)
                             },

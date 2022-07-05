@@ -2,6 +2,7 @@ package com.example.project01_danp.navigation
 
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,6 +33,7 @@ import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.service.AuthService
+import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGray
@@ -170,19 +172,12 @@ fun AddPurseScreen(navController: NavHostController) {
                     icon,
                     0
                 )
+                createLocalPurse(purseViewModel, newPurse)
+                createPurseFirebase(
+                    convertPurse(newPurse)
+                )
                 if (!connectionStatus(mContext)) {
-                    createLocalPurse(purseViewModel, newPurse)
-                } else {
-                    createPurseFirebase(
-                        PurseFirebase(
-                            newPurse.user_id,
-                            newPurse.code,
-                            newPurse.name,
-                            newPurse.description,
-                            newPurse.icon_name,
-                            newPurse.sub_total
-                        )
-                    )
+                    Log.e("TAG", "No internet connection")
                 }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
@@ -197,7 +192,7 @@ fun AddPurseScreen(navController: NavHostController) {
     }
 }
 
-fun createPurseFirebase(purse: PurseFirebase) {
+private fun createPurseFirebase(purse: PurseFirebase) {
     val viewModel = PurseViewModelFirebase()
     viewModel.savePurse(purse)
 }

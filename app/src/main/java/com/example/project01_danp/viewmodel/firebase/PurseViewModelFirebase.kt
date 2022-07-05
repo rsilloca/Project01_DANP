@@ -49,4 +49,8 @@ class PurseViewModelFirebase: ViewModel() {
         allLiveDataPurseFirebase = purseRepository.getPurseByCode(code)
         return allLiveDataPurseFirebase
     }
+
+    fun deletePurse(purse: PurseFirebase) {
+        purseRepository.delete(purse)
+    }
 }

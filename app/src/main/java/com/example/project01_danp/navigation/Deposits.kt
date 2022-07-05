@@ -1,6 +1,7 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -14,6 +15,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -49,18 +51,18 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
         purse = gson.fromJson(purseJson, Purse::class.java)
     }
 
-    /* val deposits: List<Deposit> */
+    val deposits: List<Deposit>
 
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, jsonFileString)
     )
-    /* depositViewModel.findDeposit(purse.id)
-    deposits = depositViewModel.searchResults.observeAsState(listOf()).value */
-    // // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
+    depositViewModel.findDeposit(purse.id)
+    deposits = depositViewModel.searchResults.observeAsState(listOf()).value
+    // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
 
     // Paging
-    val depositListItems: LazyPagingItems<Deposit> = depositViewModel.deposits.collectAsLazyPagingItems()
+    val depositListItems: LazyPagingItems<Deposit> = depositViewModel.paging(deposits).collectAsLazyPagingItems()
 
     Column(
         modifier = Modifier

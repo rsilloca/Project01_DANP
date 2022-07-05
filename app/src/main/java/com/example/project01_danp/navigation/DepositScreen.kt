@@ -1,7 +1,6 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -27,10 +26,14 @@ import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.service.AuthService
+import com.example.project01_danp.firebase.utils.convertDeposit
+import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -114,7 +117,6 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         )
 
 
-
         val inputMensaState = remember { mutableStateOf(TextFieldValue()) }
         OutlinedTextField(
             value = inputMensaState.value,
@@ -130,6 +132,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         Button(
             onClick = {
                 val auth = AuthService
+
                 val newDeposit = Deposit(
                     0,
                     purse.id,
@@ -139,10 +142,14 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                     Date().toString(),
                     auth.firebaseGetCurrentUser()!!.email ?: "user@gmail.com"
                 )
+
+                addDepositFirebase(newDeposit)
                 depositViewModel.insert(newDeposit)
+
                 purse.sub_total += inputNameState.value.text.toInt()
-                Log.e("TAG UPDATE", newDeposit.toString())
                 purseViewModel.update(purse)
+                updatePurseFirebase(purse)
+
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier
@@ -154,4 +161,17 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
             Text(text = "DEPOSITAR")
         }
     }
+}
+private fun updatePurseFirebase(purse: Purse){
+    val purseViewModelFirebase = PurseViewModelFirebase()
+    purseViewModelFirebase.updatePurse(
+        convertPurse(purse)
+    )
+}
+
+private fun addDepositFirebase(deposit: Deposit) {
+    val viewModel = DepositViewModelFirebase()
+    viewModel.saveDepositFirebase(
+        convertDeposit(deposit)
+    )
 }

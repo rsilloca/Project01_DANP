@@ -4,11 +4,11 @@ import com.example.project01_danp.roomdata.model.Deposit
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class DepositService(private val depositsJSON: String) {
+class DepositService(private val depositsJSON: List<Deposit>) {
     fun searchDeposits(nextPageNumber: Int): ResponseDeposit {
         val gson = Gson()
         val listDepositsType = object : TypeToken<List<Deposit>>() {}.type
-        val depositsListJSON = gson.fromJson<List<Deposit>>(depositsJSON, listDepositsType)
+        val depositsListJSON = depositsJSON //gson.fromJson<List<Deposit>>(depositsJSON, listDepositsType)
 
         var deposits = arrayListOf<Deposit>()
         var deposit: Deposit

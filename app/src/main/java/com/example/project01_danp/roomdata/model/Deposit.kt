@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "deposit")
-data class Deposit (
-    @PrimaryKey (autoGenerate = true)
+data class Deposit(
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     var purse_id: String,
     var user_id: String,

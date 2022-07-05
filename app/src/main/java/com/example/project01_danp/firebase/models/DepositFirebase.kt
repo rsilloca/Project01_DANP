@@ -5,8 +5,17 @@ class DepositFirebase(
     var user_id: String,
     var quantity: Int,
     var message: String,
+    var deposit_date: String,
+    var user_email: String
 ) : FirebaseEntity(documentId = null) {
-    constructor() : this(purse_id = "", user_id = "", quantity = 0, message = "")
+    constructor() : this(
+        purse_id = "",
+        user_id = "",
+        quantity = 0,
+        message = "",
+        deposit_date = "",
+        user_email = ""
+    )
 
     override fun toString(): String {
         return "Deposit ($purse_id, $user_id, $quantity, $message)"

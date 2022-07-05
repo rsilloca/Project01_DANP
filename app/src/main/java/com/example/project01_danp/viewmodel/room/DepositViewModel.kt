@@ -23,13 +23,16 @@ class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) :
 
     /* ... */
 
-    private val backendService: DepositService = DepositService(depositsJSON)
+    fun paging(depositsJSON:List<Deposit>): Flow<PagingData<Deposit>> {
+        val backendService = DepositService(depositsJSON)
 
-    val deposits: Flow<PagingData<Deposit>> = Pager(
+        val deposits: Flow<PagingData<Deposit>> = Pager(
             PagingConfig(pageSize = 10, enablePlaceholders = false, prefetchDistance = 3)
         ) {
             DepositsPagingSource(backendService)
         }.flow.cachedIn(viewModelScope)
+        return deposits
+    }
 
     init {
         val depositDao = DatabaseConfig.getDatabase(applicationDANP).depositDao()
