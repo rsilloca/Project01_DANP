@@ -89,7 +89,7 @@ fun JoinScreen(navController: NavHostController) {
         Button(
             onClick = {
                 val viewModel = PurseViewModelFirebase()
-                Log.e("Tag", inputCodeState.value.text)
+
                 viewModel.getPurseByCode(inputCodeState.value.text)?.observeForever {
                     Log.e("TAG", it!![0].toString())
                     actualPurse = Purse(
