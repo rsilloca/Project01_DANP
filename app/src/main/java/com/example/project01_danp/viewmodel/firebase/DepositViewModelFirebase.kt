@@ -31,4 +31,8 @@ class DepositViewModelFirebase: ViewModel() {
     fun deleteAllByPurse(deposits: List<DepositFirebase>) {
         depositFirebaseRepository.deleteAll(deposits)
     }
+
+    fun deleteDeposit(depositFirebase: DepositFirebase){
+        depositFirebaseRepository.delete(depositFirebase)
+    }
 }

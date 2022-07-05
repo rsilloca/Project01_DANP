@@ -31,10 +31,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project01_danp.firebase.service.AuthService
+import com.example.project01_danp.navigation.purses2
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.fontPacifico
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 
@@ -42,6 +44,10 @@ class LoginActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purseViewModelFirebase.getAllPurse()?.observe(this){
+            purses2 = it!!
+        }
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme

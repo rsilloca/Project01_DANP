@@ -172,12 +172,11 @@ fun AddPurseScreen(navController: NavHostController) {
                     icon,
                     0
                 )
-                createLocalPurse(purseViewModel, newPurse)
-                createPurseFirebase(
-                    convertPurse(newPurse)
-                )
                 if (!connectionStatus(mContext)) {
                     Log.e("TAG", "No internet connection")
+                }else{
+                    createPurseFirebase(convertPurse(newPurse))
+                    createLocalPurse(purseViewModel, newPurse) // Falta modificar xD
                 }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },

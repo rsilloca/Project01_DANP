@@ -1,10 +1,12 @@
 package com.example.project01_danp
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -29,10 +31,16 @@ import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.utils.getJsonDataFromAsset
+import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purseViewModelFirebase.getAllPurse()?.observe(this){
+            purses2 = it!!
+        }
         val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
         setContent {
             Project01_DANPTheme {
@@ -50,6 +58,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
@@ -117,6 +126,7 @@ fun BottomNavigation(navController: NavController) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun BuildContentMain(jsonFileString: String) {
     val navController = rememberNavController()
@@ -149,6 +159,7 @@ fun BuildContentMain(jsonFileString: String) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

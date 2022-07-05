@@ -1,6 +1,9 @@
 package com.example.project01_danp.navigation
 
 import android.content.Intent
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -25,6 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertDeposit
 import com.example.project01_danp.firebase.utils.convertPurse
@@ -32,6 +36,7 @@ import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
@@ -41,6 +46,7 @@ import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
 import java.util.*
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun DepositScreen(navController: NavHostController, purseJson: String?) {
     val mContext = LocalContext.current
@@ -53,10 +59,11 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
 
-    lateinit var purse: Purse
+    lateinit var purse: PurseFirebase
+
     if (purseJson != null) {
         val gson = Gson()
-        purse = gson.fromJson(purseJson, Purse::class.java)
+        purse = gson.fromJson(purseJson, PurseFirebase::class.java)
     }
 
     Column(
@@ -131,25 +138,39 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
 
         Button(
             onClick = {
-                val auth = AuthService
+                if(connectionStatus(mContext)) {
+                    val auth = AuthService
 
-                val newDeposit = Deposit(
-                    0,
-                    purse.id,
-                    auth.firebaseGetCurrentUser()!!.uid,
-                    inputNameState.value.text.toInt(),
-                    inputMensaState.value.text,
-                    Date().toString(),
-                    auth.firebaseGetCurrentUser()!!.email ?: "user@gmail.com"
-                )
+                    val newDeposit = Deposit(
+                        0,
+                        purse.documentId!!,
+                        auth.firebaseGetCurrentUser()!!.uid,
+                        inputNameState.value.text.toInt(),
+                        inputMensaState.value.text,
+                        Date().toString(),
+                        auth.firebaseGetCurrentUser()!!.email ?: "user@gmail.com"
+                    )
 
-                addDepositFirebase(newDeposit)
-                depositViewModel.insert(newDeposit)
+                    addDepositFirebase(newDeposit)
+                    depositViewModel.insert(newDeposit)
 
-                purse.sub_total += inputNameState.value.text.toInt()
-                purseViewModel.update(purse)
-                updatePurseFirebase(purse)
-
+                    purse.sub_total += inputNameState.value.text.toInt()
+                    // Falta modificar
+                    purseViewModel.update(
+                        Purse(
+                            purse.documentId!!,
+                            purse.user_id,
+                            purse.code,
+                            purse.name,
+                            purse.description,
+                            purse.icon_name,
+                            purse.sub_total
+                        )
+                    )
+                    updatePurseFirebase(purse)
+                }else {
+                    Log.e("TAG", "No internet connection")
+                }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },
             modifier = Modifier
@@ -162,10 +183,11 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         }
     }
 }
-private fun updatePurseFirebase(purse: Purse){
+
+private fun updatePurseFirebase(purse: PurseFirebase) {
     val purseViewModelFirebase = PurseViewModelFirebase()
     purseViewModelFirebase.updatePurse(
-        convertPurse(purse)
+        purse
     )
 }
 
