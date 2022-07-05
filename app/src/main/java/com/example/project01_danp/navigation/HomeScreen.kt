@@ -4,7 +4,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateContentSize
@@ -40,9 +39,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
-import com.example.project01_danp.firebase.models.DepositFirebase
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.utils.convertPurse
+import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
@@ -141,13 +140,15 @@ fun HomeScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if(connectionStatus(mContext)) {
+                    message(mContext, "You are online now.")
                     items(purses2) { purse ->
-                        PurseCardFirebase(purse, index, navController)
+                        PurseCard(purse, index, navController)
                         index += 1
                     }
                 } else{
+                    message(mContext, "No internet connection.")
                     items(purses) { purse ->
-                        PurseCard(purse, index, navController)
+                        PurseCard(convertPurse(purse), index, navController)
                         index += 1
                     }
                 }
@@ -157,11 +158,13 @@ fun HomeScreen(navController: NavHostController) {
 }
 
 
+@RequiresApi(Build.VERSION_CODES.M)
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
-    val gson = Gson()
+fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController) {
     val mContext = LocalContext.current
+
+    val gson = Gson()
     val purseViewModel: PurseViewModel = viewModel(
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
@@ -171,12 +174,6 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
 
     val purseViewModelFirebase = PurseViewModelFirebase()
     val depositViewModelFirebase = DepositViewModelFirebase()
-    lateinit var list: List<DepositFirebase>
-    depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.id)?.observeForever {
-        if (it != null) {
-            list = it
-        }
-    }
 
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -296,12 +293,16 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
                         )
                         Button(
                             onClick = {
-                                depositViewModel.deleteByPurse(purse.id)
-                                purseViewModel.delete(purse)
+                                depositViewModel.deleteByPurse(purse.documentId!!)
+                                purseViewModel.delete(convertPurseFD(purse))
 
-                                purseViewModelFirebase.deletePurse(convertPurse(purse))
+                                purseViewModelFirebase.deletePurse(purse)
+                                depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)?.observeForever {
+                                    if (it!!.isNotEmpty()) {
+                                        depositViewModelFirebase.deleteAllByPurse(it)
+                                    }
+                                }
 
-                                depositViewModelFirebase.deleteAllByPurse(list)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
@@ -336,13 +337,7 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
                         }
                         Button(
                             onClick = {
-                                if (purse.code.isEmpty()) {
-                                    purse.code = purse.user_id + "-" + purse.id
-                                    purseViewModel.update(purse)
-
-                                    purseViewModelFirebase.updatePurse(convertPurse(purse))
-                                }
-                                getClipboard(mContext, purse.code)
+                                getClipboard(mContext, purse.documentId!!)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
@@ -384,221 +379,11 @@ fun PurseCard(purse: Purse, index: Int, navController: NavHostController) {
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun PurseCardFirebase(purse: PurseFirebase, index: Int, navController: NavHostController) {
-
-    val gson = Gson()
-    val mContext = LocalContext.current
-
-    val purseViewModelFirebase = PurseViewModelFirebase()
-    val depositViewModelFirebase = DepositViewModelFirebase()
-    lateinit var list: List<DepositFirebase>
-    depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)?.observeForever {
-        if (it != null) {
-            list = it
-        }
-    }
-
-    var expandedState by remember { mutableStateOf(false) }
-    val rotationState by animateFloatAsState(
-        targetValue = if (expandedState) 90f else 0f
-    )
-    Card(
-        // elevation = 2.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .animateContentSize(
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = LinearOutSlowInEasing
-                )
-            ),
-        shape = RoundedCornerShape(16.dp),
-        onClick = {
-            expandedState = !expandedState
-
-        },
-        backgroundColor = when (index % 3) {
-            0 -> Color(255, 240, 222)
-            1 -> Color(226, 244, 240)
-            else -> Color(255, 227, 233)
-        }
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-            // .padding(end = 8.dp)
-        ) {
-            IconButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .alpha(ContentAlpha.medium)
-                    .rotate(rotationState)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_chevron_right),
-                    contentDescription = "",
-                    tint = getTextColor(index)
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp, end = 12.dp, bottom = 12.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column {
-                        Text(
-                            text = purse.name,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = getTextColor(index)
-                        )
-                        Text(
-                            text = purse.description,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
-                            color = getTextColor(index)
-                        )
-                    }
-                    Box(
-                        modifier = Modifier
-                            .border(
-                                24.dp,
-                                shape = CircleShape,
-                                color = Color.White.copy(alpha = 0.5f)
-                            )
-                            .padding(all = 4.dp)
-                    ) {
-                        val icon = Icons.Default.Star
-
-                        var painter: Painter? = null
-                        if (purse.icon_name == "cell")
-                            painter = painterResource(id = R.drawable.ic_sell)
-                        else if (purse.icon_name == "celebration")
-                            painter = painterResource(id = R.drawable.ic_celebration)
-
-                        if (purse.icon_name == "star") {
-                            Icon(
-                                imageVector = icon,
-                                contentDescription = "",
-                                modifier = Modifier.width(28.dp),
-                                tint = Color.Black
-                            )
-                        } else {
-                            Icon(
-                                painter = painter!!,
-                                contentDescription = "",
-                                modifier = Modifier.width(20.dp),
-                                tint = Color.Black
-                            )
-                        }
-
-                    }
-                }
-                if (expandedState) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text(
-                            text = "TOTAL: ${purse.sub_total}",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = getTextColor(index),
-                            modifier = Modifier.padding(top = 12.dp, bottom = 16.dp)
-                        )
-                        Button(
-                            onClick = {
-                                purseViewModelFirebase.deletePurse(purse)
-
-                                depositViewModelFirebase.deleteAllByPurse(list)
-                            },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-                        ) {
-                            Text(
-                                text = "Borrar",
-                                color = getTextColor(index)
-                            )
-                        }
-                    }
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Button(
-                            onClick = {
-                                navController.navigate("deposit".plus("/${gson.toJson(purse)}")) {
-                                    navController.graph.startDestinationRoute?.let { screen_route ->
-                                        popUpTo(screen_route) {
-                                            saveState = true
-                                        }
-                                    }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-                        ) {
-                            Text(
-                                text = "Depositar",
-                                color = getTextColor(index)
-                            )
-                        }
-                        Button(
-                            onClick = {
-                                if (purse.code.isEmpty()) {
-                                    purse.code = purse.user_id + "-" + purse.documentId
-
-                                    purseViewModelFirebase.updatePurse(purse)
-                                }
-                                getClipboard(mContext, purse.code)
-                            },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-                        ) {
-                            Text(
-                                text = "Compartir código",
-                                color = getTextColor(index)
-                            )
-                        }
-                    }
-
-                    OutlinedButton(
-                        onClick = {
-                            navController.navigate("list_deposits".plus("/${gson.toJson(purse)}")) {
-                                navController.graph.startDestinationRoute?.let { screen_route ->
-                                    popUpTo(screen_route) {
-                                        saveState = true
-                                    }
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 16.dp)
-                    ) {
-
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Text(text = "Depósitos")
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_chevron_right),
-                            contentDescription = ""
-                        )
-                    }
-                }
-            }
-        }
-    }
+fun message(mContext:Context, msg: String){
+    Toast.makeText(
+        mContext, msg,
+        Toast.LENGTH_SHORT
+    ).show()
 }
 
 fun getClipboard(context: Context, code: String) {

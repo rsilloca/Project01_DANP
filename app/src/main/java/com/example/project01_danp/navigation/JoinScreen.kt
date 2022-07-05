@@ -90,19 +90,18 @@ fun JoinScreen(navController: NavHostController) {
             onClick = {
                 val viewModel = PurseViewModelFirebase()
 
-                viewModel.getPurseByCode(inputCodeState.value.text)?.observeForever {
-                    Log.e("TAG", it!![0].toString())
+                viewModel.getPurseById(inputCodeState.value.text)?.observeForever {
+                    Log.e("TAG", it!!.toString())
                     actualPurse = Purse(
-                        it[0].documentId!!,
-                        it[0].user_id,
-                        it[0].code,
-                        it[0].name,
-                        it[0].description,
-                        it[0].icon_name,
-                        it[0].sub_total
+                        it.documentId!!,
+                        it.user_id,
+                        it.name,
+                        it.description,
+                        it.icon_name,
+                        it.sub_total
                     )
                     createLocalPurse(purseViewModel, actualPurse)
-                    createPurseUser(it[0].documentId!!)
+                    createPurseUser(it.documentId!!)
                 }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },

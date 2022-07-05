@@ -2,7 +2,6 @@ package com.example.project01_danp.navigation
 
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateContentSize
@@ -73,7 +72,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
             jsonFileString
         )
     )
-    depositViewModel.findDeposit(purse.id)
+    depositViewModel.findDeposit(purse.documentId)
     deposits = depositViewModel.searchResults.observeAsState(listOf()).value
     // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
 
@@ -126,25 +125,12 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
             state = listState
         ) {
             items(depositListItems) { deposit ->
-                if (deposit != null && !connectionStatus(mContext)) {
+                if (deposit != null) {
                     Toast.makeText(
                         mContext, "no internet",
                         Toast.LENGTH_SHORT
                     ).show()
                     DepositCard(deposit, index, navController, purse, jsonFileString)
-                    index += 1
-                } else {
-                    Toast.makeText(
-                        mContext, "Si internet",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    DepositCardFirebase(
-                        convertDeposit(deposit!!),
-                        index,
-                        navController,
-                        convertPurse(purse),
-                        jsonFileString
-                    )
                     index += 1
                 }
             }
@@ -155,13 +141,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DepositCard(
-    deposit: Deposit,
-    index: Int,
-    navController: NavHostController,
-    purse: Purse,
-    jsonFileString: String
-) {
+fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse: Purse, jsonFileString: String) {
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(
@@ -293,136 +273,4 @@ fun DepositCard(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun DepositCardFirebase(
-    deposit: DepositFirebase,
-    index: Int,
-    navController: NavHostController,
-    purse: PurseFirebase,
-    jsonFileString: String
-) {
-    val mContext = LocalContext.current
-    val depositViewModel = DepositViewModelFirebase()
-    val purseViewModel = PurseViewModelFirebase()
-
-    var expandedState by remember { mutableStateOf(false) }
-    val rotationState by animateFloatAsState(
-        targetValue = if (expandedState) 90f else 0f
-    )
-    Card(
-        // elevation = 2.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .animateContentSize(
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = LinearOutSlowInEasing
-                )
-            ),
-        shape = RoundedCornerShape(16.dp),
-        onClick = {
-            expandedState = !expandedState
-        },
-        backgroundColor = Color(255, 240, 222)
-        /* when (index % 3) {
-            0 -> Color(255, 240, 222)
-            1 -> Color(226, 244, 240)
-            else -> Color(255, 227, 233)
-        } */
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-            // .padding(end = 8.dp)
-        ) {
-            IconButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .alpha(ContentAlpha.medium)
-                    .rotate(rotationState)
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_chevron_right),
-                    contentDescription = "",
-                    tint = Color(222, 188, 149) // getTextColor(index)
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp, end = 12.dp, bottom = 12.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column {
-                        Text(
-                            text = deposit.user_email,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(222, 188, 149) // getTextColor(index)
-                        )
-                        Text(
-                            text = deposit.deposit_date.toString(),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
-                            color = Color(222, 188, 149) // getTextColor(index)
-                        )
-                        Text(
-                            text = deposit.message,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            fontSize = 14.sp,
-                            color = Color(222, 188, 149) // getTextColor(index)
-                        )
-                    }
-                    Text(
-                        text = "S/ ${deposit.quantity}",
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(222, 188, 149) // getTextColor(index)
-                    )
-                }
-                if (expandedState) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Button(
-                            onClick = { },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-                        ) {
-                            Text(
-                                text = "Editar",
-                                color = Color(222, 188, 149) // getTextColor(index)
-                            )
-                        }
-                        Button(
-                            onClick = {
-                                purse.sub_total -= deposit.quantity
-                                purseViewModel.updatePurse(purse)
-                                depositViewModel.deleteDeposit(deposit)
-                                mContext.startActivity(Intent(mContext, MainActivity::class.java))
-                            },
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-                        ) {
-                            Text(
-                                text = "Eliminar",
-                                color = Color(222, 188, 149) // getTextColor(index)
-                            )
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 

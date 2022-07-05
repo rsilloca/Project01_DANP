@@ -31,7 +31,6 @@ import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertDeposit
-import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
@@ -160,7 +159,6 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                         Purse(
                             purse.documentId!!,
                             purse.user_id,
-                            purse.code,
                             purse.name,
                             purse.description,
                             purse.icon_name,

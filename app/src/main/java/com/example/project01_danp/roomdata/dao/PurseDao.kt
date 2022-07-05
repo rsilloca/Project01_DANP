@@ -9,7 +9,7 @@ abstract class PurseDao {
     @Query("SELECT * FROM purse")
     abstract fun getAllPurses(): LiveData<List<Purse>>
 
-    @Query("SELECT * FROM purse WHERE id = :id")
+    @Query("SELECT * FROM purse WHERE documentId = :id")
     abstract fun getPurseById(id: String): Purse?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -21,6 +21,4 @@ abstract class PurseDao {
     @Update
     abstract fun updatePurse(purse: Purse)
 
-    @Query("SELECT * FROM purse WHERE code = :code")
-    abstract fun getPursesByCode(code:String): Purse?
 }

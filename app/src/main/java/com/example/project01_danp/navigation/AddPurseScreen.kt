@@ -163,10 +163,10 @@ fun AddPurseScreen(navController: NavHostController) {
         Button(
             onClick = {
                 val auth = AuthService
+                // Falta modificar xD
                 val newPurse = Purse(
                     auth.firebaseGetCurrentUser()!!.uid,
                     auth.firebaseGetCurrentUser()!!.uid,
-                    "",
                     inputNameState.value.text,
                     inputDescState.value.text,
                     icon,
@@ -176,7 +176,7 @@ fun AddPurseScreen(navController: NavHostController) {
                     Log.e("TAG", "No internet connection")
                 }else{
                     createPurseFirebase(convertPurse(newPurse))
-                    createLocalPurse(purseViewModel, newPurse) // Falta modificar xD
+                    createLocalPurse(purseViewModel, newPurse)
                 }
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             },

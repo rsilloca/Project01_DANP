@@ -28,8 +28,4 @@ class PurseRepository (private val purseDao: PurseDao){
         return purseDao.updatePurse(purse)
     }
 
-    fun getPurseByCode(code: String): Purse?{
-        return purseDao.getPursesByCode(code)
-    }
-
 }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "deposit")
 data class Deposit(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val documentId: Int,
     var purse_id: String,
     var user_id: String,
     var quantity: Int,
@@ -16,7 +16,7 @@ data class Deposit(
 ) {
 
     override fun toString(): String {
-        return "Deposit(id=$id, purseId=$purse_id, user_id=$user_id, quantity=$quantity, message=$message)"
+        return "Deposit(id=$documentId, purseId=$purse_id, user_id=$user_id, quantity=$quantity, message=$message)"
     }
 
 }

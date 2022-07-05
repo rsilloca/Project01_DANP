@@ -6,7 +6,6 @@ import com.example.project01_danp.roomdata.DatabaseConfig
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.roomdata.repository.PurseRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class PurseViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(applicationDANP) {
@@ -21,14 +20,6 @@ class PurseViewModel (applicationDANP: ApplicationDANP) : AndroidViewModel(appli
 
     fun insert(purse: Purse) = viewModelScope.launch (Dispatchers.IO) { purseRepository.createPurse(purse) }
     fun update(purse: Purse) = viewModelScope.launch (Dispatchers.IO) { purseRepository.updatePurse(purse) }
-    suspend fun getByCode(code: String): Purse {
-        lateinit var purse: Purse
-        val result = viewModelScope.async (Dispatchers.IO) {
-            purse = purseRepository.getPurseByCode(code)!!
-        }
-        result.await()
-        return purse
-    }
 
     fun delete(purse: Purse) = viewModelScope.launch (Dispatchers.IO) { purseRepository.deletePurse(purse) }
 }

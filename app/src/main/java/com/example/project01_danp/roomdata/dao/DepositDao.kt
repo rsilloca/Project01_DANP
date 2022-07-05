@@ -9,7 +9,7 @@ abstract class DepositDao {
     @Query("SELECT * FROM deposit")
     abstract fun getAllDeposits(): LiveData<List<Deposit>>
 
-    @Query("SELECT * FROM deposit WHERE id = :id")
+    @Query("SELECT * FROM deposit WHERE documentId = :id")
     abstract fun getDepositById(id: Int): Deposit?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
