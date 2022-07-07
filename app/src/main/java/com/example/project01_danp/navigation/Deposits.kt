@@ -88,7 +88,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Usuario, estos son tus depósitos realizados en",
+            text = mContext.getString(R.string.txt_estos_son_depositos ),
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else Color.Black,
             textAlign = TextAlign.Center,

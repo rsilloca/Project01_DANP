@@ -117,7 +117,7 @@ fun BuildContentRegister() {
                 OutlinedTextField(
                     value = inputNameState.value,
                     onValueChange = { inputNameState.value = it },
-                    label = { Text(text = "Nombre y Apellidos") },
+                    label = { Text(text = mContext.getString(R.string.txt_input_nombre_apellidos )) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     leadingIcon = {
                         Icon(
@@ -133,7 +133,7 @@ fun BuildContentRegister() {
                 OutlinedTextField(
                     value = inputPhoneState.value,
                     onValueChange = { inputPhoneState.value = it },
-                    label = { Text(text = "Email") },
+                    label = { Text(text = mContext.getString(R.string.txt_input_correo_electronico )) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     leadingIcon = {
                         Icon(
@@ -149,7 +149,7 @@ fun BuildContentRegister() {
                 OutlinedTextField(
                     value = inputPwdState.value,
                     onValueChange = { inputPwdState.value = it },
-                    label = { Text(text = "Clave") },
+                    label = { Text(text = mContext.getString(R.string.txt_input_clave)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                     leadingIcon = {
                         Icon(
@@ -184,7 +184,7 @@ fun BuildContentRegister() {
                         .width(220.dp)
                         .padding(top = 24.dp)
                 ) {
-                    Text(text = "REGISTRARSE")
+                    Text(text = mContext.getString(R.string.txt_btn_registrarse))
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -199,7 +199,7 @@ fun BuildContentRegister() {
                         modifier = Modifier.width(40.dp)
                     )
                     Text(
-                        text = "¿Ya tienes una cuenta?",
+                        text = mContext.getString(R.string.txt_ya_tienes_cuenta),
                         fontSize = 12.sp,
                         color = CustomGreen
                     )
@@ -216,7 +216,7 @@ fun BuildContentRegister() {
                     // contentPadding = PaddingValues(horizontal = 48.dp),
                     modifier = Modifier.width(220.dp)
                 ) {
-                    Text(text = "INICIA SESIÓN")
+                    Text(text = mContext.getString(R.string.txt_btn_inicia_sesion))
                 }
             }
         }

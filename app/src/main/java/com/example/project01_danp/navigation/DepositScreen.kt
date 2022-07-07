@@ -73,7 +73,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Estas depositando a",
+            text = mContext.getString(R.string.txt_estas_depositando),
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else Color.Black,
             textAlign = TextAlign.Center,
@@ -127,7 +127,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
         OutlinedTextField(
             value = inputMensaState.value,
             onValueChange = { inputMensaState.value = it },
-            label = { Text(text = "Mensaje (Opcional)") },
+            label = { Text(text = mContext.getString(R.string.txt_input_mensaje)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier
                 .fillMaxWidth()
@@ -177,7 +177,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
         ) {
-            Text(text = "DEPOSITAR")
+            Text(text = mContext.getString(R.string.txt_btn_depositar2 ))
         }
     }
 }

@@ -82,7 +82,7 @@ fun HomeScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Hola Usuario",
+                    text =mContext.getString(R.string.txt_hola_usuario),
                     color = Color.White,
                     fontSize = 22.sp, //36 2
                     fontWeight = FontWeight.Bold,
@@ -91,7 +91,7 @@ fun HomeScreen(navController: NavHostController) {
                     )
                 Row {
                     Text(
-                        text = "¡Vamos por un día más de ahorro!",
+                        text = mContext.getString(R.string.txt_dia_mas_ahorro),
                         color = Color.White,
                         fontSize = 14.sp, //32
                         textAlign = TextAlign.Center
@@ -132,7 +132,7 @@ fun HomeScreen(navController: NavHostController) {
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
                 Spacer(modifier = Modifier.width(16.dp))
-                Text(text = "NUEVA ALCANCIA")
+                Text(text = mContext.getString(R.string.txt_btn_nueva_alcancia))
             }
 
             var index = 0
@@ -285,7 +285,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "TOTAL: ${purse.sub_total}",
+                            text = " ${mContext.getString(R.string.txt_total)}: ${purse.sub_total}",
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = getTextColor(index),
@@ -307,7 +307,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
                             Text(
-                                text = "Borrar",
+                                text = mContext.getString(R.string.txt_btn_borrar),
                                 color = getTextColor(index)
                             )
                         }
@@ -331,7 +331,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
                             Text(
-                                text = "Depositar",
+                                text = mContext.getString(R.string.txt_btn_depositar),
                                 color = getTextColor(index)
                             )
                         }
@@ -342,7 +342,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
                             Text(
-                                text = "Compartir código",
+                                text = mContext.getString(R.string.txt_btn_compartir),
                                 color = getTextColor(index)
                             )
                         }
@@ -366,7 +366,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                     ) {
 
                         Spacer(modifier = Modifier.width(16.dp))
-                        Text(text = "Depósitos")
+                        Text(text = mContext.getString(R.string.txt_btn_depositos))
                         Icon(
                             painter = painterResource(id = R.drawable.ic_chevron_right),
                             contentDescription = ""

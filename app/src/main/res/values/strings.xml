@@ -2,4 +2,44 @@
     <string name="app_name">Project01_DANP</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
+
+    <string name="txt_input_correo_electronico">Correo Electrónico</string>
+    <string name="txt_input_clave">Clave</string>
+    <string name="txt_btn_iniciar_sesion">INICIAR SESIÓN</string>
+    <string name="txt_no_tienes_cuenta">¿No tienes una cuenta?</string>
+    <string name="txt_btn_registrate">REGISTRATE</string>
+
+    <string name="txt_input_nombre_apellidos">Nombre y Apellidos</string>
+    <string name="txt_btn_registrarse">REGISTRARSE</string>
+    <string name="txt_ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="txt_btn_inicia_sesion">INICIA SESIÓN</string>
+
+
+    <string name="txt_hola_usuario">HOLA USUARIO</string>
+    <string name="txt_dia_mas_ahorro">¡Vamos por un día más de ahorro!</string>
+    <string name="txt_btn_nueva_alcancia">NUEVA ALCANCIA</string>
+    <string name="txt_total">TOTAL</string>
+    <string name="txt_btn_borrar">Borrar</string>
+    <string name="txt_btn_depositar">Depositar</string>
+    <string name="txt_btn_compartir">Compartir código</string>
+    <string name="txt_btn_depositos">Depósitos</string>
+
+
+    <string name="txt_alcancia_lista">¡Tu nueva alcancía está casi lista!</string>
+    <string name="txt_input_nombre">Nombre</string>
+    <string name="txt_input_descripcion">Descripción (Opcional)</string>
+    <string name="txt_elige_icono">Elige un ícono</string>
+    <string name="txt_btn_crear_alcancia">CREAR ALCANCÍA</string>
+
+
+    <string name="txt_estas_depositando">Estas depositando a</string>
+    <string name="txt_input_mensaje">Mensaje (Opcional)</string>
+    <string name="txt_btn_depositar2">Depositar</string>
+
+    <string name="txt_estos_son_depositos">Usuario, estos son tus depósitos realizados en</string>
+
+    <string name="txt_input_codigo_alcancia">Código de Alcancía</string>
+    <string name="txt_btn_unirme">Unirme</string>
+
+
 </resources>

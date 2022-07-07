@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Project01_DANP</string>
+    <string name="title_activity_login">LoginActivityENG</string>
+    <string name="title_activity_register">RegisterActivityENG</string>
+
+    <string name="txt_input_correo_electronico">Email</string>
+    <string name="txt_input_clave">Key</string>
+    <string name="txt_btn_iniciar_sesion">LOG IN</string>
+    <string name="txt_no_tienes_cuenta">You do not have an account?</string>
+    <string name="txt_btn_registrate">SIGN UP</string>
+
+    <string name="txt_input_nombre_apellidos">Name and Surname</string>
+    <string name="txt_btn_registrarse">SIGN UP</string>
+    <string name="txt_ya_tienes_cuenta">Do you already have an account?</string>
+    <string name="txt_btn_inicia_sesion">LOG IN</string>
+
+
+    <string name="txt_hola_usuario">HELLO USER</string>
+    <string name="txt_dia_mas_ahorro"> Let\'s go for another day of savings! </string>
+    <string name="txt_btn_nueva_alcancia">NEW PIGGY BANK</string>
+    <string name="txt_total">TOTAL</string>
+    <string name="txt_btn_borrar">Delete</string>
+    <string name="txt_btn_depositar">Deposit</string>
+    <string name="txt_btn_compartir">Share code</string>
+    <string name="txt_btn_depositos">Deposits</string>
+
+
+    <string name="txt_alcancia_lista">Your new piggy bank is almost ready!</string>
+    <string name="txt_input_nombre">Name</string>
+    <string name="txt_input_descripcion">Description (Optional)</string>
+    <string name="txt_elige_icono">Choose an icon</string>
+    <string name="txt_btn_crear_alcancia">CREATE PIGGY BANK</string>
+
+
+    <string name="txt_estas_depositando">You are depositing to</string>
+    <string name="txt_input_mensaje">Message (Optional)</string>
+    <string name="txt_btn_depositar2">Deposit</string>
+
+    <string name="txt_estos_son_depositos">User, these are your deposits made in</string>
+
+    <string name="txt_input_codigo_alcancia">Code of Piggy Bank</string>
+    <string name="txt_btn_unirme">Join</string>
+</resources>

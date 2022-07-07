@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -39,6 +41,7 @@ import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import java.util.*
 
 class LoginActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
@@ -48,6 +51,20 @@ class LoginActivity : ComponentActivity() {
         purseViewModelFirebase.getAllPurse()?.observe(this){
             purses2 = it!!
         }
+
+        /*
+        lateinit var locale: Locale
+        locale= Locale("en")
+        var res=resources
+        var dm=res.displayMetrics
+        var conf=res.configuration
+        conf.locale=locale
+        res.updateConfiguration(conf,dm)
+        //var refresh= Intent(LoginActivityt@this,LoginActivity::class.java )
+        //startActivity((refresh))
+
+         */
+
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme
@@ -65,6 +82,10 @@ class LoginActivity : ComponentActivity() {
     @Composable
     fun BuildContentLogin() {
         val mContext = LocalContext.current
+        //mContext.getSystemService(LocaleManager.class).setApplicationLocales(newLocaleList(Locale.forLanguageTag("en")))
+        //mContext.getSystemService(Locale)
+
+                //val LanContext= LocalContext.current.resources.
         Scaffold {
             Column {
                 Box {
@@ -118,7 +139,7 @@ class LoginActivity : ComponentActivity() {
                     OutlinedTextField(
                         value = inputEmailState.value,
                         onValueChange = { inputEmailState.value = it },
-                        label = { Text(text = "Email") },
+                        label = { Text(text = getString(R.string.txt_input_correo_electronico )) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                         leadingIcon = {
                             Icon(
@@ -134,7 +155,7 @@ class LoginActivity : ComponentActivity() {
                     OutlinedTextField(
                         value = inputPwdState.value,
                         onValueChange = { inputPwdState.value = it },
-                        label = { Text(text = "Clave") },
+                        label = { Text(text = getString(R.string.txt_input_clave )) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                         leadingIcon = {
                             Icon(
@@ -166,7 +187,7 @@ class LoginActivity : ComponentActivity() {
                             .width(220.dp)
                             .padding(top = 24.dp)
                     ) {
-                        Text(text = "INICIAR SESIÓN")
+                        Text(text = getString(R.string.txt_btn_iniciar_sesion ) )
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -182,7 +203,7 @@ class LoginActivity : ComponentActivity() {
                             modifier = Modifier.width(40.dp)
                         )
                         Text(
-                            text = "¿No tienes una cuenta?",
+                            text = getString(R.string.txt_no_tienes_cuenta),
                             fontSize = 12.sp,
                             color = CustomGreen
                         )
@@ -199,7 +220,7 @@ class LoginActivity : ComponentActivity() {
                         // contentPadding = PaddingValues(horizontal = 48.dp),
                         modifier = Modifier.width(220.dp)
                     ) {
-                        Text(text = "REGÍSTRATE")
+                        Text(text = getString(R.string.txt_btn_registrate ))
                     }
                 }
             }

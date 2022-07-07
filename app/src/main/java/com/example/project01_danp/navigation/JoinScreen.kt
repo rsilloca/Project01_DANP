@@ -68,7 +68,7 @@ fun JoinScreen(navController: NavHostController) {
             onValueChange = { inputCodeState.value = it },
             placeholder = {
                 Text(
-                    text = "Código de Alcancía",
+                    text = mContext.getString(R.string.txt_input_codigo_alcancia),
                     // color = if (isSystemInDarkTheme()) Color.White else Color.Black,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
@@ -111,7 +111,7 @@ fun JoinScreen(navController: NavHostController) {
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
         ) {
-            Text(text = "UNIRME")
+            Text(text = mContext.getString(R.string.txt_btn_unirme))
         }
     }
 

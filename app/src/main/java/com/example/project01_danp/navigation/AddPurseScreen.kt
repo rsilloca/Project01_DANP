@@ -59,7 +59,7 @@ fun AddPurseScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "¡Tu nueva alcancía está casi lista!",
+            text = mContext.getString(R.string.txt_alcancia_lista),
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else Color.Black,
             textAlign = TextAlign.Center,
@@ -77,7 +77,7 @@ fun AddPurseScreen(navController: NavHostController) {
         OutlinedTextField(
             value = inputNameState.value,
             onValueChange = { inputNameState.value = it },
-            label = { Text(text = "Nombre") },
+            label = { Text(text = mContext.getString(R.string.txt_input_nombre)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier
                 .fillMaxWidth()
@@ -87,7 +87,7 @@ fun AddPurseScreen(navController: NavHostController) {
         OutlinedTextField(
             value = inputDescState.value,
             onValueChange = { inputDescState.value = it },
-            label = { Text(text = "Descripción (Opcional)") },
+            label = { Text(text = mContext.getString(R.string.txt_input_descripcion)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier
                 .fillMaxWidth()
@@ -95,7 +95,7 @@ fun AddPurseScreen(navController: NavHostController) {
             maxLines = 3
         )
         Text(
-            text = "Elige un ícono",
+            text = mContext.getString(R.string.txt_elige_icono),
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
@@ -186,7 +186,7 @@ fun AddPurseScreen(navController: NavHostController) {
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
         ) {
-            Text(text = "CREAR ALCANCÍA")
+            Text(text = mContext.getString(R.string.txt_btn_crear_alcancia))
         }
     }
 }
