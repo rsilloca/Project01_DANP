@@ -44,8 +44,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
+        <!--Added to notification-->
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <activity
+            android:name=".Receive"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
+        </activity>
     </application>
 
 </manifest>

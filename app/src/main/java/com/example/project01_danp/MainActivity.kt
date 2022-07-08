@@ -3,6 +3,7 @@ package com.example.project01_danp
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -32,6 +33,8 @@ import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.utils.getJsonDataFromAsset
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
@@ -52,6 +55,18 @@ class MainActivity : ComponentActivity() {
                     if (jsonFileString != null) {
                         BuildContentMain(jsonFileString)
                     }
+                    // -> Start = Get token of the current device
+                    FirebaseMessaging.getInstance().token
+                        .addOnCompleteListener(OnCompleteListener { task ->
+                            if (!task.isSuccessful) {
+                                Log.e("FCM Notify", "Fetching FCM registration token failed", task.exception)
+                                return@OnCompleteListener
+                            }
+                            val token: String? = task.result
+                            // Use this token to send notification to this device in FCM
+                            Log.e("FCM Token", token, task.exception)
+                        })
+                    // -> End
                 }
             }
         }
