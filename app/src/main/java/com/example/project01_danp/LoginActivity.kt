@@ -44,13 +44,9 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 
 class LoginActivity : ComponentActivity() {
-    @SuppressLint("ServiceCast")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            Log.e("TAG", ""+(getSystemService(ACTIVITY_SERVICE) as ActivityManager).isBackgroundRestricted)
-        }
         val purseViewModelFirebase = PurseViewModelFirebase()
         purseViewModelFirebase.getAllPurse()?.observe(this){
             purses2 = it!!
