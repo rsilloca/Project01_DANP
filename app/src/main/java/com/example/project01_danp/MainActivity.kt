@@ -9,8 +9,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -35,6 +38,7 @@ import com.example.project01_danp.utils.getJsonDataFromAsset
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.coroutines.selects.select
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
@@ -92,14 +96,24 @@ fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
         composable("deposit/{purseJson}") {
             DepositScreen(navController, it.arguments?.getString("purseJson"))
         }
+        composable("profile") {
+            ProfileScreen(navController = navController)
+        }
+        composable("customize") {
+            CustomizeScreen(navController = navController)
+        }
     }
 }
 
 @Composable
 fun BottomNavigation(navController: NavController) {
-    val items = listOf(
+    val itemsFirst = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Logout,
+        BottomNavItem.Profile
+    )
+    val itemsSecond = listOf(
+        BottomNavItem.Customization,
+        BottomNavItem.Logout
     )
     val mContext = LocalContext.current
     BottomNavigation(
@@ -108,9 +122,58 @@ fun BottomNavigation(navController: NavController) {
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-        items.forEach { item ->
+        itemsFirst.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
+                icon = {
+                    Icon(
+                        painterResource(id = item.icon),
+                        contentDescription = item.title,
+                        Modifier.width(24.dp)
+                    )},
+                label = { Text(
+                    text = item.title,
+                    fontSize = 9.sp
+                ) },
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(0.5f),
+                alwaysShowLabel = true,
+                selected = currentRoute == item.screen_route,
+                onClick = {
+                    if (item.screen_route == "logout") {
+                        AuthService.firebaseSingOut()
+                        Toast.makeText(mContext, "Sing out successfully", Toast.LENGTH_SHORT).show()
+                        mContext.startActivity(Intent(mContext, LoginActivity::class.java))
+                    } else {
+                        navController.navigate(item.screen_route) {
+                            navController.graph.startDestinationRoute?.let { screen_route ->
+                                popUpTo(screen_route) {
+                                    saveState = true
+                                }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                }
+            )
+        }
+        BottomNavigationItem(
+            icon = {
+                Icon(imageVector = Icons.Filled.Add, contentDescription = "")
+            },
+            label = { Text(text = "") },
+            onClick = {},
+            unselectedContentColor = Color.Transparent,
+            selected = false
+        )
+        itemsSecond.forEach { item ->
+            BottomNavigationItem(
+                icon = {
+                    Icon(
+                        painterResource(id = item.icon),
+                        contentDescription = item.title,
+                        Modifier.width(24.dp)
+                    )},
                 label = { Text(
                     text = item.title,
                     fontSize = 9.sp
