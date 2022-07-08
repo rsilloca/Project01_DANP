@@ -41,11 +41,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val code = 100 //random number :c
 
-        val intent = Intent(this, LoginActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, code, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, code, intent, PendingIntent.FLAG_ONE_SHOT)
 
-        val cancelIntent = Intent(this, Receive::class.java).apply{ putExtra("notification", code) }
-        val cancelPendingIntent = PendingIntent.getBroadcast(this, 0, cancelIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val mainActivityIntet: PendingIntent = Receive.getMainActivity(code, this)
+        val dismissIntent: PendingIntent = Receive.getDismissIntent(code, this)
 
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.alcancia_app)
@@ -55,11 +55,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setContentText(message)
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000))
             .setOnlyAlertOnce(true)
-            //.setContentIntent(pendingIntent)
+            .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setCustomBigContentView(getRemoteView(title, message))
-            .addAction(R.drawable.ic_launcher_background, "View", pendingIntent)
-            .addAction(R.drawable.ic_launcher_background, "Dismiss", cancelPendingIntent)
+            .addAction(R.drawable.ic_launcher_background, "View", mainActivityIntet)
+            .addAction(R.drawable.ic_launcher_background, "Dismiss", dismissIntent)
             .build()
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

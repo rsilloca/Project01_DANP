@@ -1,9 +1,12 @@
 package com.example.project01_danp
 
+import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -41,9 +44,13 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 
 class LoginActivity : ComponentActivity() {
+    @SuppressLint("ServiceCast")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            Log.e("TAG", ""+(getSystemService(ACTIVITY_SERVICE) as ActivityManager).isBackgroundRestricted)
+        }
         val purseViewModelFirebase = PurseViewModelFirebase()
         purseViewModelFirebase.getAllPurse()?.observe(this){
             purses2 = it!!
