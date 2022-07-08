@@ -7,10 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 
-/**
- * I would delete this crap, I don't know why it doesn't work
- */
-
 class Receive : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
