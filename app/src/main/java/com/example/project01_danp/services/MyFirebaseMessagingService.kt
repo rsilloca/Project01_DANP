@@ -39,7 +39,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     private fun generateNotification(title: String, message: String) {
 
-        val code = 100 //random number :c
+        val code = 100 //random number
 
         val intent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, code, intent, PendingIntent.FLAG_ONE_SHOT)
