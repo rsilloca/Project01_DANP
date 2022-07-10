@@ -2,19 +2,18 @@
     <string name="app_name">Project01_DANP</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
-
+    <!-- LOGIN ACTIVITY -->
     <string name="txt_input_correo_electronico">Correo Electrónico</string>
     <string name="txt_input_clave">Clave</string>
     <string name="txt_btn_iniciar_sesion">INICIAR SESIÓN</string>
     <string name="txt_no_tienes_cuenta">¿No tienes una cuenta?</string>
     <string name="txt_btn_registrate">REGISTRATE</string>
-
+    <!-- REGISTRO ACTIVITY-->
     <string name="txt_input_nombre_apellidos">Nombre y Apellidos</string>
     <string name="txt_btn_registrarse">REGISTRARSE</string>
     <string name="txt_ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
     <string name="txt_btn_inicia_sesion">INICIA SESIÓN</string>
-
-
+    <!-- HOME SCREEN -->
     <string name="txt_hola_usuario">HOLA USUARIO</string>
     <string name="txt_dia_mas_ahorro">¡Vamos por un día más de ahorro!</string>
     <string name="txt_btn_nueva_alcancia">NUEVA ALCANCIA</string>
@@ -23,23 +22,29 @@
     <string name="txt_btn_depositar">Depositar</string>
     <string name="txt_btn_compartir">Compartir código</string>
     <string name="txt_btn_depositos">Depósitos</string>
-
-
+    <!-- ADD PURSE SCREEN -->
     <string name="txt_alcancia_lista">¡Tu nueva alcancía está casi lista!</string>
     <string name="txt_input_nombre">Nombre</string>
     <string name="txt_input_descripcion">Descripción (Opcional)</string>
     <string name="txt_elige_icono">Elige un ícono</string>
     <string name="txt_btn_crear_alcancia">CREAR ALCANCÍA</string>
-
-
+    <!--DEPOSIT SCREEN -->
     <string name="txt_estas_depositando">Estas depositando a</string>
     <string name="txt_input_mensaje">Mensaje (Opcional)</string>
     <string name="txt_btn_depositar2">Depositar</string>
-
+    <!--DEPOSITS -->
     <string name="txt_estos_son_depositos">Usuario, estos son tus depósitos realizados en</string>
-
+    <!--JOIN SCREEN -->
     <string name="txt_input_codigo_alcancia">Código de Alcancía</string>
     <string name="txt_btn_unirme">Unirme</string>
+    <!--PROFILE SCREEN-->
+    <string name="txt_mi_perfil">Mi Perfil</string>
+    <string name="txt_btn_guardar_cambios">GUARDAR CAMBIOS</string>
+    <string name="txt_actualizar_ccontrasena">Actualizar contraseña</string>
+    <string name="txt_input_nueva_clave">Nueva Clave</string>
+    <string name="txt_input_repite_clave">Repite la clave</string>
+    <string name="txt_btn_actualizar_clave">ACTUALIZAR CLAVE</string>
+
 
 
 </resources>

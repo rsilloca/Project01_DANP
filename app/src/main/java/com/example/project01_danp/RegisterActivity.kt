@@ -15,6 +15,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -121,7 +122,7 @@ fun BuildContentRegister() {
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     leadingIcon = {
                         Icon(
-                            imageVector = Icons.Default.Email,
+                            imageVector = Icons.Default.Person,
                             contentDescription = null
                         )
                     },

@@ -13,6 +13,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -79,6 +80,15 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
     // Paging
     val depositListItems: LazyPagingItems<Deposit> =
         depositViewModel.paging(deposits).collectAsLazyPagingItems()
+    /*
+    val depositListItems=listOf(
+        Deposit(1,"1","1",20, "Para la gaseosa","10/06/2022 9:45 PM", "rsilloca@unsa.edu.pe"),
+        Deposit(1,"1","1",50, "Para los bocaditos ","10/06/2022 9:45 PM", "mrios@unsa.edu.pe"),
+        Deposit(1,"1","1",40, "Para la torta","10/06/2022 9:45 PM", "jfarfanc@unsa.edu.pe"),
+        Deposit(1,"1","1",70, "Para la gaseosa","10/06/2022 9:45 PM", "rsilloca@unsa.edu.pe"),
+        Deposit(1,"1","1",30, "Para los bocaditos","10/06/2022 9:45 PM", "mrios@unsa.edu.pe"),
+        Deposit(1,"1","1",45, "Para la torta","10/06/2022 9:45 PM", "jfarfanc@unsa.edu.pe"),
+    )*/
 
     Column(
         modifier = Modifier
