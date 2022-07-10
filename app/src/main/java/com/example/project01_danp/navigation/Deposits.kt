@@ -56,7 +56,7 @@ import com.google.gson.Gson
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun Deposits(navController: NavHostController, jsonFileString: String, purseJson: String?) {
+fun Deposits(navController: NavHostController, purseJson: String?) {
 
     lateinit var purse: Purse
     if (purseJson != null) {
@@ -69,8 +69,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(
-            mContext.applicationContext as ApplicationDANP,
-            jsonFileString
+            mContext.applicationContext as ApplicationDANP
         )
     )
     depositViewModel.findDeposit(purse.documentId)
@@ -140,7 +139,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
                         mContext, "no internet",
                         Toast.LENGTH_SHORT
                     ).show()
-                    DepositCard(deposit, index, navController, purse, jsonFileString)
+                    DepositCard(deposit, index, navController, purse)
                     index += 1
                 }
             }
@@ -151,12 +150,11 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse: Purse, jsonFileString: String) {
+fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse: Purse) {
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(
-            mContext.applicationContext as ApplicationDANP,
-            jsonFileString
+            mContext.applicationContext as ApplicationDANP
         )
     )
     val purseViewModel: PurseViewModel = viewModel(

@@ -169,7 +169,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
     val depositViewModel: DepositViewModel = viewModel(
-        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
 
     val purseViewModelFirebase = PurseViewModelFirebase()

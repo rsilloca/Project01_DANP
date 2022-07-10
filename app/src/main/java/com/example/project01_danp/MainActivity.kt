@@ -29,6 +29,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.project01_danp.datastore.DataStoreManager
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
@@ -41,6 +42,9 @@ import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.selects.select
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var dataStoreManager: DataStoreManager
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +52,7 @@ class MainActivity : ComponentActivity() {
         purseViewModelFirebase.getAllPurse()?.observe(this){
             purses2 = it!!
         }
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
+        // val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme
@@ -56,9 +60,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    if (jsonFileString != null) {
-                        BuildContentMain(jsonFileString)
-                    }
+                    // if (jsonFileString != null) {
+                        BuildContentMain() // jsonFileString
+                    // }
                     // -> Start = Get token of the current device
                     FirebaseMessaging.getInstance().token
                         .addOnCompleteListener(OnCompleteListener { task ->
@@ -79,7 +83,7 @@ class MainActivity : ComponentActivity() {
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
+fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
             HomeScreen(navController)
@@ -91,7 +95,7 @@ fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
             AddPurseScreen(navController)
         }
         composable("list_deposits/{purseJson}") {
-            Deposits(navController, jsonFileString, it.arguments?.getString("purseJson"))
+            Deposits(navController, it.arguments?.getString("purseJson"))
         }
         composable("deposit/{purseJson}") {
             DepositScreen(navController, it.arguments?.getString("purseJson"))
@@ -206,7 +210,7 @@ fun BottomNavigation(navController: NavController) {
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun BuildContentMain(jsonFileString: String) {
+fun BuildContentMain() {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) },
@@ -233,7 +237,7 @@ fun BuildContentMain(jsonFileString: String) {
             }
         }
     ) {
-        NavigationGraph(navController = navController, jsonFileString)
+        NavigationGraph(navController = navController)
     }
 }
 
@@ -242,6 +246,6 @@ fun BuildContentMain(jsonFileString: String) {
 @Composable
 fun DefaultPreview() {
     Project01_DANPTheme {
-        BuildContentMain("")
+        BuildContentMain()
     }
 }

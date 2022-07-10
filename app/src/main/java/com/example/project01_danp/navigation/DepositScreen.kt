@@ -51,7 +51,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
     val mContext = LocalContext.current
 
     val depositViewModel: DepositViewModel = viewModel(
-        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
 
     val purseViewModel: PurseViewModel = viewModel(
