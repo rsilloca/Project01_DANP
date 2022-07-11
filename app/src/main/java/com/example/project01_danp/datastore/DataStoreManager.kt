@@ -46,27 +46,27 @@ class DataStoreManager(private val context: Context) {
         }
 
 
-    suspend fun setFontFamily(newFontFamily: Int) {
+    suspend fun setFontFamily(newFontFamily: String) {
         context.dataStoreManager.edit { preferences ->
             preferences[FONT_FAMILY_KEY] = newFontFamily
         }
     }
 
-    val fontFamily: Flow<Int>
+    val fontFamily: Flow<String>
         get() = context.dataStoreManager.data.map { preferences ->
-            preferences[FONT_FAMILY_KEY] ?: 0
+            preferences[FONT_FAMILY_KEY] ?: "Nunito"
         }
 
 
-    suspend fun setTheme(newTheme: Int) {
+    suspend fun setTheme(newTheme: String) {
         context.dataStoreManager.edit { preferences ->
             preferences[THEME_KEY] = newTheme
         }
     }
 
-    val theme: Flow<Int>
+    val theme: Flow<String>
         get() = context.dataStoreManager.data.map { preferences ->
-            preferences[THEME_KEY] ?: 0
+            preferences[THEME_KEY] ?: "Light"
         }
 
 
@@ -78,7 +78,7 @@ class DataStoreManager(private val context: Context) {
 
     val language: Flow<String>
         get() = context.dataStoreManager.data.map { preferences ->
-            preferences[LANGUAGE_KEY] ?: "es"
+            preferences[LANGUAGE_KEY] ?: "Español"
         }
 
     companion object {
@@ -87,8 +87,8 @@ class DataStoreManager(private val context: Context) {
         private val USER_PIN_KEY = stringPreferencesKey("user_pin_key")
         private val USER_EMAIL_KEY = stringPreferencesKey("user_email_key")
         private val USER_NAME_KEY = stringPreferencesKey("user_name_key")
-        private val FONT_FAMILY_KEY = intPreferencesKey("font_family_key")
-        private val THEME_KEY = intPreferencesKey("theme_key")
+        private val FONT_FAMILY_KEY = stringPreferencesKey("font_family_key")
+        private val THEME_KEY = stringPreferencesKey("theme_key")
         private val LANGUAGE_KEY = stringPreferencesKey("language_key")
 
         private val Context.dataStoreManager by preferencesDataStore(
