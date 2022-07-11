@@ -45,5 +45,9 @@
     <string name="txt_input_nueva_clave">New Key</string>
     <string name="txt_input_repite_clave">Repeat key</string>
     <string name="txt_btn_actualizar_clave">UPDATE KEY</string>
+    <!-- CUSTOMIZE SCREEN -->
+    <string name="txt_input_font_family">Font Family</string>
+    <string name="txt_input_tema">Theme</string>
+    <string name="txt_input_idioma">Language</string>
 
 </resources>

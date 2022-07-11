@@ -20,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -35,24 +35,46 @@ import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
-import com.example.project01_danp.utils.getJsonDataFromAsset
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
-import kotlinx.coroutines.selects.select
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
     lateinit var dataStoreManager: DataStoreManager
+    lateinit var fontFamily: String
+    lateinit var theme: String
+    lateinit var language: String
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val purseViewModelFirebase = PurseViewModelFirebase()
         purseViewModelFirebase.getAllPurse()?.observe(this){
             purses2 = it!!
         }
         // val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
+
+        dataStoreManager = DataStoreManager(this)
+        lifecycleScope.launch {
+            dataStoreManager.fontFamily.collect { _font ->
+                fontFamily = _font
+            }
+        }
+        lifecycleScope.launch {
+            dataStoreManager.theme.collect { _theme ->
+                theme = _theme
+            }
+        }
+        lifecycleScope.launch {
+            dataStoreManager.language.collect { _language ->
+                language = _language
+            }
+        }
+
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme
@@ -61,7 +83,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     // if (jsonFileString != null) {
-                        BuildContentMain() // jsonFileString
+                        BuildContentMain(this) // jsonFileString
                     // }
                     // -> Start = Get token of the current device
                     FirebaseMessaging.getInstance().token
@@ -79,11 +101,26 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    fun updateCustomizeItems(
+        newFontFamily: String,
+        newTheme: String,
+        newLanguage: String
+    ) {
+        /* fontFamily = newFontFamily
+        theme = newTheme
+        language = newLanguage */
+        lifecycleScope.launch {
+            dataStoreManager.setFontFamily(newFontFamily)
+            dataStoreManager.setTheme(newTheme)
+            dataStoreManager.setLanguage(newLanguage)
+        }
+    }
 }
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController, activity: MainActivity) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
             HomeScreen(navController)
@@ -104,7 +141,10 @@ fun NavigationGraph(navController: NavHostController) {
             ProfileScreen(navController = navController)
         }
         composable("customize") {
-            CustomizeScreen(navController = navController)
+            CustomizeScreen(navController = navController, activity.fontFamily, activity.theme, activity.language) {
+                fontFamily: String, theme: String, language: String ->
+                activity.updateCustomizeItems(fontFamily, theme, language)
+            }
         }
     }
 }
@@ -210,7 +250,7 @@ fun BottomNavigation(navController: NavController) {
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun BuildContentMain() {
+fun BuildContentMain(activity: MainActivity) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) },
@@ -237,15 +277,15 @@ fun BuildContentMain() {
             }
         }
     ) {
-        NavigationGraph(navController = navController)
+        NavigationGraph(navController = navController, activity)
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.M)
+/* @RequiresApi(Build.VERSION_CODES.M)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     Project01_DANPTheme {
         BuildContentMain()
     }
-}
+} */
