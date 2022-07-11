@@ -9,7 +9,7 @@ class DepositRepository (private val depositDao: DepositDao) {
 
     val getAllDeposits: LiveData<List<Deposit>> = depositDao.getAllDeposits()
 
-    fun getDepositById(id: Int): Deposit? {
+    fun getDepositById(id: String): Deposit? {
         return depositDao.getDepositById(id)
     }
 

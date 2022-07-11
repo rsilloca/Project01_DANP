@@ -40,6 +40,7 @@ import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.fontPacifico
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -49,10 +50,6 @@ class LoginActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val purseViewModelFirebase = PurseViewModelFirebase()
-        purseViewModelFirebase.getAllPurse()?.observe(this){
-            purses2 = it!!
-        }
 
         /*
         lateinit var locale: Locale
@@ -75,6 +72,22 @@ class LoginActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     BuildContentLogin()
+                }
+            }
+        }
+    }
+
+    private fun loadPurses(){
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purses2 = mutableListOf()
+        purses2.clear()
+        val purseUserViewModelFirebase = PurseUserViewModelFirebase()
+        val uid = AuthService.firebaseGetCurrentUser()?.uid
+        purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid!!)?.observe(this){ data ->
+            purses2.clear()
+            data!!.forEach{ purses ->
+                purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
+                    purses2 += it
                 }
             }
         }
@@ -234,10 +247,12 @@ class LoginActivity : ComponentActivity() {
         val auth: Task<AuthResult> = AuthService.firebaseSingInWithEmail(email, password)
         auth.addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                loadPurses()
                 Toast.makeText(
                     mContext, "Authentication successful",
                     Toast.LENGTH_SHORT
                 ).show()
+                Thread.sleep(1_000)
                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
             } else {
                 Toast.makeText(mContext, "Wrong email or pass", Toast.LENGTH_SHORT).show()

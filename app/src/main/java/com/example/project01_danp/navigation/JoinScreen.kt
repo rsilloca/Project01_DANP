@@ -30,10 +30,13 @@ import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomOrange
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.utils.returnTo
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
@@ -103,7 +106,7 @@ fun JoinScreen(navController: NavHostController) {
                     createLocalPurse(purseViewModel, actualPurse)
                     createPurseUser(it.documentId!!)
                 }
-                mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                returnTo(navController)
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -120,10 +123,16 @@ fun JoinScreen(navController: NavHostController) {
 private fun createPurseUser(idPurse: String) {
     val purseUserViewModelFirebase = PurseUserViewModelFirebase()
     val auth = AuthService
-    purseUserViewModelFirebase.savePurseUserFirebase(
-        PurseUserFirebase(
-            auth.firebaseGetCurrentUser()!!.uid,
-            idPurse
-        )
-    )
+    FirebaseMessaging.getInstance().token
+        .addOnCompleteListener { task ->
+            val token = "\"${task.result}\""
+            purseUserViewModelFirebase.savePurseUserFirebase(
+                PurseUserFirebase(
+                    auth.firebaseGetCurrentUser()!!.uid,
+                    idPurse,
+                    token
+                )
+            )
+        }
+
 }

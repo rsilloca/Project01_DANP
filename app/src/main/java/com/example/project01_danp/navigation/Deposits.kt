@@ -42,6 +42,7 @@ import com.example.project01_danp.firebase.models.DepositFirebase
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.utils.convertDeposit
 import com.example.project01_danp.firebase.utils.convertPurse
+import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
@@ -58,10 +59,10 @@ import com.google.gson.Gson
 @Composable
 fun Deposits(navController: NavHostController, purseJson: String?) {
 
-    lateinit var purse: Purse
+    lateinit var purse: PurseFirebase
     if (purseJson != null) {
         val gson = Gson()
-        purse = gson.fromJson(purseJson, Purse::class.java)
+        purse = gson.fromJson(purseJson, PurseFirebase::class.java)
     }
 
     val deposits: List<Deposit>
@@ -72,7 +73,7 @@ fun Deposits(navController: NavHostController, purseJson: String?) {
             mContext.applicationContext as ApplicationDANP
         )
     )
-    depositViewModel.findDeposit(purse.documentId)
+    depositViewModel.findDeposit(purse.documentId!!)
     deposits = depositViewModel.searchResults.observeAsState(listOf()).value
     // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
 
@@ -139,7 +140,7 @@ fun Deposits(navController: NavHostController, purseJson: String?) {
                         mContext, "no internet",
                         Toast.LENGTH_SHORT
                     ).show()
-                    DepositCard(deposit, index, navController, purse)
+                    DepositCard(deposit, index, navController, convertPurseFD(purse))
                     index += 1
                 }
             }
@@ -265,6 +266,7 @@ fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, 
                                 purse.sub_total -= deposit.quantity
                                 purseViewModel.update(purse)
                                 depositViewModel.deleteDeposit(deposit)
+
                                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)

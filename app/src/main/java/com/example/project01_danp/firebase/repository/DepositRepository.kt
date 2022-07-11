@@ -6,6 +6,10 @@ import com.google.firebase.firestore.Query
 
 object DepositRepository : FirebaseRepository<DepositFirebase>(DepositFirebase::class.java) {
 
+    fun saveDeposit(depositFirebase: DepositFirebase, documentId: String){
+        this.collectionReference.document(documentId).set(depositFirebase)
+    }
+
     fun findByPurseId(idPurse: String): MultipleDocumentReferenceLiveData<DepositFirebase, out Query> {
         return MultipleDocumentReferenceLiveData(
             collectionReference.whereEqualTo(

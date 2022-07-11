@@ -31,19 +31,25 @@ import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertDeposit
+import com.example.project01_danp.firebase.utils.convertPurseFD
+import com.example.project01_danp.firebase.utils.getDocumentIdGenerated
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.utils.sendPushNotification
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
+import org.json.JSONObject
 import java.util.*
+
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
@@ -139,9 +145,9 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
             onClick = {
                 if(connectionStatus(mContext)) {
                     val auth = AuthService
-
+                    val id = getDocumentIdGenerated("DepositFirebase")
                     val newDeposit = Deposit(
-                        0,
+                        id,
                         purse.documentId!!,
                         auth.firebaseGetCurrentUser()!!.uid,
                         inputNameState.value.text.toInt(),
@@ -149,23 +155,19 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                         Date().toString(),
                         auth.firebaseGetCurrentUser()!!.email ?: "user@gmail.com"
                     )
-
-                    addDepositFirebase(newDeposit)
+                    addDepositFirebase(newDeposit, id)
                     depositViewModel.insert(newDeposit)
 
                     purse.sub_total += inputNameState.value.text.toInt()
-                    // Falta modificar
-                    purseViewModel.update(
-                        Purse(
-                            purse.documentId!!,
-                            purse.user_id,
-                            purse.name,
-                            purse.description,
-                            purse.icon_name,
-                            purse.sub_total
-                        )
-                    )
+                    purseViewModel.update(convertPurseFD(purse))
                     updatePurseFirebase(purse)
+
+                    val list = listOf(
+                        "\"cXcG5mrdTl-RYSOHj4yC7Q:APA91bGF6RwuALTnRMeZgS973zbY_n2dfuttbBlNMWrrKwJsp6XBDw6qoQng6gSJde9088UvmOIf5bUseevCLH5h8wKZwlA-eUaxEKxanouSR5dh0Xh-7mjSpCLsGcFXQUVlOM56Q3yM\"",
+                        "\"fFPXu83CQDGwtet-Tj8BZJ:APA91bG1xNqUf9RqQxI9R83uEzxsUf7eF-29hmX64RxUgJEmiTUPsov5f3NZmsFRSjs_tQTLdtYVnJ7K6OEWkHZTW3LuvVvNOkeBNxwFdq2wPVbwwJa0DP65JPLpIqA910JLEU05Tt_g\"")
+
+                    sendPushNotification(mContext, purse.name, newDeposit.message, newDeposit.quantity, list)
+
                 }else {
                     Log.e("TAG", "No internet connection")
                 }
@@ -189,9 +191,10 @@ private fun updatePurseFirebase(purse: PurseFirebase) {
     )
 }
 
-private fun addDepositFirebase(deposit: Deposit) {
+private fun addDepositFirebase(deposit: Deposit, documentID: String) {
     val viewModel = DepositViewModelFirebase()
     viewModel.saveDepositFirebase(
-        convertDeposit(deposit)
+        convertDeposit(deposit),
+        documentID
     )
 }

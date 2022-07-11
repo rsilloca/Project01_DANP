@@ -19,10 +19,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -36,6 +39,8 @@ import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.utils.getJsonDataFromAsset
+import com.example.project01_danp.utils.returnTo
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -48,10 +53,7 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val purseViewModelFirebase = PurseViewModelFirebase()
-        purseViewModelFirebase.getAllPurse()?.observe(this){
-            purses2 = it!!
-        }
+        loadPurses()
         // val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
         setContent {
             Project01_DANPTheme {
@@ -63,18 +65,22 @@ class MainActivity : ComponentActivity() {
                     // if (jsonFileString != null) {
                         BuildContentMain() // jsonFileString
                     // }
-                    // -> Start = Get token of the current device
-                    FirebaseMessaging.getInstance().token
-                        .addOnCompleteListener(OnCompleteListener { task ->
-                            if (!task.isSuccessful) {
-                                Log.e("FCM Notify", "Fetching FCM registration token failed", task.exception)
-                                return@OnCompleteListener
-                            }
-                            val token: String? = task.result
-                            // Use this token to send notification to this device in FCM
-                            Log.e("FCM Token", token, task.exception)
-                        })
-                    // -> End
+                }
+            }
+        }
+    }
+
+    private fun loadPurses(){
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purses2 = mutableListOf()
+        purses2.clear()
+        val purseUserViewModelFirebase = PurseUserViewModelFirebase()
+        val uid = AuthService.firebaseGetCurrentUser()?.uid
+        purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid!!)?.observe(this){ data ->
+            purses2.clear()
+            data!!.forEach{ purses ->
+                purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
+                    purses2 += it
                 }
             }
         }

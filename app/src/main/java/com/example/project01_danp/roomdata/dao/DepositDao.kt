@@ -10,7 +10,7 @@ abstract class DepositDao {
     abstract fun getAllDeposits(): LiveData<List<Deposit>>
 
     @Query("SELECT * FROM deposit WHERE documentId = :id")
-    abstract fun getDepositById(id: Int): Deposit?
+    abstract fun getDepositById(id: String): Deposit?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertDeposit(deposit: Deposit)
