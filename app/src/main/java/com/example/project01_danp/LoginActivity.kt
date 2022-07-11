@@ -70,12 +70,25 @@ class LoginActivity : ComponentActivity() {
                 }
             }
         }
-
+        var email = ""
+        var password = ""
         lifecycleScope.launch {
             dataStoreManager.userEmail.collect {
                 Log.e("Empanada", it)
                 if (it != "") {
-                    goToMain()
+                    email = it
+                }
+            }
+        }
+        lifecycleScope.launch{
+            dataStoreManager.userPIN.collect {
+                if(it != ""){
+                    password = it
+                }
+                if(email.isNotEmpty() && password.isNotEmpty()) {
+                    login(email, password)
+                }else{
+                    Log.e("TAG", "--> $email$password")
                 }
             }
         }

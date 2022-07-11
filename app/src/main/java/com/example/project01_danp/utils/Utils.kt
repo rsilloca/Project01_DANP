@@ -55,7 +55,7 @@ fun sendPushNotification(mContext:Context, name: String, msg: String, quantity: 
     val url = "https://colaboremospe-service.herokuapp.com/send/"
     val json = "{\n" +
             "\"title\": \"Nuevo deposito a la alcancia: $name !!\", \n" +
-            "\"msg\": \"$msg \n Total depositado: S/ $quantity \", \n" +
+            "\"msg\": \"$msg \nTotal depositado: S/ $quantity \", \n" +
             "\"tokens\": \n" +
             "$list" +
             "\n}"

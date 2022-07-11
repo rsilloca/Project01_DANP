@@ -36,6 +36,7 @@ import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
+import com.example.project01_danp.viewmodel.firebase.UserViewModelFirebase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -49,6 +50,11 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val userViewModel = UserViewModelFirebase()
+        userViewModel.getCurrentUserData()?.observe(this) {
+            user = it
+        }
         loadPurses()
         // val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
 
@@ -90,11 +96,13 @@ class MainActivity : ComponentActivity() {
         purses2.clear()
         val purseUserViewModelFirebase = PurseUserViewModelFirebase()
         val uid = AuthService.firebaseGetCurrentUser()?.uid
-        purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid!!)?.observe(this){ data ->
-            purses2.clear()
-            data!!.forEach{ purses ->
-                purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
-                    purses2 += it
+        if(uid != null){
+            purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid)?.observe(this){ data ->
+                purses2.clear()
+                data!!.forEach{ purses ->
+                    purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
+                        purses2 += it
+                    }
                 }
             }
         }

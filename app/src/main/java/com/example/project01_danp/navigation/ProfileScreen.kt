@@ -24,11 +24,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
+import com.example.project01_danp.firebase.models.User
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.viewmodel.firebase.UserViewModelFirebase
 
+lateinit var user: User
 @Composable
 fun ProfileScreen(navController: NavHostController) {
     val mContext = LocalContext.current
+    val userViewModel = UserViewModelFirebase()
 
     Column {
         Box {
@@ -43,7 +48,7 @@ fun ProfileScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text =mContext.getString(R.string.txt_mi_perfil),
+                    text = mContext.getString(R.string.txt_mi_perfil),
                     color = Color.White,
                     fontSize = 14.sp, //36 2
                     fontWeight = FontWeight.W800,
@@ -52,10 +57,10 @@ fun ProfileScreen(navController: NavHostController) {
                     )
                 Row {
                     Text(
-                        text = "Usuario Usuario Usuario",
+                        text = user.fullname,
                         color = Color.White,
                         fontSize = 22.sp, //32
-                        fontWeight = FontWeight.W700 ,
+                        fontWeight = FontWeight.W700,
                         textAlign = TextAlign.Center
                     )
                 }
@@ -76,15 +81,16 @@ fun ProfileScreen(navController: NavHostController) {
                 alignment = Alignment.Center,
             )
 
-            val inputNameState = remember { mutableStateOf(TextFieldValue("Usuario Usuario Usuario")) }
+            val inputNameState =
+                remember { mutableStateOf(TextFieldValue(user.fullname)) }
             OutlinedTextField(
                 value = inputNameState.value,
                 onValueChange = { inputNameState.value = it },
-                label = { Text(text = mContext.getString(R.string.txt_input_nombre_apellidos )) },
+                label = { Text(text = mContext.getString(R.string.txt_input_nombre_apellidos)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Default.Person ,
+                        imageVector = Icons.Default.Person,
                         contentDescription = null
                     )
                 },
@@ -92,11 +98,11 @@ fun ProfileScreen(navController: NavHostController) {
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
             )
-            val inputPhoneState = remember { mutableStateOf(TextFieldValue("ejemplo@gmail.com")) }
+            val inputPhoneState = remember { mutableStateOf(TextFieldValue(user.email)) }
             OutlinedTextField(
                 value = inputPhoneState.value,
                 onValueChange = { inputPhoneState.value = it },
-                label = { Text(text = mContext.getString(R.string.txt_input_correo_electronico )) },
+                label = { Text(text = mContext.getString(R.string.txt_input_correo_electronico)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 leadingIcon = {
                     Icon(
@@ -112,7 +118,9 @@ fun ProfileScreen(navController: NavHostController) {
 
             Button(
                 onClick = {
-
+                    user.fullname = inputNameState.value.text
+                    user.email = inputPhoneState.value.text
+                    userViewModel.updateUser(user)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -120,7 +128,7 @@ fun ProfileScreen(navController: NavHostController) {
                     .height(40.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
             ) {
-                Text(text = mContext.getString(R.string.txt_btn_guardar_cambios ) )
+                Text(text = mContext.getString(R.string.txt_btn_guardar_cambios))
             }
 
 
@@ -138,7 +146,7 @@ fun ProfileScreen(navController: NavHostController) {
                     modifier = Modifier.width(40.dp)
                 )
                 Text(
-                    text = mContext.getString(R.string.txt_actualizar_ccontrasena ),
+                    text = mContext.getString(R.string.txt_actualizar_ccontrasena),
                     fontSize = 12.sp,
                     color = CustomViolet
                 )
@@ -150,12 +158,11 @@ fun ProfileScreen(navController: NavHostController) {
             }
 
 
-
             val inputPwdState = remember { mutableStateOf(TextFieldValue()) }
             OutlinedTextField(
                 value = inputPwdState.value,
                 onValueChange = { inputPwdState.value = it },
-                label = { Text(text = mContext.getString(R.string.txt_input_nueva_clave )) },
+                label = { Text(text = mContext.getString(R.string.txt_input_nueva_clave)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 leadingIcon = {
                     Icon(
@@ -163,15 +170,16 @@ fun ProfileScreen(navController: NavHostController) {
                         contentDescription = null
                     )
                 },
-                modifier = Modifier.fillMaxWidth()
-                           .padding(top= 8.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp)
             )
 
             val inputPwdRepeatState = remember { mutableStateOf(TextFieldValue()) }
             OutlinedTextField(
-                value = inputPwdRepeatState .value,
-                onValueChange = { inputPwdRepeatState .value = it },
-                label = { Text(text = mContext.getString(R.string.txt_input_repite_clave) ) },
+                value = inputPwdRepeatState.value,
+                onValueChange = { inputPwdRepeatState.value = it },
+                label = { Text(text = mContext.getString(R.string.txt_input_repite_clave)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 leadingIcon = {
                     Icon(
@@ -179,14 +187,20 @@ fun ProfileScreen(navController: NavHostController) {
                         contentDescription = null
                     )
                 },
-                modifier = Modifier.fillMaxWidth()
-                           .padding(top= 15.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 15.dp)
             )
 
 
             Button(
                 onClick = {
-
+                    if (inputPwdState.value.text == inputPwdRepeatState.value.text) {
+                        AuthService.firebaseReauthenticationWithCredential(
+                            user.email,
+                            inputPwdRepeatState.value.text
+                        )
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -194,7 +208,7 @@ fun ProfileScreen(navController: NavHostController) {
                     .height(40.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
             ) {
-                Text(text = mContext.getString(R.string.txt_btn_actualizar_clave ) )
+                Text(text = mContext.getString(R.string.txt_btn_actualizar_clave))
             }
 
         }
