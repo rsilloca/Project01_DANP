@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
-import com.example.project01_danp.LoginActivity
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.Receive

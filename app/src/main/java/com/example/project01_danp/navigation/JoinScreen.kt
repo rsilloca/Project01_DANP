@@ -1,7 +1,6 @@
 package com.example.project01_danp.navigation
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseUserFirebase
 import com.example.project01_danp.firebase.service.AuthService
@@ -35,7 +33,6 @@ import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
 @SuppressLint("CoroutineCreationDuringComposition")

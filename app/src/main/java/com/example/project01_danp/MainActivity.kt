@@ -3,7 +3,6 @@ package com.example.project01_danp
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,11 +18,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -37,12 +34,8 @@ import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
-import com.example.project01_danp.utils.getJsonDataFromAsset
-import com.example.project01_danp.utils.returnTo
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

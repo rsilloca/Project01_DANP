@@ -1,16 +1,13 @@
 package com.example.project01_danp.navigation
 
-import android.content.Intent
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,16 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
-import com.example.project01_danp.firebase.service.AuthService
-import com.example.project01_danp.firebase.utils.convertPurse
-import com.example.project01_danp.roomdata.model.Deposit
-import com.example.project01_danp.roomdata.model.Purse
-import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
-import com.example.project01_danp.utils.connectionStatus
-import java.util.*
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {

@@ -1,7 +1,5 @@
 package com.example.project01_danp.navigation
 
-import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -30,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.firebase.models.PurseUserFirebase
@@ -47,10 +44,6 @@ import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 
 @RequiresApi(Build.VERSION_CODES.M)

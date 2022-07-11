@@ -13,7 +13,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -38,17 +37,11 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
-import com.example.project01_danp.firebase.models.DepositFirebase
 import com.example.project01_danp.firebase.models.PurseFirebase
-import com.example.project01_danp.firebase.utils.convertDeposit
-import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
-import com.example.project01_danp.utils.connectionStatus
-import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
-import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel

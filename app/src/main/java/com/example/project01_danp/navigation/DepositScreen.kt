@@ -35,19 +35,16 @@ import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.firebase.utils.getDocumentIdGenerated
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
-import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.utils.sendPushNotification
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
-import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
-import org.json.JSONObject
 import java.util.*
 
 
