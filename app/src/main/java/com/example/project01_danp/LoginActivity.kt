@@ -44,7 +44,6 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.util.*
 
 class LoginActivity : ComponentActivity() {
 
@@ -56,31 +55,19 @@ class LoginActivity : ComponentActivity() {
 
         dataStoreManager = DataStoreManager(this)
 
-        lifecycleScope.launch {
-            Log.e("ñe?", "Loading lifecycle")
-            dataStoreManager.language.collect {
-                Log.e("Lamguageeee", it)
-                if (it != "") {
-                    var locale = Locale(it)
-                    var res = resources
-                    var displayMetrics = res.displayMetrics
-                    var conf = res.configuration
-                    conf.locale = locale
-                    res.updateConfiguration(conf, displayMetrics)
-                }
-            }
-        }
-        var email = ""
-        var password = ""
+        // var email = ""
+        // var password = ""
         lifecycleScope.launch {
             dataStoreManager.userEmail.collect {
                 Log.e("Empanada", it)
                 if (it != "") {
-                    email = it
+                    Log.e("con user", "asvshdgs")
+                    // email = it
+                    goToMain()
                 }
             }
         }
-        lifecycleScope.launch{
+        /* lifecycleScope.launch{
             dataStoreManager.userPIN.collect {
                 if(it != ""){
                     password = it
@@ -91,7 +78,7 @@ class LoginActivity : ComponentActivity() {
                     Log.e("TAG", "--> $email$password")
                 }
             }
-        }
+        } */
 
         // var refresh = Intent(this, LoginActivity::class.java)
         // startActivity((refresh))

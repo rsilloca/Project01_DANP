@@ -12,13 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
-import com.example.project01_danp.ui.theme.CustomViolet
+import com.example.project01_danp.ui.theme.*
 
 @Composable
 fun CustomizeScreen(
@@ -45,7 +47,7 @@ fun CustomizeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = mContext.getString(R.string.txt_alcancia_lista),
+            text = mContext.getString(R.string.txt_personaliza_tu_app),
             fontWeight = FontWeight.Bold,
             color = if (isSystemInDarkTheme()) Color.White else Color.Black,
             textAlign = TextAlign.Center,
@@ -83,7 +85,7 @@ fun CustomizeScreen(
                 .height(40.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = CustomViolet)
         ) {
-            Text(text = mContext.getString(R.string.txt_btn_crear_alcancia))
+            Text(text = mContext.getString(R.string.txt_btn_aplicar_cambios))
         }
     }
 }
@@ -93,7 +95,7 @@ fun CustomizeScreen(
 fun fontFamilyDropdown(current: String, changeValue: (fontFamily: String) -> Unit) {
     val mContext = LocalContext.current
 
-    val fontFamilyOptions = listOf("Nunito", "Roboto", "Edu")
+    val fontFamilyOptions = listOf("Nunito", "Roboto", "Edu", "Dancing")
     var fontFamilyExpanded by remember { mutableStateOf(false) }
     var fontFamilySelected by remember { mutableStateOf(current) }
 
@@ -138,7 +140,7 @@ fun fontFamilyDropdown(current: String, changeValue: (fontFamily: String) -> Uni
                         changeValue(selectionOption)
                     }
                 ) {
-                    Text(text = selectionOption)
+                    Text(text = selectionOption, fontFamily = getFontFamily(selectionOption))
                 }
             }
         }
@@ -255,5 +257,14 @@ fun languageDropdown(current: String, changeValue: (language: String) -> Unit) {
                 }
             }
         }
+    }
+}
+
+fun getFontFamily(nameFont: String): FontFamily {
+    return when(nameFont) {
+        "Roboto" -> fontRoboto
+        "Edu" -> fontEdu
+        "Dancing" -> fontDancing
+        else -> fontNunito
     }
 }
