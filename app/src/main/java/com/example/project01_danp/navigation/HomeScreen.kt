@@ -34,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -46,6 +47,7 @@ import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomRed
+import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase

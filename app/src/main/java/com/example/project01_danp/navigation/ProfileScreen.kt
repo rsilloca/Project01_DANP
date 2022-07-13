@@ -12,6 +12,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,22 +26,35 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertPurse
+import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.viewmodel.room.PurseViewModel
+import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import java.util.*
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+    /*
+    val profile: User
+*/
     val mContext = LocalContext.current
+    /*
+        val purseViewModel: UserViewModel = viewModel(
+        factory = UserViewModelFactory(mContext.applicationContext as ApplicationDANP)
+    )
 
+    user = purseViewModel.getProfiles.observeAsState.value
+    */
     Column {
         Box {
             Image(
