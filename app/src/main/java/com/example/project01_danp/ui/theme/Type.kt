@@ -12,6 +12,22 @@ val fontPacifico = FontFamily(
     Font(R.font.pacifico_regular)
 )
 
+val fontRoboto = FontFamily(
+    Font(R.font.roboto_regular)
+)
+
+val fontEdu = FontFamily(
+    Font(R.font.edu_regular)
+)
+
+val fontNunito = FontFamily(
+    Font(R.font.nunito_regular)
+)
+
+val fontDancing = FontFamily(
+    Font(R.font.dancing_regular)
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(

@@ -1,5 +1,6 @@
 package com.example.project01_danp.ui.theme
 
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -7,6 +8,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import androidx.compose.material.Typography
 
 private val DarkColorPalette = darkColors(
     primary = CustomGreen, // Purple200,
@@ -32,6 +34,7 @@ private val LightColorPalette = lightColors(
 @Composable
 fun Project01_DANPTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    fontFamily: FontFamily = fontPacifico,
     content: @Composable () -> Unit
 ) {
     val systemUiController = rememberSystemUiController()
@@ -50,10 +53,16 @@ fun Project01_DANPTheme(
         LightColorPalette
     }
 
+    val typography = getTypography(fontFamily)
+
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = typography,
         shapes = Shapes,
         content = content
     )
 }
+
+fun getTypography(fontFamily: FontFamily) = Typography(
+    defaultFontFamily = fontFamily
+)
