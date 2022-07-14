@@ -25,8 +25,19 @@ class PurseUserViewModelFirebase:ViewModel() {
         return allLiveDatePurseUserRepository
     }
 
+    fun getAllFirebasePurseUserByPurseId(idPurse: String): MultipleDocumentReferenceLiveData<PurseUserFirebase, out Query>?{
+        if(allLiveDatePurseUserRepository == null) {
+            allLiveDatePurseUserRepository = purseUserRepository.findPurseUserByPurse(idPurse)
+        }
+        return allLiveDatePurseUserRepository
+    }
+
     fun savePurseUserFirebase(purseUserFirebase: PurseUserFirebase){
         purseUserRepository.save(purseUserFirebase)
+    }
+
+    fun deletePurseUserFirebase(purseUserFirebase: PurseUserFirebase){
+        purseUserRepository.delete(purseUserFirebase)
     }
 
 }

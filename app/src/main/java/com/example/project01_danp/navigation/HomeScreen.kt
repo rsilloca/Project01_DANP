@@ -41,6 +41,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
+import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertPurse
 import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
@@ -50,6 +51,7 @@ import com.example.project01_danp.ui.theme.CustomRed
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
@@ -57,12 +59,13 @@ import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
 import com.google.gson.Gson
 
-lateinit var purses2: List<PurseFirebase>
+lateinit var purses2: MutableList<PurseFirebase>
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun HomeScreen(navController: NavHostController) {
     val purses: List<Purse>
+
 
     val mContext = LocalContext.current
     val purseViewModel: PurseViewModel = viewModel(
@@ -84,7 +87,7 @@ fun HomeScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text =mContext.getString(R.string.txt_hola_usuario),
+                    text = mContext.getString(R.string.txt_hola_usuario),
                     color = Color.White,
                     fontSize = 22.sp, //36 2
                     fontWeight = FontWeight.Bold,
@@ -141,13 +144,12 @@ fun HomeScreen(navController: NavHostController) {
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                if(connectionStatus(mContext)) {
-                    message(mContext, "You are online now.")
+                if (connectionStatus(mContext)) {
                     items(purses2) { purse ->
                         PurseCard(purse, index, navController)
                         index += 1
                     }
-                } else{
+                } else {
                     message(mContext, "No internet connection.")
                     items(purses) { purse ->
                         PurseCard(convertPurse(purse), index, navController)
@@ -171,11 +173,13 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
         factory = PurseViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
     val depositViewModel: DepositViewModel = viewModel(
-        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP, "")
+        factory = DepositViewModelFactory(mContext.applicationContext as ApplicationDANP)
     )
 
     val purseViewModelFirebase = PurseViewModelFirebase()
     val depositViewModelFirebase = DepositViewModelFirebase()
+
+    val purseUserViewModelFirebase = PurseUserViewModelFirebase()
 
     var expandedState by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(
@@ -299,12 +303,23 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                                 purseViewModel.delete(convertPurseFD(purse))
 
                                 purseViewModelFirebase.deletePurse(purse)
-                                depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)?.observeForever {
+                                depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)
+                                    ?.observeForever {
+                                        if (it!!.isNotEmpty()) {
+                                            depositViewModelFirebase.deleteAllByPurse(it)
+                                        }
+                                    }
+
+                                purseUserViewModelFirebase.getAllFirebasePurseUserByBoth(
+                                    purse.documentId!!,
+                                    AuthService.firebaseGetCurrentUser()!!.uid
+                                )?.observeForever {
                                     if (it!!.isNotEmpty()) {
-                                        depositViewModelFirebase.deleteAllByPurse(it)
+                                        purseUserViewModelFirebase.deletePurseUserFirebase(it[0])
                                     }
                                 }
 
+                                purses2.remove(purse)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
                         ) {
@@ -381,7 +396,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
 }
 
 
-fun message(mContext:Context, msg: String){
+fun message(mContext: Context, msg: String) {
     Toast.makeText(
         mContext, msg,
         Toast.LENGTH_SHORT

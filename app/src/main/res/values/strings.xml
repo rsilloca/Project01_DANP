@@ -44,7 +44,9 @@
     <string name="txt_input_nueva_clave">Nueva Clave</string>
     <string name="txt_input_repite_clave">Repite la clave</string>
     <string name="txt_btn_actualizar_clave">ACTUALIZAR CLAVE</string>
-
-
+    <!-- CUSTOMIZE SCREEN -->
+    <string name="txt_input_font_family">Fuente de texto</string>
+    <string name="txt_input_tema">Tema</string>
+    <string name="txt_input_idioma">Idioma</string>
 
 </resources>

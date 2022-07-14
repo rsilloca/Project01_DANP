@@ -1,6 +1,6 @@
 package com.example.project01_danp.firebase.models
 
-class UserFirebase(
+class User(
 
     var fullname: String,
     var email: String,

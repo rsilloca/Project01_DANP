@@ -13,7 +13,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -38,16 +37,11 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
-import com.example.project01_danp.firebase.models.DepositFirebase
 import com.example.project01_danp.firebase.models.PurseFirebase
-import com.example.project01_danp.firebase.utils.convertDeposit
-import com.example.project01_danp.firebase.utils.convertPurse
+import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
-import com.example.project01_danp.utils.connectionStatus
-import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
-import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -56,12 +50,12 @@ import com.google.gson.Gson
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun Deposits(navController: NavHostController, jsonFileString: String, purseJson: String?) {
+fun Deposits(navController: NavHostController, purseJson: String?) {
 
-    lateinit var purse: Purse
+    lateinit var purse: PurseFirebase
     if (purseJson != null) {
         val gson = Gson()
-        purse = gson.fromJson(purseJson, Purse::class.java)
+        purse = gson.fromJson(purseJson, PurseFirebase::class.java)
     }
 
     val deposits: List<Deposit>
@@ -69,11 +63,10 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(
-            mContext.applicationContext as ApplicationDANP,
-            jsonFileString
+            mContext.applicationContext as ApplicationDANP
         )
     )
-    depositViewModel.findDeposit(purse.documentId)
+    depositViewModel.findDeposit(purse.documentId!!)
     deposits = depositViewModel.searchResults.observeAsState(listOf()).value
     // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
 
@@ -140,7 +133,7 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
                         mContext, "no internet",
                         Toast.LENGTH_SHORT
                     ).show()
-                    DepositCard(deposit, index, navController, purse, jsonFileString)
+                    DepositCard(deposit, index, navController, convertPurseFD(purse))
                     index += 1
                 }
             }
@@ -151,12 +144,11 @@ fun Deposits(navController: NavHostController, jsonFileString: String, purseJson
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse: Purse, jsonFileString: String) {
+fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, purse: Purse) {
     val mContext = LocalContext.current
     val depositViewModel: DepositViewModel = viewModel(
         factory = DepositViewModelFactory(
-            mContext.applicationContext as ApplicationDANP,
-            jsonFileString
+            mContext.applicationContext as ApplicationDANP
         )
     )
     val purseViewModel: PurseViewModel = viewModel(
@@ -267,6 +259,7 @@ fun DepositCard(deposit: Deposit, index: Int, navController: NavHostController, 
                                 purse.sub_total -= deposit.quantity
                                 purseViewModel.update(purse)
                                 depositViewModel.deleteDeposit(deposit)
+
                                 mContext.startActivity(Intent(mContext, MainActivity::class.java))
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)

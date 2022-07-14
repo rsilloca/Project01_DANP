@@ -14,7 +14,7 @@ import com.example.project01_danp.services.DepositService
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 
-class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) : AndroidViewModel(applicationDANP) {
+class DepositViewModel(applicationDANP: ApplicationDANP) : AndroidViewModel(applicationDANP) {
     val searchResults = MutableLiveData<List<Deposit>>()
     private val getAllDeposit: LiveData<List<Deposit>>
     private val depositRepository: DepositRepository
@@ -23,8 +23,8 @@ class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) :
 
     /* ... */
 
-    fun paging(depositsJSON:List<Deposit>): Flow<PagingData<Deposit>> {
-        val backendService = DepositService(depositsJSON)
+    fun paging(deposits: List<Deposit>): Flow<PagingData<Deposit>> {
+        val backendService = DepositService(deposits)
 
         val deposits: Flow<PagingData<Deposit>> = Pager(
             PagingConfig(pageSize = 10, enablePlaceholders = false, prefetchDistance = 3)
@@ -57,11 +57,11 @@ class DepositViewModel(applicationDANP: ApplicationDANP, depositsJSON: String) :
 
 }
 
-class DepositViewModelFactory(private val application: ApplicationDANP, private val depositsJSON: String) : ViewModelProvider.Factory {
+class DepositViewModelFactory(private val application: ApplicationDANP) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DepositViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return DepositViewModel(application, depositsJSON) as T
+            return DepositViewModel(application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

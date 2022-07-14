@@ -1,8 +1,5 @@
 package com.example.project01_danp
 
-import android.annotation.SuppressLint
-import android.app.ActivityManager
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +8,6 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -34,38 +30,71 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
+import com.example.project01_danp.datastore.DataStoreManager
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.navigation.purses2
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.ui.theme.fontPacifico
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.*
 
 class LoginActivity : ComponentActivity() {
+
+    private lateinit var dataStoreManager: DataStoreManager
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val purseViewModelFirebase = PurseViewModelFirebase()
-        purseViewModelFirebase.getAllPurse()?.observe(this){
-            purses2 = it!!
+
+        dataStoreManager = DataStoreManager(this)
+
+        lifecycleScope.launch {
+            Log.e("ñe?", "Loading lifecycle")
+            dataStoreManager.language.collect {
+                Log.e("Lamguageeee", it)
+                if (it != "") {
+                    var locale = Locale(it)
+                    var res = resources
+                    var displayMetrics = res.displayMetrics
+                    var conf = res.configuration
+                    conf.locale = locale
+                    res.updateConfiguration(conf, displayMetrics)
+                }
+            }
+        }
+        var email = ""
+        var password = ""
+        lifecycleScope.launch {
+            dataStoreManager.userEmail.collect {
+                Log.e("Empanada", it)
+                if (it != "") {
+                    email = it
+                }
+            }
+        }
+        lifecycleScope.launch{
+            dataStoreManager.userPIN.collect {
+                if(it != ""){
+                    password = it
+                }
+                if(email.isNotEmpty() && password.isNotEmpty()) {
+                    login(email, password)
+                }else{
+                    Log.e("TAG", "--> $email$password")
+                }
+            }
         }
 
-        /*
-        lateinit var locale: Locale
-        locale= Locale("en")
-        var res=resources
-        var dm=res.displayMetrics
-        var conf=res.configuration
-        conf.locale=locale
-        res.updateConfiguration(conf,dm)
-        //var refresh= Intent(LoginActivityt@this,LoginActivity::class.java )
-        //startActivity((refresh))
-
-         */
+        // var refresh = Intent(this, LoginActivity::class.java)
+        // startActivity((refresh))
 
         setContent {
             Project01_DANPTheme {
@@ -75,6 +104,22 @@ class LoginActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     BuildContentLogin()
+                }
+            }
+        }
+    }
+
+    private fun loadPurses(){
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purses2 = mutableListOf()
+        purses2.clear()
+        val purseUserViewModelFirebase = PurseUserViewModelFirebase()
+        val uid = AuthService.firebaseGetCurrentUser()?.uid
+        purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid!!)?.observe(this){ data ->
+            purses2.clear()
+            data!!.forEach{ purses ->
+                purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
+                    purses2 += it
                 }
             }
         }
@@ -141,7 +186,7 @@ class LoginActivity : ComponentActivity() {
                     OutlinedTextField(
                         value = inputEmailState.value,
                         onValueChange = { inputEmailState.value = it },
-                        label = { Text(text = getString(R.string.txt_input_correo_electronico )) },
+                        label = { Text(text = getString(R.string.txt_input_correo_electronico)) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                         leadingIcon = {
                             Icon(
@@ -180,8 +225,7 @@ class LoginActivity : ComponentActivity() {
                             } else {
                                 login(
                                     inputEmailState.value.text,
-                                    inputPwdState.value.text,
-                                    mContext
+                                    inputPwdState.value.text
                                 )
                             }
                         },
@@ -229,20 +273,31 @@ class LoginActivity : ComponentActivity() {
         }
     }
 
-
-    private fun login(email: String, password: String, mContext: Context) {
+    private fun login(email: String, password: String) {
         val auth: Task<AuthResult> = AuthService.firebaseSingInWithEmail(email, password)
         auth.addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                loadPurses()
                 Toast.makeText(
-                    mContext, "Authentication successful",
+                    this, "Authentication successful",
                     Toast.LENGTH_SHORT
                 ).show()
-                mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                lifecycleScope.launch {
+                    dataStoreManager.setUserPIN(password)
+                }
+                lifecycleScope.launch {
+                    dataStoreManager.setUserEmail(email)
+                }
+                Thread.sleep(1_000)
+                goToMain()
             } else {
-                Toast.makeText(mContext, "Wrong email or pass", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Wrong email or pass", Toast.LENGTH_SHORT).show()
 //            mContext.startActivity(Intent(mContext, LoginActivity::class.java))
             }
         }
+    }
+
+    private fun goToMain() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

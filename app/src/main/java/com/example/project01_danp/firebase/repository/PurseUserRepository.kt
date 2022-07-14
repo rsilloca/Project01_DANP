@@ -20,4 +20,9 @@ object PurseUserRepository: FirebaseRepository<PurseUserFirebase>(PurseUserFireb
         ), entityClass)
     }
 
+    fun findPurseUserByPurse(idPurse: String) : MultipleDocumentReferenceLiveData<PurseUserFirebase, out Query> {
+        return MultipleDocumentReferenceLiveData(collectionReference.whereEqualTo(
+            "purse_id", idPurse
+        ), entityClass)
+    }
 }

@@ -20,8 +20,8 @@ class DepositViewModelFirebase: ViewModel() {
         return allLiveDataDepositFirebase
     }
 
-    fun saveDepositFirebase(depositFirebase: DepositFirebase) {
-        depositFirebaseRepository.save(depositFirebase)
+    fun saveDepositFirebase(depositFirebase: DepositFirebase, documentId: String) {
+        depositFirebaseRepository.saveDeposit(depositFirebase, documentId)
     }
 
     fun updateDepositFirebase(depositFirebase: DepositFirebase) {

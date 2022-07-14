@@ -3,7 +3,6 @@ package com.example.project01_danp
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,35 +19,62 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.project01_danp.datastore.DataStoreManager
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.navigation.*
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.ui.theme.Project01_DANPTheme
-import com.example.project01_danp.utils.getJsonDataFromAsset
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
-import kotlinx.coroutines.selects.select
+import com.example.project01_danp.viewmodel.firebase.UserViewModelFirebase
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var dataStoreManager: DataStoreManager
+    lateinit var fontFamily: String
+    lateinit var theme: String
+    lateinit var language: String
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val purseViewModelFirebase = PurseViewModelFirebase()
-        purseViewModelFirebase.getAllPurse()?.observe(this){
-            purses2 = it!!
+
+        val userViewModel = UserViewModelFirebase()
+        userViewModel.getCurrentUserData()?.observe(this) {
+            user = it
         }
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
+        loadPurses()
+        // val jsonFileString = getJsonDataFromAsset(applicationContext, "deposits.json")
+
+        dataStoreManager = DataStoreManager(this)
+        lifecycleScope.launch {
+            dataStoreManager.fontFamily.collect { _font ->
+                fontFamily = _font
+            }
+        }
+        lifecycleScope.launch {
+            dataStoreManager.theme.collect { _theme ->
+                theme = _theme
+            }
+        }
+        lifecycleScope.launch {
+            dataStoreManager.language.collect { _language ->
+                language = _language
+            }
+        }
+
         setContent {
             Project01_DANPTheme {
                 // A surface container using the 'background' color from the theme
@@ -56,30 +82,51 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    if (jsonFileString != null) {
-                        BuildContentMain(jsonFileString)
-                    }
-                    // -> Start = Get token of the current device
-                    FirebaseMessaging.getInstance().token
-                        .addOnCompleteListener(OnCompleteListener { task ->
-                            if (!task.isSuccessful) {
-                                Log.e("FCM Notify", "Fetching FCM registration token failed", task.exception)
-                                return@OnCompleteListener
-                            }
-                            val token: String? = task.result
-                            // Use this token to send notification to this device in FCM
-                            Log.e("FCM Token", token, task.exception)
-                        })
-                    // -> End
+                    // if (jsonFileString != null) {
+                        BuildContentMain(this) // jsonFileString
+                    // }
                 }
             }
+        }
+    }
+
+    private fun loadPurses(){
+        val purseViewModelFirebase = PurseViewModelFirebase()
+        purses2 = mutableListOf()
+        purses2.clear()
+        val purseUserViewModelFirebase = PurseUserViewModelFirebase()
+        val uid = AuthService.firebaseGetCurrentUser()?.uid
+        if(uid != null){
+            purseUserViewModelFirebase.getAllFirebasePurseUserByUserId(uid)?.observe(this){ data ->
+                purses2.clear()
+                data!!.forEach{ purses ->
+                    purseViewModelFirebase.getPurseById(purses.purse_id)?.observe(this){
+                        purses2 += it
+                    }
+                }
+            }
+        }
+    }
+
+    fun updateCustomizeItems(
+        newFontFamily: String,
+        newTheme: String,
+        newLanguage: String
+    ) {
+        /* fontFamily = newFontFamily
+        theme = newTheme
+        language = newLanguage */
+        lifecycleScope.launch {
+            dataStoreManager.setFontFamily(newFontFamily)
+            dataStoreManager.setTheme(newTheme)
+            dataStoreManager.setLanguage(newLanguage)
         }
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
+fun NavigationGraph(navController: NavHostController, activity: MainActivity) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
             HomeScreen(navController)
@@ -91,7 +138,7 @@ fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
             AddPurseScreen(navController)
         }
         composable("list_deposits/{purseJson}") {
-            Deposits(navController, jsonFileString, it.arguments?.getString("purseJson"))
+            Deposits(navController, it.arguments?.getString("purseJson"))
         }
         composable("deposit/{purseJson}") {
             DepositScreen(navController, it.arguments?.getString("purseJson"))
@@ -100,7 +147,10 @@ fun NavigationGraph(navController: NavHostController, jsonFileString: String) {
             ProfileScreen(navController = navController)
         }
         composable("customize") {
-            CustomizeScreen(navController = navController)
+            CustomizeScreen(navController = navController, activity.fontFamily, activity.theme, activity.language) {
+                fontFamily: String, theme: String, language: String ->
+                activity.updateCustomizeItems(fontFamily, theme, language)
+            }
         }
     }
 }
@@ -206,7 +256,7 @@ fun BottomNavigation(navController: NavController) {
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
-fun BuildContentMain(jsonFileString: String) {
+fun BuildContentMain(activity: MainActivity) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigation(navController = navController) },
@@ -233,15 +283,15 @@ fun BuildContentMain(jsonFileString: String) {
             }
         }
     ) {
-        NavigationGraph(navController = navController, jsonFileString)
+        NavigationGraph(navController = navController, activity)
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.M)
+/* @RequiresApi(Build.VERSION_CODES.M)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     Project01_DANPTheme {
-        BuildContentMain("")
+        BuildContentMain()
     }
-}
+} */

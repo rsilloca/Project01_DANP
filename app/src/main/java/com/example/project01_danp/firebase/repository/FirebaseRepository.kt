@@ -28,6 +28,7 @@ abstract class FirebaseRepository<E : FirebaseEntity>(entityClass: Class<E>) :
 
     override fun save(entity: E) {
         Log.e(TAG, "save()")
+
         collectionReference.document().set(entity)
     }
 

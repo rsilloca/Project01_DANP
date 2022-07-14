@@ -1,6 +1,5 @@
 package com.example.project01_danp.navigation
 
-import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -29,19 +28,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
+import com.example.project01_danp.firebase.models.PurseUserFirebase
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.firebase.utils.convertPurse
+import com.example.project01_danp.firebase.utils.getDocumentIdGenerated
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.utils.returnTo
+import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
 import com.example.project01_danp.viewmodel.room.PurseViewModelFactory
+import com.google.firebase.messaging.FirebaseMessaging
 
 @RequiresApi(Build.VERSION_CODES.M)
 @Composable
@@ -163,9 +166,9 @@ fun AddPurseScreen(navController: NavHostController) {
         Button(
             onClick = {
                 val auth = AuthService
-                // Falta modificar xD
+                val id = getDocumentIdGenerated("PurseFirebase")
                 val newPurse = Purse(
-                    auth.firebaseGetCurrentUser()!!.uid,
+                    id,
                     auth.firebaseGetCurrentUser()!!.uid,
                     inputNameState.value.text,
                     inputDescState.value.text,
@@ -175,10 +178,11 @@ fun AddPurseScreen(navController: NavHostController) {
                 if (!connectionStatus(mContext)) {
                     Log.e("TAG", "No internet connection")
                 }else{
-                    createPurseFirebase(convertPurse(newPurse))
+                    createPurseFirebase(convertPurse(newPurse), id)
                     createLocalPurse(purseViewModel, newPurse)
+                    createPurseUser(id)
                 }
-                mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                returnTo(navController)
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -191,11 +195,27 @@ fun AddPurseScreen(navController: NavHostController) {
     }
 }
 
-private fun createPurseFirebase(purse: PurseFirebase) {
+private fun createPurseFirebase(purse: PurseFirebase, documentID: String) {
     val viewModel = PurseViewModelFirebase()
-    viewModel.savePurse(purse)
+    viewModel.savePurse(purse, documentID)
 }
 
 fun createLocalPurse(purseViewModel: PurseViewModel, newPurse: Purse) {
     purseViewModel.insert(newPurse)
+}
+
+private fun createPurseUser(idPurse: String) {
+    val purseUserViewModelFirebase = PurseUserViewModelFirebase()
+    val auth = AuthService
+    FirebaseMessaging.getInstance().token
+        .addOnCompleteListener { task ->
+            val token = "\"${task.result}\""
+            purseUserViewModelFirebase.savePurseUserFirebase(
+                PurseUserFirebase(
+                    auth.firebaseGetCurrentUser()!!.uid,
+                    idPurse,
+                    token
+                )
+            )
+        }
 }

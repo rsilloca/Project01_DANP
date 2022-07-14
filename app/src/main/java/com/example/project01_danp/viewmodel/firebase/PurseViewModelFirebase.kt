@@ -32,8 +32,8 @@ class PurseViewModelFirebase: ViewModel() {
         return livePurseFirebaseRepository
     }
 
-    fun savePurse(purseFirebase : PurseFirebase) {
-        purseRepository.save(purseFirebase)
+    fun savePurse(purseFirebase : PurseFirebase, documentId: String) {
+        purseRepository.savePurse(purseFirebase, documentId)
     }
 
     fun updatePurse(purseFirebase: PurseFirebase) {

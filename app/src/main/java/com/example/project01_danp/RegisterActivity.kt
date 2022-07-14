@@ -31,7 +31,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.project01_danp.firebase.models.UserFirebase
+import com.example.project01_danp.firebase.models.User
 import com.example.project01_danp.firebase.repository.UserRepository
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomGreen
@@ -226,7 +226,7 @@ fun BuildContentRegister() {
 }
 
 fun register(fullname: String, email: String, password: String, context: Context) {
-    val userFirebase = UserFirebase(
+    val user = User(
         fullname = fullname,
         email = email
     )
@@ -234,7 +234,7 @@ fun register(fullname: String, email: String, password: String, context: Context
         AuthService.firebaseRegister(email, password)
     auth2.addOnCompleteListener { task ->
         if (task.isSuccessful) {
-            UserRepository.saveUser(userFirebase)
+            UserRepository.saveUser(user)
             context.startActivity(Intent(context, MainActivity::class.java))
             Toast.makeText(context, "Successful register", Toast.LENGTH_SHORT).show()
         } else {

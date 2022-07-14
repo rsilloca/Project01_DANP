@@ -4,19 +4,24 @@ import com.example.project01_danp.firebase.models.DepositFirebase
 import com.example.project01_danp.firebase.models.PurseFirebase
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+fun getDocumentIdGenerated(collection: String):String{
+    val db = Firebase.firestore
+    val ref: DocumentReference = db.collection(collection).document()
+    return ref.id
+}
 
 fun convertPurse(purse: Purse): PurseFirebase {
-    val purseFirebase = PurseFirebase(
+    return PurseFirebase(
         purse.user_id,
         purse.name,
         purse.description,
         purse.icon_name,
         purse.sub_total
     )
-    if(purse.documentId.isNotEmpty()) {
-        purseFirebase.documentId = purse.documentId
-    }
-    return purseFirebase
 }
 
 fun convertPurseFD(purseFirebase: PurseFirebase): Purse {
@@ -44,7 +49,7 @@ fun convertDeposit(deposit: Deposit): DepositFirebase {
 
 fun convertDepositFD(deposit: DepositFirebase): Deposit {
     return Deposit(
-        0,
+        deposit.documentId!!,
         deposit.purse_id,
         deposit.user_id,
         deposit.quantity,
