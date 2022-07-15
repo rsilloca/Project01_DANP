@@ -41,7 +41,7 @@
     <string name="txt_mi_perfil">Mi Perfil</string>
     <string name="txt_btn_guardar_cambios">GUARDAR CAMBIOS</string>
     <string name="txt_actualizar_ccontrasena">Actualizar contraseña</string>
-    <string name="txt_input_nueva_clave">Nueva Clave</string>
+    <string name="txt_input_nueva_clave">Clave Antigua</string>
     <string name="txt_input_repite_clave">Repite la clave</string>
     <string name="txt_btn_actualizar_clave">ACTUALIZAR CLAVE</string>
     <!-- CUSTOMIZE SCREEN -->

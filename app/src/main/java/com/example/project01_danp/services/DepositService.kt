@@ -13,7 +13,7 @@ class DepositService(private val depositsJSON: List<Deposit>) {
         var deposits = arrayListOf<Deposit>()
         var deposit: Deposit
 
-        val pageSize = 1
+        val pageSize = 10
 
         for (i in 0 until pageSize) {
             deposit = depositsListJSON[i + (nextPageNumber * pageSize)]

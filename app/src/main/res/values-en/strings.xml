@@ -42,7 +42,7 @@
     <string name="txt_mi_perfil">Mi Profile</string>
     <string name="txt_btn_guardar_cambios">SAVE CHANGES</string>
     <string name="txt_actualizar_ccontrasena">Update password</string>
-    <string name="txt_input_nueva_clave">New Key</string>
+    <string name="txt_input_nueva_clave">Old Key</string>
     <string name="txt_input_repite_clave">Repeat key</string>
     <string name="txt_btn_actualizar_clave">UPDATE KEY</string>
     <!-- CUSTOMIZE SCREEN -->

@@ -1,5 +1,6 @@
 package com.example.project01_danp.navigation
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -32,6 +33,7 @@ import com.example.project01_danp.firebase.models.User
 import com.example.project01_danp.firebase.service.AuthService
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.viewmodel.firebase.UserViewModelFirebase
+import com.google.android.gms.tasks.Task
 
 
 lateinit var user: User
@@ -208,11 +210,21 @@ fun ProfileScreen(navController: NavHostController) {
 
                 Button(
                     onClick = {
-                        if (inputPwdState.value.text == inputPwdRepeatState.value.text) {
-                            AuthService.firebaseReauthenticationWithCredential(
+                        if (inputPwdState.value.text.isNotEmpty() && inputPwdRepeatState.value.text.isNotEmpty()) {
+                            val auth: Task<Void> = AuthService.firebaseReauthenticationWithCredential(
                                 user.email,
-                                inputPwdRepeatState.value.text
-                            )
+                                inputPwdState.value.text
+                            )!!
+                            auth.addOnCompleteListener{ task ->
+                                if (task.isSuccessful) {
+                                    AuthService.firebaseGetCurrentUser()?.updatePassword(inputPwdRepeatState.value.text)
+                                    Toast.makeText(mContext, "User Password Updated", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(mContext, "Password Updated Failed", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }else{
+                            Toast.makeText(mContext, "Password must not be empty.", Toast.LENGTH_SHORT).show()
                         }
                     },
                     modifier = Modifier
