@@ -5,12 +5,14 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.project01_danp.navigation.BottomNavItem
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONObject
 import java.io.IOException
 
@@ -51,13 +53,29 @@ fun returnTo(navController: NavController){
     }
 }
 
-fun sendPushNotification(mContext:Context, name: String, msg: String, quantity: Int, list: List<String>){
+fun subscribe(context: Context, topic: String){
+    FirebaseMessaging.getInstance().subscribeToTopic(topic).addOnSuccessListener {
+        Toast.makeText(context, "Se ha unido exitosamente.", Toast.LENGTH_LONG).show()
+    }.addOnFailureListener {
+        Toast.makeText(context, "Failed to Subscribe to $topic", Toast.LENGTH_LONG).show()
+    }
+}
+
+fun unsubscribe(context: Context, topic: String){
+    FirebaseMessaging.getInstance().unsubscribeFromTopic(topic).addOnSuccessListener {
+        Toast.makeText(context, "Hasta pronto.", Toast.LENGTH_LONG).show()
+    }.addOnFailureListener {
+        Toast.makeText(context, "Failed to Subscribe to $topic", Toast.LENGTH_LONG).show()
+    }
+}
+
+
+fun sendPushNotification(mContext:Context, name: String, msg: String, quantity: Int, topic:String){
     val url = "https://colaboremospe-service.herokuapp.com/send/"
     val json = "{\n" +
             "\"title\": \"Nuevo deposito a la alcancia: $name !!\", \n" +
             "\"msg\": \"$msg \nTotal depositado: S/ $quantity \", \n" +
-            "\"tokens\": \n" +
-            "$list" +
+            "\"topic\": \"$topic\""+
             "\n}"
 
     val root = JSONObject(json)

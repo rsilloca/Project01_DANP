@@ -38,10 +38,12 @@ import androidx.paging.compose.items
 import com.example.project01_danp.MainActivity
 import com.example.project01_danp.R
 import com.example.project01_danp.firebase.models.PurseFirebase
+import com.example.project01_danp.firebase.utils.convertDepositFD
 import com.example.project01_danp.firebase.utils.convertPurseFD
 import com.example.project01_danp.roomdata.ApplicationDANP
 import com.example.project01_danp.roomdata.model.Deposit
 import com.example.project01_danp.roomdata.model.Purse
+import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
 import com.example.project01_danp.viewmodel.room.DepositViewModel
 import com.example.project01_danp.viewmodel.room.DepositViewModelFactory
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -67,8 +69,14 @@ fun Deposits(navController: NavHostController, purseJson: String?) {
         )
     )
     depositViewModel.findDeposit(purse.documentId!!)
-    deposits = depositViewModel.searchResults.observeAsState(listOf()).value
-    // deposits = depositViewModel.getAllPurses.observeAsState(listOf()).value
+
+    deposits = mutableListOf()
+    val depositsFirebase = DepositViewModelFirebase()
+    depositsFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)?.observeForever { list ->
+        list?.forEach{ deposit ->
+           deposits += convertDepositFD(deposit)
+        }
+    }
 
     // Paging
     val depositListItems: LazyPagingItems<Deposit> =
@@ -117,11 +125,6 @@ fun Deposits(navController: NavHostController, purseJson: String?) {
         var index = 0
         val listState = rememberLazyListState()
 
-        /* when (depositViewModel.loadingSpinner.value) {
-            true -> CircularProgressIndicator()
-            false -> Unit
-        } */
-
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -129,10 +132,6 @@ fun Deposits(navController: NavHostController, purseJson: String?) {
         ) {
             items(depositListItems) { deposit ->
                 if (deposit != null) {
-                    Toast.makeText(
-                        mContext, "no internet",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     DepositCard(deposit, index, navController, convertPurseFD(purse))
                     index += 1
                 }

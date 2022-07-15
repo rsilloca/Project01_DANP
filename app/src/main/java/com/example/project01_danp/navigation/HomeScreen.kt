@@ -48,6 +48,7 @@ import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomGreen
 import com.example.project01_danp.ui.theme.CustomRed
 import com.example.project01_danp.utils.connectionStatus
+import com.example.project01_danp.utils.unsubscribe
 import com.example.project01_danp.viewmodel.firebase.DepositViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
@@ -316,7 +317,7 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                                         purseUserViewModelFirebase.deletePurseUserFirebase(it[0])
                                     }
                                 }
-
+                                unsubscribe(mContext, purse.documentId!!)
                                 purses2.remove(purse)
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)

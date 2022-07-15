@@ -159,11 +159,7 @@ fun DepositScreen(navController: NavHostController, purseJson: String?) {
                     purseViewModel.update(convertPurseFD(purse))
                     updatePurseFirebase(purse)
 
-                    val list = listOf(
-                        "\"cXcG5mrdTl-RYSOHj4yC7Q:APA91bGF6RwuALTnRMeZgS973zbY_n2dfuttbBlNMWrrKwJsp6XBDw6qoQng6gSJde9088UvmOIf5bUseevCLH5h8wKZwlA-eUaxEKxanouSR5dh0Xh-7mjSpCLsGcFXQUVlOM56Q3yM\"",
-                        "\"fFPXu83CQDGwtet-Tj8BZJ:APA91bG1xNqUf9RqQxI9R83uEzxsUf7eF-29hmX64RxUgJEmiTUPsov5f3NZmsFRSjs_tQTLdtYVnJ7K6OEWkHZTW3LuvVvNOkeBNxwFdq2wPVbwwJa0DP65JPLpIqA910JLEU05Tt_g\"")
-
-                    sendPushNotification(mContext, purse.name, newDeposit.message, newDeposit.quantity, list)
+                    sendPushNotification(mContext, purse.name, newDeposit.message, newDeposit.quantity, purse.documentId!!)
 
                 }else {
                     Log.e("TAG", "No internet connection")

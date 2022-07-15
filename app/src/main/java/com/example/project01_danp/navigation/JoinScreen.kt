@@ -29,6 +29,7 @@ import com.example.project01_danp.roomdata.model.Purse
 import com.example.project01_danp.ui.theme.CustomOrange
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.returnTo
+import com.example.project01_danp.utils.subscribe
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -102,6 +103,7 @@ fun JoinScreen(navController: NavHostController) {
                     )
                     createLocalPurse(purseViewModel, actualPurse)
                     createPurseUser(it.documentId!!)
+                    subscribe(mContext, actualPurse.documentId)
                 }
                 returnTo(navController)
             },
@@ -120,16 +122,11 @@ fun JoinScreen(navController: NavHostController) {
 private fun createPurseUser(idPurse: String) {
     val purseUserViewModelFirebase = PurseUserViewModelFirebase()
     val auth = AuthService
-    FirebaseMessaging.getInstance().token
-        .addOnCompleteListener { task ->
-            val token = "\"${task.result}\""
-            purseUserViewModelFirebase.savePurseUserFirebase(
-                PurseUserFirebase(
-                    auth.firebaseGetCurrentUser()!!.uid,
-                    idPurse,
-                    token
-                )
-            )
-        }
-
+    purseUserViewModelFirebase.savePurseUserFirebase(
+        PurseUserFirebase(
+            auth.firebaseGetCurrentUser()!!.uid,
+            idPurse,
+            ""
+        )
+    )
 }

@@ -37,6 +37,7 @@ import com.example.project01_danp.ui.theme.Project01_DANPTheme
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.UserViewModelFirebase
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

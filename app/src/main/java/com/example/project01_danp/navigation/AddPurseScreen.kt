@@ -40,6 +40,7 @@ import com.example.project01_danp.ui.theme.CustomGray
 import com.example.project01_danp.ui.theme.CustomViolet
 import com.example.project01_danp.utils.connectionStatus
 import com.example.project01_danp.utils.returnTo
+import com.example.project01_danp.utils.subscribe
 import com.example.project01_danp.viewmodel.firebase.PurseUserViewModelFirebase
 import com.example.project01_danp.viewmodel.firebase.PurseViewModelFirebase
 import com.example.project01_danp.viewmodel.room.PurseViewModel
@@ -181,6 +182,7 @@ fun AddPurseScreen(navController: NavHostController) {
                     createPurseFirebase(convertPurse(newPurse), id)
                     createLocalPurse(purseViewModel, newPurse)
                     createPurseUser(id)
+                    subscribe(mContext, id)
                 }
                 returnTo(navController)
             },
@@ -207,15 +209,11 @@ fun createLocalPurse(purseViewModel: PurseViewModel, newPurse: Purse) {
 private fun createPurseUser(idPurse: String) {
     val purseUserViewModelFirebase = PurseUserViewModelFirebase()
     val auth = AuthService
-    FirebaseMessaging.getInstance().token
-        .addOnCompleteListener { task ->
-            val token = "\"${task.result}\""
-            purseUserViewModelFirebase.savePurseUserFirebase(
-                PurseUserFirebase(
-                    auth.firebaseGetCurrentUser()!!.uid,
-                    idPurse,
-                    token
-                )
-            )
-        }
+    purseUserViewModelFirebase.savePurseUserFirebase(
+        PurseUserFirebase(
+            auth.firebaseGetCurrentUser()!!.uid,
+            idPurse,
+            ""
+        )
+    )
 }

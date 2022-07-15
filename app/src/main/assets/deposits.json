@@ -1,1802 +1,1602 @@
 [
-    {
-        "id": 1,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 12,
-        "message": "Falta a reunión con clientes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 2,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 34,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 3,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 4,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 5,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 6,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 7,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 8,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 9,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 10,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 11,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 67,
-        "message": "Sanción",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 12,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 13,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 14,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 15,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 7,
-        "message": "Sanción",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 16,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 17,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 18,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 19,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 20,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 21,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 22,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 23,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 11,
-        "message": "Falta a reunion de validación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 24,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "No se reporta por Discord",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 25,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 26,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 27,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 28,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 29,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 30,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 31,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 32,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 33,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Falta a reuncion de validación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 34,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Falta a reuncion de validación extra",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 35,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Inscripcion a reto de programcion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 36,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 37,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 38,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 39,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 40,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Mensaje inapropiado en grupo de trabajo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 41,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 42,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 43,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 44,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 45,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 46,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 47,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 48,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Subida a rama con errores para ser merge en desarrollo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 49,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Ninguno",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 50,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Ninguno",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 51,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 52,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Subida a rama con errores para ser merge en desarrollo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 53,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 54,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 55,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 56,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 57,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Falta a reuncion de validación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 58,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 59,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 60,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 61,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Falta a reuncion de validación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 62,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 63,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 64,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 65,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Falta a reunión de validación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 66,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 67,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 68,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 69,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 70,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 71,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falata de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 72,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 73,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Subida a rama con errores para ser merge en desarrollo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 74,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Subida a rama con errores para ser merge en desarrollo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 75,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 76,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 77,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de corrección a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 78,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a sprint planning",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 79,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Ninguno",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 80,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 81,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 82,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Concurso de programación",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 83,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Ninguno",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 84,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 85,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 7,
-        "message": "Storybook sin estructura adecuada",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 86,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Ninguna",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 87,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Perdida en concurso de juego",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 88,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 89,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de corrección a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 90,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 7,
-        "message": "Storybook sin estructura adecuada",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 91,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 92,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de documentación de componentes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 93,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 12,
-        "message": "Falta a reunión con clientes",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 94,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 34,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 95,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 96,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 97,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 98,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 99,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 100,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 101,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 102,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 103,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 67,
-        "message": "Sanción",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 104,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Mensaje inapropiado en grupo de trabajo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 105,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 106,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de correción a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 107,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 108,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 109,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 7,
-        "message": "Storybook sin estructura adecuada",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 110,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 111,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 112,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 113,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 114,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Subida a producción tarde",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 115,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 116,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 117,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 118,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 119,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 120,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 121,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 122,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a sprint planning",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 123,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de corrección a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 124,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Subida a producción tarde",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 125,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 126,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a capacitación de Jenkins parte 1",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 127,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de corrección a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 128,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 129,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 130,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 131,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 132,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 133,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a capacitación de Jenkins parte 3",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 134,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 135,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 136,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a capacitación de SonarQube",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 137,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta de aviso de ausencia en reunion",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 138,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a capacitación de SQL",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 139,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 140,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 141,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 142,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 143,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a reunión presencial",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 144,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 11,
-        "message": "Sanción 3",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 145,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "No se realizo presentacion demo del avance",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 146,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 147,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 148,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 6,
-        "message": "Subida a producción tarde",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 149,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 150,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 151,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Mensaje inapropiado en grupo de trabajo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 152,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 153,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 154,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 155,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a capacitación de Project",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 156,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de reporte de incidencias",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 157,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 158,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 10,
-        "message": "Pérdida de apuesta de partido Perú vs Australia",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 159,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Ninguno",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 160,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 161,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 162,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 163,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a sprint retrospective",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 164,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a sprint planning",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 165,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Entrada tarde a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 166,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 167,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 168,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de reporte de incidencias",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 169,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de Post",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 170,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 4,
-        "message": "Falta de Estructura en Blog",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 171,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 23,
-        "message": "Sanción 3",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 172,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de reporte de incidencias",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 173,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a reunión presencial",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 174,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 175,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Entrada tarde a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 176,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Entrada tarde a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 177,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Entrada tarde a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 178,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 179,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 180,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 181,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta a reunión presencial",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 182,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 183,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 184,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 185,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 186,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 187,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 188,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 189,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de correción a tiempo de observaciones QA",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 190,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 5,
-        "message": "Mensaje inapropiado en grupo de trabajo",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 191,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 192,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 193,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 194,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 195,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 34,
-        "message": "Sanción 4",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 196,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 3,
-        "message": "Falta de documentación de funcionalidad de código",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 197,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 198,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 199,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 1,
-        "message": "Falta a daily",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    },
-    {
-        "id": 200,
-        "purse_id": 1,
-        "user_id": "1",
-        "quantity": 2,
-        "message": "Falta de sprint review",
-        "deposit_date": "06/10/2022 21:45:00",
-        "user_email": "rsilloca@unsa.edu.pe"
-    }
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 12,
+    "message": "Falta a reunión con clientes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 34,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 67,
+    "message": "Sanción",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 7,
+    "message": "Sanción",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 11,
+    "message": "Falta a reunion de validación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "No se reporta por Discord",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Falta a reuncion de validación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Falta a reuncion de validación extra",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Inscripcion a reto de programcion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Mensaje inapropiado en grupo de trabajo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Subida a rama con errores para ser merge en desarrollo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Ninguno",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Ninguno",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Subida a rama con errores para ser merge en desarrollo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Falta a reuncion de validación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Falta a reuncion de validación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Falta a reunión de validación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falata de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Subida a rama con errores para ser merge en desarrollo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Subida a rama con errores para ser merge en desarrollo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de corrección a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a sprint planning",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Ninguno",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Concurso de programación",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Ninguno",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 7,
+    "message": "Storybook sin estructura adecuada",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Ninguna",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Perdida en concurso de juego",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de corrección a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 7,
+    "message": "Storybook sin estructura adecuada",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de documentación de componentes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 12,
+    "message": "Falta a reunión con clientes",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 34,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 67,
+    "message": "Sanción",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Mensaje inapropiado en grupo de trabajo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de correción a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 7,
+    "message": "Storybook sin estructura adecuada",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Subida a producción tarde",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a sprint planning",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de corrección a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Subida a producción tarde",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a capacitación de Jenkins parte 1",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de corrección a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a capacitación de Jenkins parte 3",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a capacitación de SonarQube",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta de aviso de ausencia en reunion",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a capacitación de SQL",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a reunión presencial",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 11,
+    "message": "Sanción 3",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "No se realizo presentacion demo del avance",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 6,
+    "message": "Subida a producción tarde",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Mensaje inapropiado en grupo de trabajo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a capacitación de Project",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de reporte de incidencias",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 10,
+    "message": "Pérdida de apuesta de partido Perú vs Australia",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Ninguno",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a sprint retrospective",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a sprint planning",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Entrada tarde a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de reporte de incidencias",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de Post",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 4,
+    "message": "Falta de Estructura en Blog",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 23,
+    "message": "Sanción 3",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de reporte de incidencias",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a reunión presencial",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Entrada tarde a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Entrada tarde a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Entrada tarde a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta a reunión presencial",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de correción a tiempo de observaciones QA",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 5,
+    "message": "Mensaje inapropiado en grupo de trabajo",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 34,
+    "message": "Sanción 4",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 3,
+    "message": "Falta de documentación de funcionalidad de código",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 1,
+    "message": "Falta a daily",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  },
+  {
+    "purse_id": "YknAY7nkmpBuQgA3HwwS",
+    "user_id": "cZWBmlu80WcMeUD92HxCug8gbHm2",
+    "quantity": 2,
+    "message": "Falta de sprint review",
+    "deposit_date": "06/10/2022 21:45:00",
+    "user_email": "rsilloca@unsa.edu.pe"
+  }
 ]
