@@ -300,20 +300,26 @@ fun PurseCard(purse: PurseFirebase, index: Int, navController: NavHostController
                         )
                         Button(
                             onClick = {
+                                val uid = AuthService.firebaseGetCurrentUser()!!.uid
+
                                 depositViewModel.deleteByPurse(purse.documentId!!)
                                 purseViewModel.delete(convertPurseFD(purse))
 
-                                purseViewModelFirebase.deletePurse(purse)
-                                depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)
-                                    ?.observeForever {
-                                        if (it!!.isNotEmpty()) {
-                                            depositViewModelFirebase.deleteAllByPurse(it)
-                                        }
+                                purseViewModelFirebase.getPurseById(purse.documentId!!)!!.observeForever { purseFirebase ->
+                                    if (purseFirebase.user_id == uid){
+                                        purseViewModelFirebase.deletePurse(purse)
+                                        depositViewModelFirebase.getAllDepositsFirebaseByPurseId(purse.documentId!!)
+                                            ?.observeForever {
+                                                if (it!!.isNotEmpty()) {
+                                                    depositViewModelFirebase.deleteAllByPurse(it)
+                                                }
+                                            }
                                     }
+                                }
 
                                 purseUserViewModelFirebase.getAllFirebasePurseUserByBoth(
                                     purse.documentId!!,
-                                    AuthService.firebaseGetCurrentUser()!!.uid
+                                    uid
                                 )?.observeForever {
                                     if (it!!.isNotEmpty()) {
                                         purseUserViewModelFirebase.deletePurseUserFirebase(it[0])
