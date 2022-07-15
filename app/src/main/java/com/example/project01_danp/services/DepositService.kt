@@ -4,11 +4,10 @@ import com.example.project01_danp.roomdata.model.Deposit
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class DepositService(private val depositsJSON: List<Deposit>) {
+class DepositService(private val deposits: List<Deposit>) {
     fun searchDeposits(nextPageNumber: Int): ResponseDeposit {
-        val gson = Gson()
-        val listDepositsType = object : TypeToken<List<Deposit>>() {}.type
-        val depositsListJSON = depositsJSON //gson.fromJson<List<Deposit>>(depositsJSON, listDepositsType)
+
+        val depositsList = deposits 
 
         var deposits = arrayListOf<Deposit>()
         var deposit: Deposit
@@ -16,7 +15,7 @@ class DepositService(private val depositsJSON: List<Deposit>) {
         val pageSize = 10
 
         for (i in 0 until pageSize) {
-            deposit = depositsListJSON[i + (nextPageNumber * pageSize)]
+            deposit = depositsList[i + (nextPageNumber * pageSize)]
             deposits.add(deposit)
         }
 
